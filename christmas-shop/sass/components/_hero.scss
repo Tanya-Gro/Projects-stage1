@@ -1,0 +1,16 @@
+.hero {
+  background-color: $color-backround;
+  background-image: url("./accets/svg/bg-ball 1.svg"), url("./accets/png/bg-snow.png");
+  background-repeat: no-repeat, no-repeat;
+  background-position: center, center;
+  border-radius: 20px 20px 0px 0px;
+  padding: 60px 0;
+
+}
+
+.hero,
+.hero__contant {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
