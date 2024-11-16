@@ -1,0 +1,37 @@
+.about {
+  padding: 60px 82px;
+  background-color: $color-background;
+  background-image: url("./accets/png/bg-snow.png");
+  background-position: center;
+  background-size: 100%;
+}
+
+.about__container {
+  display: flex;
+  flex-direction: row;
+  background-color: $color-staticWhite;
+  border-radius: 20px;
+
+  div {
+    width: 50%;
+  }
+}
+
+.about__content {
+  padding: 160px 152px 160px 60px;
+
+  h6 {
+    text-align: left;
+  }
+
+  h3 {
+    padding: 20px 0;
+  }
+}
+
+.about__image {
+  background-image: url("./accets/png/object.png");
+  background-position: center;
+  background-size: 100%;
+  border-radius: 20px;
+}

@@ -59,6 +59,10 @@ h6 {
   text-transform: none;
 }
 
+.h6_primary {
+  color: #FF4646;
+}
+
 .button {
   padding: 18px 32px;
   border-radius: 20px;
@@ -154,6 +158,41 @@ header {
 .hero__contant h2 {
   text-align: center;
   padding: 12px 0;
+}
+
+.about {
+  padding: 60px 82px;
+  background-color: #FF4646;
+  background-image: url("./accets/png/bg-snow.png");
+  background-position: center;
+  background-size: 100%;
+}
+
+.about__container {
+  display: flex;
+  flex-direction: row;
+  background-color: #FFFFFF;
+  border-radius: 20px;
+}
+.about__container div {
+  width: 50%;
+}
+
+.about__content {
+  padding: 160px auto 160px 60px;
+}
+.about__content h6 {
+  text-align: left;
+}
+.about__content h3 {
+  padding: 20px 0;
+}
+
+.about__image {
+  background-image: url("./accets/png/object.png");
+  background-position: center;
+  background-size: 100%;
+  border-radius: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */
