@@ -25,11 +25,9 @@ h1 {
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 3.2rem;
   line-height: 4.8rem;
-  letter-spacing: 0.18rem;
-  // text-underline-position: from-font;
-  // text-decoration-skip-ink: none;
+  letter-spacing: 0.18em;
 }
 
 h3 {
@@ -59,14 +57,13 @@ h5 {
 }
 
 h6 {
-  //styleName: Caption;
   font-family: Allura;
   font-size: 2.4rem;
   font-weight: 400;
   line-height: 2.4rem;
   letter-spacing: 0.05em;
   text-align: center;
+  text-transform: none;
   // text-underline-position: from-font;
   // text-decoration-skip-ink: none;
-  //styleName: Action Small;
 }
