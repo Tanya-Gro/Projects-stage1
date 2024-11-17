@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "style": "sass sass/style.scss style.css",
+    "style": "sass christmas-shop/sass/style.scss christmas-shop/style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

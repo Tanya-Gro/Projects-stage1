@@ -1,0 +1,59 @@
+.slider {
+  padding: 60px 0;
+  background-color: $color-background;
+  background-image: url("./accets/png/bg-snow.png");
+  background-position: center;
+  background-size: 100%;
+  overflow: hidden;
+
+  h3 {
+    text-align: center;
+    padding: 12px 0;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: right;
+    padding: 10px 70px;
+  }
+}
+
+.slider__content {
+  padding: 8px 0;
+  display: flex;
+  position: relative;
+  left: 65px;
+  align-items: center;
+
+}
+
+.slider_text {
+  // font-family: Montserrat;
+  font-size: 8rem;
+  font-weight: 600;
+  line-height: 9.752rem;
+  text-align: center;
+  text-transform: uppercase;
+  color: $color-staticWhite;
+  padding: 0 20px;
+}
+
+.slider_picture {
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+}
+
+.arrow {
+  background-image: url("./accets/svg/Vector.svg");
+  display: inline-block;
+  width: 12.5px;
+  height: 12px;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.4;
+}
+
+.arrow_rotate {
+  background-image: rotate(180deg);
+}

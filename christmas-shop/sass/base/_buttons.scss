@@ -21,4 +21,34 @@
 .button__black:hover {
   background-color: $color-staticWhite;
   color: $color-dark;
+  transition: 0.4s all;
+}
+
+.button__arrow {
+  color: $color-staticWhite40;
+  border: 1px solid $color-staticWhite40;
+  border-radius: 20px;
+  padding: 20px 21px;
+  font-weight: 2.4rem;
+  margin: 0 10px;
+  background-color: $color-background;
+}
+
+.button__arrow_active {
+  color: $color-staticWhite;
+  border: 1px solid $color-staticWhite;
+  cursor: pointer;
+
+  .arrow {
+    opacity: 1;
+  }
+}
+
+.button__arrow_active:hover {
+  background-color: $color-staticWhite;
+  transition: 0.4s all;
+
+  span {
+    background-image: url("./accets/svg/Vector (1).svg");
+  }
 }
