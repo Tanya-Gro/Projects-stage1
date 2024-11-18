@@ -309,16 +309,17 @@ header {
   background-image: url("./accets/png/bg-snow.png");
   background-position: center;
   background-size: 100%;
-  padding: 50px 82px;
+  padding: 55px 82px;
 }
 .bestGifts h3 {
   text-align: center;
-  padding: 15px 0;
+  padding: 10px 0;
 }
 .gifts {
   display: flex;
   flex-direction: row;
   gap: 12px;
+  margin-top: 6px;
 }
 
 .gift__content {
@@ -346,13 +347,64 @@ header {
 .timer {
   background-color: #FF4646;
   background-image: url("./accets/png/bg-forest.png"), url("./accets/png/bg-snow.png");
-  background-position: center, center;
-  background-size: 100%, 100%;
+  background-position: top, top;
+  background-size: 100%, 112%;
   border-radius: 20px 20px 0px 0px;
-  padding: 60px 0;
+  padding: 170px 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.timer button {
+  margin-bottom: 15px;
+}
+.timer h6 {
+  padding: 8px 0;
+}
+
+.timer > h3 {
+  width: 426px;
+  text-align: center;
+  padding: 14px 0;
+}
+
+.timer__content {
+  background-color: #FFFFFF;
+  opacity: 0.4;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  width: 344px;
+  padding: 10px 13px;
+}
+
+.timer__line {
+  margin-top: 20px;
+  border: 1px solid black;
+  width: 2px;
+  height: 16px;
+  opacity: 0.8;
+}
+
+.timer-days,
+.timer-hours,
+.timer-minutes,
+.timer-seconds {
+  width: 25%;
+}
+.timer-days h3,
+.timer-hours h3,
+.timer-minutes h3,
+.timer-seconds h3 {
+  color: black;
+  text-align: center;
+}
+.timer-days h5,
+.timer-hours h5,
+.timer-minutes h5,
+.timer-seconds h5 {
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */
