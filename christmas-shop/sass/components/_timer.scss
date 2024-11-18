@@ -1,0 +1,62 @@
+.timer {
+  background-color: $color-background;
+  background-image: url("./accets/png/bg-forest.png"), url("./accets/png/bg-snow.png");
+  background-position: top, top;
+  background-size: 100%, 112%;
+  border-radius: 20px 20px 0px 0px;
+  padding: 170px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    margin-bottom: 15px;
+  }
+
+  h6 {
+    padding: 8px 0;
+  }
+}
+
+.timer>h3 {
+  width: 426px;
+  text-align: center;
+  padding: 14px 0;
+}
+
+.timer__content {
+  background-color: $color-staticWhite;
+  opacity: 0.4;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  width: 344px;
+  padding: 10px 13px;
+}
+
+.timer__line {
+  margin-top: 20px;
+  // background-color: $color-staticWhite;
+  border: 1px solid black;
+  width: 2px;
+  height: 16px;
+  opacity: 0.8;
+}
+
+.timer-days,
+.timer-hours,
+.timer-minutes,
+.timer-seconds {
+  width: 25%;
+
+  h3 {
+    color: black;
+    text-align: center;
+  }
+
+  h5 {
+    // color: #FFFFFF;
+    text-align: center;
+  }
+}

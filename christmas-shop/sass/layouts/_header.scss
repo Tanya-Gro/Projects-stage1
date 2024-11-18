@@ -1,0 +1,45 @@
+header {
+  padding: 12px 78px 12px 102px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  padding: 8px 2px;
+  text-decoration: none;
+}
+
+.ico__logo {
+  background-image: url("./accets/ico-logo.svg");
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+
+.navigation {
+  display: flex;
+  list-style-type: none;
+
+  li {
+    padding: 0 4px;
+    border-radius: 12px;
+  }
+
+  li:hover {
+    background: $color-primary;
+    color: $color-background;
+    transition: 0.4s all;
+  }
+}
+
+.navigation__link {
+  padding: 12px 20px;
+  text-decoration: none;
+  color: $color-dark;
+  font-size: 1.2rem;
+  line-height: 1.56rem;
+  letter-spacing: 0.05em;
+}
