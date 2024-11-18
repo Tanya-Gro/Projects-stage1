@@ -1,0 +1,11 @@
+.timer {
+  background-color: $color-background;
+  background-image: url("./accets/png/bg-forest.png"), url("./accets/png/bg-snow.png");
+  background-position: center, center;
+  background-size: 100%, 100%;
+  border-radius: 20px 20px 0px 0px;
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

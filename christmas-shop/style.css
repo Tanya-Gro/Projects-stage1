@@ -43,7 +43,7 @@ h3 {
 }
 
 h4 {
-  font-size: 1rem;
+  font-size: 1.6rem;
   line-height: 2.432rem;
   letter-spacing: 0.08em;
 }
@@ -52,6 +52,18 @@ h5 {
   font-size: 1.2rem;
   line-height: 1.56rem;
   letter-spacing: 0.05em;
+}
+
+.h5--green {
+  color: #06A44F;
+}
+
+.h5--blue {
+  color: #4361FF;
+}
+
+.h5--pink {
+  color: #FF43F7;
 }
 
 h6 {
@@ -289,7 +301,58 @@ header {
 }
 
 .arrow_rotate {
-  background-image: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.bestGifts {
+  background-color: #FF4646;
+  background-image: url("./accets/png/bg-snow.png");
+  background-position: center;
+  background-size: 100%;
+  padding: 50px 82px;
+}
+.bestGifts h3 {
+  text-align: center;
+  padding: 15px 0;
+}
+.gifts {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.gift__content {
+  background-color: #ECF3F8;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.gift__description {
+  background-color: #FFFFFF;
+  padding: 20px 20px;
+  border-radius: 20px;
+  flex-grow: 1;
+}
+.gift__description h5 {
+  padding-bottom: 10px;
+}
+
+.gift__image {
+  display: block;
+  width: 310px;
+}
+
+.timer {
+  background-color: #FF4646;
+  background-image: url("./accets/png/bg-forest.png"), url("./accets/png/bg-snow.png");
+  background-position: center, center;
+  background-size: 100%, 100%;
+  border-radius: 20px 20px 0px 0px;
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*# sourceMappingURL=style.css.map */
