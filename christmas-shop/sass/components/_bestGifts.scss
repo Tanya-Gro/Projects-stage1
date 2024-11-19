@@ -9,10 +9,6 @@
     text-align: center;
     padding: 10px 0;
   }
-
-  h6 {
-    // padding: 0 auto;
-  }
 }
 
 .gifts {
@@ -27,7 +23,7 @@
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-
+  cursor: pointer;
 }
 
 .gift__description {
@@ -35,9 +31,15 @@
   padding: 20px 20px;
   border-radius: 20px;
   flex-grow: 1;
+  min-height: 115px;
+  width: 310px;
 
   h5 {
     padding-bottom: 10px;
+  }
+
+  h4 {
+    max-width: 270px;
   }
 }
 

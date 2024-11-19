@@ -19,10 +19,11 @@ body {
 }
 
 h1 {
-  padding: 3px 7px;
+  padding: 4px 7px;
   font-size: 1.2rem;
   line-height: 1.56rem;
   letter-spacing: 0.05em;
+  color: #181C29;
 }
 
 h2 {
@@ -37,7 +38,6 @@ h3 {
   letter-spacing: 0.16em;
   color: #FFFFFF;
   font-weight: 600;
-  color: #181C29;
 }
 
 .h3_dark {
@@ -58,7 +58,8 @@ h4 {
   color: #181C29;
 }
 
-h5 {
+h5,
+.h5 {
   font-size: 1.2rem;
   line-height: 1.56rem;
   letter-spacing: 0.05em;
@@ -121,12 +122,12 @@ p {
 .button__black {
   background-color: #181C29;
   color: #FFFFFF;
+  transition: 0.4s all;
 }
 
 .button__black:hover {
   background-color: #FFFFFF;
   color: #181C29;
-  transition: 0.4s all;
 }
 
 .button__arrow {
@@ -143,6 +144,7 @@ p {
   color: #FFFFFF;
   border: 1px solid #FFFFFF;
   cursor: pointer;
+  transition: 0.4s all;
 }
 .button__arrow_active .arrow {
   opacity: 1;
@@ -150,7 +152,6 @@ p {
 
 .button__arrow_active:hover {
   background-color: #FFFFFF;
-  transition: 0.4s all;
 }
 .button__arrow_active:hover span {
   background-image: url("./accets/svg/Vector (1).svg");
@@ -188,13 +189,17 @@ header {
   list-style-type: none;
 }
 .navigation li {
-  padding: 0 4px;
+  padding: 2px 4px;
   border-radius: 12px;
 }
-.navigation li:hover {
+
+.navigation_active:hover {
+  transition: 0.4s;
+}
+
+.navigation_active:hover {
   background: rgba(255, 70, 70, 0.1019607843);
   color: #FF4646;
-  transition: 0.4s all;
 }
 
 .navigation__link {
@@ -209,9 +214,8 @@ header {
 .navigation__link-disable {
   background: rgba(255, 70, 70, 0.1019607843);
   color: #FF4646;
-  padding: 12px 24px;
+  padding: 12px 20px;
   border-radius: 12px;
-  margin-right: 4px;
 }
 
 .hero {
@@ -340,6 +344,7 @@ header {
   text-align: center;
   padding: 10px 0;
 }
+
 .gifts {
   display: flex;
   flex-direction: row;
@@ -352,6 +357,7 @@ header {
   border-radius: 20px;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .gift__description {
@@ -359,9 +365,14 @@ header {
   padding: 20px 20px;
   border-radius: 20px;
   flex-grow: 1;
+  min-height: 115px;
+  width: 310px;
 }
 .gift__description h5 {
   padding-bottom: 10px;
+}
+.gift__description h4 {
+  max-width: 270px;
 }
 
 .gift__image {
@@ -369,26 +380,57 @@ header {
   width: 310px;
 }
 
-.Gifts {
+.Gifts_gifts {
   background-color: #FF4646;
-  background-image: url("../accets/svg/bg-garland.svg");
+  background-image: url("./accets/svg/bg-garland.svg");
+  background-repeat: no-repeat;
   background-position: top center;
   background-size: 100%;
   border-radius: 20px;
-  padding: 60px 82px;
+  padding: 58px 82px;
 }
-.Gifts h2 {
+.Gifts_gifts h2 {
   width: 33%;
   text-align: center;
-  padding: 10px 0;
+  color: #FFFFFF;
+  margin: 0 auto;
+  font-weight: 600;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 20px 0 15px;
+}
+
+.tab-anable {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: auto;
+}
+
+.tab {
+  margin: 0 4px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  color: #FFFFFF;
+}
+
+.tab-disable {
+  transition: 0.5s;
+}
+
+.tab-disable:hover {
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
 }
 
 .gifts__conteiner {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 6px;
+  gap: 10px 12px;
+  padding: 5px 0 0;
 }
 
 .timer {
@@ -475,10 +517,13 @@ header {
 }
 .contacts__content h4 {
   padding: 10px 0 18px;
+  transition: 0.4s all;
+}
+.contacts__content h3 {
+  transition: 0.4s all;
 }
 
 .contacts__content:hover {
-  transition: 0.4s all;
   cursor: pointer;
 }
 .contacts__content:hover h3,

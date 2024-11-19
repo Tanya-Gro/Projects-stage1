@@ -19,11 +19,15 @@
 
   h4 {
     padding: 10px 0 18px;
+    transition: 0.4s all;
+  }
+
+  h3 {
+    transition: 0.4s all;
   }
 }
 
 .contacts__content:hover {
-  transition: 0.4s all;
   cursor: pointer;
 
   h3,

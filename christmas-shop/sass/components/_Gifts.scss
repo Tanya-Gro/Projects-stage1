@@ -1,29 +1,56 @@
 // ---------------------------------
 // page GIFTS
 // ---------------------------------
-.Gifts {
+.Gifts_gifts {
   background-color: $color-background;
-  background-image: url("../accets/svg/bg-garland.svg");
+  background-image: url("./accets/svg/bg-garland.svg");
+  background-repeat: no-repeat;
   background-position: top center;
   background-size: 100%;
   border-radius: 20px;
-  padding: 60px 82px;
+  padding: 58px 82px;
 
   h2 {
     width: 33%;
     text-align: center;
-    padding: 10px 0;
+    color: $color-staticWhite;
+    margin: 0 auto;
+    font-weight: 600;
   }
+}
 
-  // h6 {
-  //   // padding: 0 auto;
-  // }
+.tabs {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 20px 0 15px;
+}
+
+.tab-anable {
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: auto;
+}
+
+.tab {
+  margin: 0 4px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  color: $color-staticWhite;
+}
+
+.tab-disable {
+  transition: 0.5s;
+}
+
+.tab-disable:hover {
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
 }
 
 .gifts__conteiner {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 6px;
+  gap: 10px 12px;
+  padding: 5px 0 0;
 }
