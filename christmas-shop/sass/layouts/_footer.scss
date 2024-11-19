@@ -15,9 +15,20 @@
   flex-direction: column;
   align-items: center;
   width: 33%;
+  text-decoration: none;
 
   h4 {
     padding: 10px 0 18px;
+  }
+}
+
+.contacts__content:hover {
+  transition: 0.4s all;
+  cursor: pointer;
+
+  h3,
+  h4 {
+    color: $color-background;
   }
 }
 

@@ -17,16 +17,16 @@
 <body>
   <div class="wrapper">
     <header class="header">
-      <a href="#" class="logo">
+      <a href="https://rolling-scopes-school.github.io/tanya-gro-JSFE2024Q4/christmas-shop/index.html" class="logo">
         <span class="ico ico__logo"></span>
         <h1>the gifts</h1>
       </a>
       <nav class="header__navigation">
         <ul class="navigation">
-          <li><a class="navigation__link" href="#">gifts</a></li>
-          <li><a class="navigation__link" href="#">about</a></li>
-          <li><a class="navigation__link" href="#">best</a></li>
-          <li><a class="navigation__link" href="#">contacts</a></li>
+          <li><a class="navigation__link" href="./gifts/index.html">gifts</a></li>
+          <li><a class="navigation__link" href="#about">about</a></li>
+          <li><a class="navigation__link" href="#gifts">best</a></li>
+          <li><a class="navigation__link" href="#footer">contacts</a></li>
         </ul>
       </nav>
 
@@ -36,11 +36,13 @@
         <div class="hero__contant">
           <h6>Merry Christmas</h6>
           <h2>Gift yourself <br> the magic of new<br>possibilities</h2>
-          <button class="button button__black">Explore Magical Gifts</button>
+          <form action="./gifts/index.html">
+            <button class="button button__black" href="./gifts/index.html">Explore Magical Gifts</button>
+          </form>
           <h6>and Happy New Year</h6>
         </div>
       </section>
-      <section class="about">
+      <section class="about" id="about">
         <div class="about__container">
           <div class="about__content">
             <h6 class="h6_primary">About</h6>
@@ -71,7 +73,7 @@
           <button class="button__arrow button__arrow_active"><span class="arrow"></span></button>
         </div>
       </section>
-      <section class="bestGifts">
+      <section class="bestGifts" id="gifts">
         <h6>Best Gifts</h6>
         <h3>especially for you</h3>
         <!-- <div class="gifts layout-4-colums"> -->
@@ -108,7 +110,9 @@
       </section>
       <section class="timer">
         <h3>Ready to start your journey to a better version of yourself?</h3>
-        <button class="button button__black">Explore Magical Gifts</button>
+        <form action="./gifts/index.html">
+          <button class="button button__black">Explore Magical Gifts</button>
+        </form>
         <h6>The New Year is Coming Soon...</h6>
         <div class="timer__content">
           <div class="timer-days">
@@ -134,23 +138,24 @@
       </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" id="footer">
       <div class="contacts layout-3-colums">
-        <div class="contacts__content">
+        <a class="contacts__content" href="tel:+375(29)111-22-33">
           <img src="./accets/svg/santa.svg" alt="santa" class="contact__image">
-          <a class="h3_dark" href="tel:+375(29)111-22-33">+375 (29) 111-22-33</a>
-          <h4>Call Us</h4>
-        </div>
-        <div class="contacts__content">
+          <h3 class="h3_dark">+375 (29) 111-22-33</h3>
+          <h4 class="h4_dark">Call Us</h4>
+        </a>
+
+        <a class="contacts__content" href="https://www.google.com/maps/" target="_blank">
           <img src="./accets/svg/christmas-tree.svg" alt="christmas-tree" class="contact__image">
           <h3 class="h3_dark">Magic forest</h3>
-          <h4>meet Us</h4>
-        </div>
-        <div class="contacts__content">
+          <h4 class="h4_dark">meet Us</h4>
+        </a>
+        <a class="contacts__content" href="mailto:gifts@magic.com">
           <img src="./accets/svg/snake.svg" alt="snake" class="contact__image">
-          <a class="h3_dark" href="mailto:gifts@magic.com">gifts@magic.com</a>
-          <h4>write Us</h4>
-        </div>
+          <h3 class="h3_dark">gifts@magic.com</h3>
+          <h4 class="h4_dark">write Us</h4>
+        </a>
       </div>
       <div class="footer__icons">
         <img src="./accets/svg/telegram.svg" alt="telegram" class="footer-icon">
@@ -159,7 +164,7 @@
         <img src="./accets/svg/x.svg" alt="x" class="footer-icon">
       </div>
       <h4 class="footer-h4">© Copyright 2025, All Rights Reserved</h4>
-      <h6 class="h6_dark">Made in Rolling Scopes School</h6>
+      <a class="h6 h6_dark" href="http://https://rs.school/" target="_blank">Made in Rolling Scopes School</a>
     </footer>
   </div>
 </body>
