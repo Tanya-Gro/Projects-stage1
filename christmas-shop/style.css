@@ -206,6 +206,14 @@ header {
   letter-spacing: 0.05em;
 }
 
+.navigation__link-disable {
+  background: rgba(255, 70, 70, 0.1019607843);
+  color: #FF4646;
+  padding: 12px 24px;
+  border-radius: 12px;
+  margin-right: 4px;
+}
+
 .hero {
   background-color: #FF4646;
   background-image: url("./accets/svg/bg-ball 1.svg"), url("./accets/png/bg-snow.png");
@@ -359,6 +367,28 @@ header {
 .gift__image {
   display: block;
   width: 310px;
+}
+
+.Gifts {
+  background-color: #FF4646;
+  background-image: url("../accets/svg/bg-garland.svg");
+  background-position: top center;
+  background-size: 100%;
+  border-radius: 20px;
+  padding: 60px 82px;
+}
+.Gifts h2 {
+  width: 33%;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.gifts__conteiner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 6px;
 }
 
 .timer {
