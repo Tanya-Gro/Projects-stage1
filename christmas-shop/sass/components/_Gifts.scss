@@ -1,0 +1,29 @@
+// ---------------------------------
+// page GIFTS
+// ---------------------------------
+.Gifts {
+  background-color: $color-background;
+  background-image: url("../accets/svg/bg-garland.svg");
+  background-position: top center;
+  background-size: 100%;
+  border-radius: 20px;
+  padding: 60px 82px;
+
+  h2 {
+    width: 33%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  // h6 {
+  //   // padding: 0 auto;
+  // }
+}
+
+.gifts__conteiner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 6px;
+}
