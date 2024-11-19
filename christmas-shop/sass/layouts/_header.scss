@@ -24,15 +24,19 @@ header {
   list-style-type: none;
 
   li {
-    padding: 0 4px;
+    padding: 2px 4px;
     border-radius: 12px;
   }
+}
 
-  li:hover {
-    background: $color-primary;
-    color: $color-background;
-    transition: 0.4s all;
-  }
+.navigation_active:hover {
+  transition: 0.4s;
+}
+
+.navigation_active:hover {
+  background: $color-primary;
+  color: $color-background;
+  // transition: 0.4s all;
 }
 
 .navigation__link {
@@ -47,8 +51,7 @@ header {
 .navigation__link-disable {
   background: $color-primary;
   color: $color-background;
-  padding: 12px 24px;
+  padding: 12px 20px;
   border-radius: 12px;
-  margin-right: 4px;
   // cursor: auto;
 }

@@ -19,10 +19,11 @@ body {
 }
 
 h1 {
-  padding: 3px 7px;
+  padding: 4px 7px;
   font-size: 1.2rem;
   line-height: 1.56rem;
   letter-spacing: 0.05em;
+  color: $color-dark;
 }
 
 h2 {
@@ -37,7 +38,6 @@ h3 {
   letter-spacing: 0.16em;
   color: $color-staticWhite;
   font-weight: 600;
-  color: $color-dark;
 }
 
 .h3_dark {
@@ -47,8 +47,6 @@ h3 {
   font-weight: 600;
   color: $color-dark;
 }
-
-
 
 h4 {
   font-size: 1.6rem;
@@ -60,7 +58,8 @@ h4 {
   color: $color-dark;
 }
 
-h5 {
+h5,
+.h5 {
   font-size: 1.2rem;
   line-height: 1.56rem;
   letter-spacing: 0.05em;

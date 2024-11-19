@@ -16,12 +16,12 @@
 .button__black {
   background-color: $color-dark;
   color: $color-staticWhite;
+  transition: 0.4s all;
 }
 
 .button__black:hover {
   background-color: $color-staticWhite;
   color: $color-dark;
-  transition: 0.4s all;
 }
 
 .button__arrow {
@@ -38,6 +38,7 @@
   color: $color-staticWhite;
   border: 1px solid $color-staticWhite;
   cursor: pointer;
+  transition: 0.4s all;
 
   .arrow {
     opacity: 1;
@@ -46,7 +47,6 @@
 
 .button__arrow_active:hover {
   background-color: $color-staticWhite;
-  transition: 0.4s all;
 
   span {
     background-image: url("./accets/svg/Vector (1).svg");
