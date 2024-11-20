@@ -26,6 +26,12 @@
   cursor: pointer;
 }
 
+.gift__content:hover {
+  .gift__description>h4 {
+    color: $color-background;
+  }
+}
+
 .gift__description {
   background-color: $color-staticWhite;
   padding: 20px 20px;

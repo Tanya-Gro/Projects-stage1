@@ -93,6 +93,7 @@ h6,
 
 .h6_dark {
   color: #181C29;
+  transition: 0.4s;
 }
 
 .h6_primary {
@@ -360,6 +361,10 @@ header {
   cursor: pointer;
 }
 
+.gift__content:hover .gift__description > h4 {
+  color: #FF4646;
+}
+
 .gift__description {
   background-color: #FFFFFF;
   padding: 20px 20px;
@@ -459,8 +464,8 @@ header {
 }
 
 .timer__content {
-  background-color: #FFFFFF;
-  opacity: 0.4;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: #FFFFFF;
   border-radius: 20px;
   display: flex;
   flex-direction: row;
@@ -469,10 +474,10 @@ header {
 }
 
 .timer__line {
-  margin-top: 20px;
-  border: 1px solid black;
+  margin-top: 16px;
+  border: 1px solid #FFFFFF;
   width: 2px;
-  height: 16px;
+  height: 23px;
   opacity: 0.8;
 }
 
@@ -486,18 +491,21 @@ header {
 .timer-hours h3,
 .timer-minutes h3,
 .timer-seconds h3 {
-  color: black;
   text-align: center;
 }
 .timer-days h5,
 .timer-hours h5,
 .timer-minutes h5,
 .timer-seconds h5 {
+  color: rgba(255, 255, 255, 0.7);
   text-align: center;
 }
 
 .footer {
   padding: 62px 82px;
+}
+.footer .h6:hover {
+  color: #FF4646;
 }
 
 .contacts {
@@ -548,6 +556,12 @@ header {
   width: 53px;
   height: 44px;
   padding: 10px 15px;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.footer-icon:hover {
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
 
 .footer-h4 {
