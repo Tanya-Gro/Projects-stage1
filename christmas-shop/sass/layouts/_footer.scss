@@ -1,5 +1,9 @@
 .footer {
   padding: 62px 82px;
+
+  .h6:hover {
+    color: $color-background;
+  }
 }
 
 .contacts {
@@ -53,6 +57,12 @@
   width: 53px;
   height: 44px;
   padding: 10px 15px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.footer-icon:hover {
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
 
 .footer-h4 {

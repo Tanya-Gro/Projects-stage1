@@ -26,8 +26,8 @@
 }
 
 .timer__content {
-  background-color: $color-staticWhite;
-  opacity: 0.4;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: $color-staticWhite;
   border-radius: 20px;
   display: flex;
   flex-direction: row;
@@ -36,11 +36,11 @@
 }
 
 .timer__line {
-  margin-top: 20px;
+  margin-top: 16px;
   // background-color: $color-staticWhite;
-  border: 1px solid black;
+  border: 1px solid $color-staticWhite;
   width: 2px;
-  height: 16px;
+  height: 23px;
   opacity: 0.8;
 }
 
@@ -51,12 +51,12 @@
   width: 25%;
 
   h3 {
-    color: black;
     text-align: center;
   }
 
   h5 {
     // color: #FFFFFF;
+    color: rgba(255, 255, 255, 0.7);
     text-align: center;
   }
 }
