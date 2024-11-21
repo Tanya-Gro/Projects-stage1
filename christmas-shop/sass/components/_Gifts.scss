@@ -28,7 +28,11 @@
 
 .tab-anable {
   background-color: rgba(255, 255, 255, 0.2);
-  cursor: auto;
+}
+
+.tab-anable:hover {
+  user-select: none;
+  cursor: default;
 }
 
 .tab {
