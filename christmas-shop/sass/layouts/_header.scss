@@ -22,36 +22,36 @@ header {
 .navigation {
   display: flex;
   list-style-type: none;
-
-  li {
-    padding: 2px 4px;
-    border-radius: 12px;
-  }
 }
 
-.navigation_active:hover {
-  transition: 0.4s;
-}
-
-.navigation_active:hover {
-  background: $color-primary;
-  color: $color-background;
-  // transition: 0.4s all;
+.navigation__item {
+  padding: 2px 4px;
 }
 
 .navigation__link {
-  padding: 12px 20px;
   text-decoration: none;
   color: $color-dark;
   font-size: 1.2rem;
   line-height: 1.56rem;
   letter-spacing: 0.05em;
+  padding: 12px 20px;
+  border-radius: 12px;
 }
 
 .navigation__link-disable {
   background: $color-primary;
   color: $color-background;
-  padding: 12px 20px;
-  border-radius: 12px;
-  // cursor: auto;
+}
+
+.navigation__link-disable:hover {
+  cursor: default;
+}
+
+.navigation_active {
+  transition: 0.3s;
+}
+
+.navigation_active:hover .navigation__link {
+  background: $color-primary;
+  color: $color-background;
 }

@@ -1,4 +1,7 @@
 .footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 62px 82px;
 
   .h6:hover {
@@ -54,11 +57,12 @@
 }
 
 .footer-icon {
-  width: 53px;
-  height: 44px;
-  padding: 10px 15px;
+  width: 40px;
+  height: 40px;
+  padding: 8px 8px;
   transition: 0.3s;
   cursor: pointer;
+  margin: 2px 7px;
 }
 
 .footer-icon:hover {
