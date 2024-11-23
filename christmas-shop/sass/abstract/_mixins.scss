@@ -1,0 +1,39 @@
+@mixin font ($size, $height: $size, $weigh: 600, $color: $color-staticWhite, $transform: uppercase, $align: center) {
+  font-size: $size;
+  line-height: $height;
+  font-weight: $weigh;
+  text-transform: $transform;
+  text-align: $align;
+  color: $color;
+}
+
+// не уверена в необх @mixin media-fullScreen
+// @mixin media-fullScreen {
+//   @media (max-width: $content-width) {
+//     @content;
+//   }
+// }
+
+@mixin media-preMediumScreen {
+  @media (max-width: $pretablet-width) {
+    @content;
+  }
+}
+
+@mixin media-mediumScreen {
+  @media (max-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin media-preSmallScreen {
+  @media (max-width: $premobile-width) {
+    @content;
+  }
+}
+
+@mixin media-smallScreen {
+  @media (max-width: $mobile-width) {
+    @content;
+  }
+}

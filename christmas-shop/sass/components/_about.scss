@@ -4,6 +4,11 @@
   background-image: url("./accets/png/bg-snow.png");
   background-position: center;
   background-size: 100%;
+
+  @include media-preMediumScreen {
+    padding: 60px 8px;
+  }
+
 }
 
 .about__container {
@@ -15,10 +20,23 @@
   div {
     width: 50%;
   }
+
+  @include media-preSmallScreen {
+    flex-direction: column;
+    align-items: center;
+
+    div {
+      width: 100%;
+    }
+  }
 }
 
 .about__content {
-  padding: 160px 152px 160px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 0 0 60px;
 
   h6 {
     text-align: left;
@@ -26,12 +44,41 @@
 
   h3 {
     padding: 20px 0;
+    max-width: 360px;
+
+    @include media-mediumScreen {
+      max-width: 300px;
+    }
+
+    @include media-smallScreen {
+      max-width: 350px;
+    }
+  }
+
+  p {
+    max-width: 410px;
+
+    @include media-mediumScreen {
+      max-width: 270px;
+    }
+
+    @include media-smallScreen {
+      max-width: 325px;
+    }
+  }
+
+  @include media-preSmallScreen {
+    padding: 60px 20px;
   }
 }
 
 .about__image {
   background-image: url("./accets/png/object.png");
-  background-position: center;
-  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-size: 100%; */
   border-radius: 20px;
+  // width: 100%;
+  min-width: 364px;
+  height: 528px;
 }

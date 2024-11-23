@@ -40,16 +40,18 @@
   padding: 12px 20px;
   border-radius: 12px;
   color: $color-staticWhite;
+
+  &-disable {
+    @extend %transition;
+  }
+
+  &-disable:hover {
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+  }
 }
 
-.tab-disable {
-  transition: 0.5s;
-}
 
-.tab-disable:hover {
-  background: rgba(255, 255, 255, 0.2);
-  cursor: pointer;
-}
 
 .gifts__conteiner {
   display: flex;

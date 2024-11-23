@@ -17,7 +17,7 @@
   background-color: $color-dark;
   color: $color-staticWhite;
   border: 0;
-  transition: 0.3s;
+  @extend %transition;
 }
 
 .button__black:hover {
@@ -39,7 +39,7 @@
   color: $color-staticWhite;
   border: 1px solid $color-staticWhite;
   cursor: pointer;
-  transition: 0.4s all;
+  @extend %transition;
 
   .arrow {
     opacity: 1;
