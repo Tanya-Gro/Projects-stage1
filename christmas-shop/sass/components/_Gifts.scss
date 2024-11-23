@@ -8,14 +8,22 @@
   background-position: top center;
   background-size: 100%;
   border-radius: 20px;
-  padding: 58px 82px;
+  padding: 59px 82px 58px;
 
   h2 {
-    width: 33%;
+    max-width: 430px;
     text-align: center;
     color: $color-staticWhite;
     margin: 0 auto;
     font-weight: 600;
+  }
+
+  @include media-preMediumScreen {
+    padding: 60px 68px;
+  }
+
+  @include media-mediumScreen {
+    padding: 60px 13px;
   }
 }
 
@@ -49,13 +57,17 @@
     background: rgba(255, 255, 255, 0.2);
     cursor: pointer;
   }
+
+  @include media-preSmallScreen {
+    padding: 12px 8px;
+    margin: 0 0px;
+  }
 }
-
-
 
 .gifts__conteiner {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 10px 12px;
   padding: 5px 0 0;

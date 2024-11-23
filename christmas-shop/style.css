@@ -530,14 +530,24 @@ header {
   background-position: top center;
   background-size: 100%;
   border-radius: 20px;
-  padding: 58px 82px;
+  padding: 59px 82px 58px;
 }
 .Gifts_gifts h2 {
-  width: 33%;
+  max-width: 430px;
   text-align: center;
   color: #FFFFFF;
   margin: 0 auto;
   font-weight: 600;
+}
+@media (max-width: 1080px) {
+  .Gifts_gifts {
+    padding: 60px 68px;
+  }
+}
+@media (max-width: 768px) {
+  .Gifts_gifts {
+    padding: 60px 13px;
+  }
 }
 
 .tabs {
@@ -566,10 +576,17 @@ header {
   background: rgba(255, 255, 255, 0.2);
   cursor: pointer;
 }
+@media (max-width: 600px) {
+  .tab {
+    padding: 12px 8px;
+    margin: 0 0px;
+  }
+}
 
 .gifts__conteiner {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 10px 12px;
   padding: 5px 0 0;
