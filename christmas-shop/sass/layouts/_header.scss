@@ -3,6 +3,10 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @include media-preMediumScreen {
+    padding: 12px 8px 11px 28px;
+  }
 }
 
 .logo {
@@ -22,6 +26,10 @@ header {
 .navigation {
   display: flex;
   list-style-type: none;
+
+  @include media-mediumScreen {
+    display: none;
+  }
 }
 
 .navigation__item {
@@ -41,17 +49,21 @@ header {
 .navigation__link-disable {
   background: $color-primary;
   color: $color-background;
-}
 
-.navigation__link-disable:hover {
-  cursor: default;
+  @include media-hover {
+    &:hover {
+      cursor: default;
+    }
+  }
 }
 
 .navigation_active {
-  transition: 0.3s;
-}
+  @extend %transition;
 
-.navigation_active:hover .navigation__link {
-  background: $color-primary;
-  color: $color-background;
+  @include media-hover {
+    &:hover .navigation__link {
+      background: $color-primary;
+      color: $color-background;
+    }
+  }
 }

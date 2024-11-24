@@ -2,12 +2,22 @@
   background-color: $color-background;
   background-image: url("./accets/svg/bg-ball 1.svg"), url("./accets/png/bg-snow.png");
   background-position: center, center;
-  background-size: 100%, 100%;
+  background-size: 1440px, 1440px;
+  background-repeat: no-repeat, no-repeat;
   border-radius: 20px 20px 0px 0px;
   padding: 60px 0;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include media-mediumScreen {
+    background-size: 1250px, 1260px;
+  }
+
+  @include media-preSmallScreen {
+    background-position: top, center;
+    background-size: 1370px, 1370px;
+  }
 }
 
 .hero__contant {
