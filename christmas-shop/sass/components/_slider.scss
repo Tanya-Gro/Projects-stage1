@@ -15,6 +15,15 @@
     display: flex;
     justify-content: right;
     padding: 10px 70px;
+
+    @include media-mediumScreen {
+      padding: 10px 0px;
+    }
+  }
+
+  @include media-smallScreen {
+    padding: 62px 0;
+    background-size: 1190px;
   }
 }
 
@@ -25,6 +34,9 @@
   left: 65px;
   align-items: center;
 
+  @include media-preMediumScreen {
+    left: -11px;
+  }
 }
 
 .slider_text {

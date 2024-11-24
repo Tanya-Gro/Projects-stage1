@@ -2,7 +2,8 @@
   background-color: $color-background;
   background-image: url("./accets/png/bg-forest.png"), url("./accets/png/bg-snow.png");
   background-position: top, top;
-  background-size: 100%, 112%;
+  background-repeat: no-repeat;
+  background-size: 1440px, 1440px;
   border-radius: 0px 0px 20px 20px;
   padding: 175px 0;
   display: flex;
@@ -16,13 +17,32 @@
 
   h6 {
     padding: 7px 0;
+
+    @include media-mediumScreen {
+      padding: 6px 0;
+    }
+  }
+
+  @include media-mediumScreen {
+    background-size: 1435px, 1600px;
+    padding: 180px 0;
+    background-position: bottom, bottom;
+  }
+
+  @include media-smallScreen {
+    background-size: 1510px, 1700px;
+    padding: 182px 0 179px;
   }
 }
 
 .timer>h3 {
-  width: 426px;
+  max-width: 426px;
   text-align: center;
   padding: 8px 0 17px;
+
+  @include media-mediumScreen {
+    padding: 8px 0 20px;
+  }
 }
 
 .timer__content {
@@ -33,6 +53,10 @@
   flex-direction: row;
   width: 344px;
   padding: 10px 13px 13px;
+
+  @include media-mediumScreen {
+    padding: 11px 13px 11px;
+  }
 }
 
 .timer__line {

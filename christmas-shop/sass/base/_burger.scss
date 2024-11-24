@@ -1,0 +1,31 @@
+%burger__span {
+  position: absolute;
+  content: "";
+  background-color: #181C29;
+  width: 20px;
+  height: 2px;
+}
+
+.burger {
+  display: none;
+  width: 40px;
+  height: 40px;
+  padding: 20px 10px;
+
+  @include media-mediumScreen {
+    display: block;
+    position: relative;
+  }
+}
+
+.burger__line {
+  @extend %burger__span;
+  top: 24px;
+  left: 10px;
+
+  &::before {
+    @extend %burger__span;
+    bottom: 8px;
+    left: 0;
+  }
+}

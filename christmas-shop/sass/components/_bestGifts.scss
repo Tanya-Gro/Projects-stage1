@@ -8,14 +8,28 @@
   h3 {
     text-align: center;
     padding: 10px 0;
+
+    @include media-preMediumScreen {
+      padding: 12px 0px;
+    }
+  }
+
+  @include media-preMediumScreen {
+    padding: 50px 8px;
+  }
+
+  @include media-smallScreen {
+    padding: 47px 8px;
   }
 }
 
 .gifts {
   display: flex;
   flex-direction: row;
-  gap: 12px;
+  justify-content: center;
+  gap: 10px 12px;
   margin-top: 6px;
+  flex-wrap: wrap;
 }
 
 .gift__content {
@@ -26,8 +40,8 @@
   cursor: pointer;
 }
 
-.gift__content:hover {
-  .gift__description>h4 {
+@include media-hover {
+  .gift__content:hover .gift__description>h4 {
     color: $color-background;
   }
 }
@@ -37,7 +51,7 @@
   padding: 20px 20px;
   border-radius: 20px;
   flex-grow: 1;
-  min-height: 115px;
+  min-height: 114px;
   width: 310px;
 
   h5 {
