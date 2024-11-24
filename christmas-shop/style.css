@@ -131,10 +131,11 @@ p {
   color: #FFFFFF;
   border: 0;
 }
-
-.button__black:hover {
-  background-color: #FFFFFF;
-  color: #181C29;
+@media (any-pointer: fine) {
+  .button__black:hover {
+    background-color: #FFFFFF;
+    color: #181C29;
+  }
 }
 
 .button__arrow {
@@ -252,14 +253,17 @@ header {
   background: rgba(255, 70, 70, 0.1019607843);
   color: #FF4646;
 }
-
-.navigation__link-disable:hover {
-  cursor: default;
+@media (any-pointer: fine) {
+  .navigation__link-disable:hover {
+    cursor: default;
+  }
 }
 
-.navigation_active:hover .navigation__link {
-  background: rgba(255, 70, 70, 0.1019607843);
-  color: #FF4646;
+@media (any-pointer: fine) {
+  .navigation_active:hover .navigation__link {
+    background: rgba(255, 70, 70, 0.1019607843);
+    color: #FF4646;
+  }
 }
 
 .hero {
@@ -499,10 +503,11 @@ header {
   cursor: pointer;
 }
 
-.gift__content:hover .gift__description > h4 {
-  color: #FF4646;
+@media (any-pointer: fine) {
+  .gift__content:hover .gift__description > h4 {
+    color: #FF4646;
+  }
 }
-
 .gift__description {
   background-color: #FFFFFF;
   padding: 20px 20px;
@@ -557,13 +562,14 @@ header {
   padding: 20px 0 15px;
 }
 
-.tab-anable {
+.tab-enable {
   background-color: rgba(255, 255, 255, 0.2);
 }
-
-.tab-anable:hover {
-  user-select: none;
-  cursor: default;
+@media (any-pointer: fine) {
+  .tab-enable:hover {
+    user-select: none;
+    cursor: default;
+  }
 }
 
 .tab {
@@ -572,9 +578,11 @@ header {
   border-radius: 12px;
   color: #FFFFFF;
 }
-.tab-disable:hover {
-  background: rgba(255, 255, 255, 0.2);
-  cursor: pointer;
+@media (any-pointer: fine) {
+  .tab-disable:hover {
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+  }
 }
 @media (max-width: 600px) {
   .tab {
@@ -690,8 +698,10 @@ header {
   justify-content: center;
   padding: 62px 82px;
 }
-.footer .h6:hover {
-  color: #FF4646;
+@media (any-pointer: fine) {
+  .footer .h6:hover {
+    color: #FF4646;
+  }
 }
 @media (max-width: 1080px) {
   .footer {
@@ -729,13 +739,14 @@ header {
     width: 100%;
   }
 }
-
-.contacts__content:hover {
-  cursor: pointer;
-}
-.contacts__content:hover h3,
-.contacts__content:hover h4 {
-  color: #FF4646;
+@media (any-pointer: fine) {
+  .contacts__content:hover {
+    cursor: pointer;
+  }
+  .contacts__content:hover h3,
+  .contacts__content:hover h4 {
+    color: #FF4646;
+  }
 }
 
 .contact__image {
@@ -758,9 +769,10 @@ header {
   cursor: pointer;
   margin: 3px 6px;
 }
-
-.footer-icon:hover {
-  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+@media (any-pointer: fine) {
+  .footer-icon:hover {
+    filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+  }
 }
 
 .footer-h4 {

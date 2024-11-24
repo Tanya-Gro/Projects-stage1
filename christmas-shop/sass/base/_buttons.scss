@@ -18,12 +18,15 @@
   color: $color-staticWhite;
   border: 0;
   @extend %transition;
+
+  @include media-hover {
+    &:hover {
+      background-color: $color-staticWhite;
+      color: $color-dark;
+    }
+  }
 }
 
-.button__black:hover {
-  background-color: $color-staticWhite;
-  color: $color-dark;
-}
 
 .button__arrow {
   color: $color-staticWhite40;

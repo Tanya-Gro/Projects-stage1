@@ -49,17 +49,21 @@ header {
 .navigation__link-disable {
   background: $color-primary;
   color: $color-background;
-}
 
-.navigation__link-disable:hover {
-  cursor: default;
+  @include media-hover {
+    &:hover {
+      cursor: default;
+    }
+  }
 }
 
 .navigation_active {
   @extend %transition;
-}
 
-.navigation_active:hover .navigation__link {
-  background: $color-primary;
-  color: $color-background;
+  @include media-hover {
+    &:hover .navigation__link {
+      background: $color-primary;
+      color: $color-background;
+    }
+  }
 }

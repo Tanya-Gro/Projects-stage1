@@ -4,8 +4,10 @@
   justify-content: center;
   padding: 62px 82px;
 
-  .h6:hover {
-    color: $color-background;
+  @include media-hover {
+    & .h6:hover {
+      color: $color-background;
+    }
   }
 
   @include media-preMediumScreen {
@@ -50,14 +52,16 @@
   @include media-preMediumScreen {
     width: 100%;
   }
-}
 
-.contacts__content:hover {
-  cursor: pointer;
+  @include media-hover {
+    &:hover {
+      cursor: pointer;
 
-  h3,
-  h4 {
-    color: $color-background;
+      h3,
+      h4 {
+        color: $color-background;
+      }
+    }
   }
 }
 
@@ -81,10 +85,12 @@
   @extend %transition;
   cursor: pointer;
   margin: 3px 6px;
-}
 
-.footer-icon:hover {
-  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+  @include media-hover {
+    &:hover {
+      filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+    }
+  }
 }
 
 .footer-h4 {
