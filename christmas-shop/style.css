@@ -156,12 +156,13 @@ p {
 .button__arrow_active .arrow {
   opacity: 1;
 }
-
-.button__arrow_active:hover {
-  background-color: #FFFFFF;
-}
-.button__arrow_active:hover span {
-  background-image: url("./accets/svg/Vector (1).svg");
+@media (any-pointer: fine) {
+  .button__arrow_active:hover {
+    background-color: #FFFFFF;
+  }
+  .button__arrow_active:hover span {
+    background-image: url("./accets/svg/Vector (1).svg");
+  }
 }
 
 .burger__line::before, .burger__line {
