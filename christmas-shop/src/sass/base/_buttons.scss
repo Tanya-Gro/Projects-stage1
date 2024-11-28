@@ -47,12 +47,14 @@
   .arrow {
     opacity: 1;
   }
-}
 
-.button__arrow_active:hover {
-  background-color: $color-staticWhite;
+  @include media-hover {
+    &:hover {
+      background-color: $color-staticWhite;
 
-  span {
-    background-image: url("./accets/svg/Vector (1).svg");
+      span {
+        background-image: url("./accets/svg/Vector (1).svg");
+      }
+    }
   }
 }
