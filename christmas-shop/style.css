@@ -148,6 +148,63 @@ p {
   background-color: #FF4646;
 }
 
+.button__top {
+  display: none;
+  background-color: #FFFFFF;
+  border-radius: 100px;
+  border: 1px solid #FF4646;
+  box-shadow: 0 0 0.5;
+  padding: 15px 15px;
+  cursor: pointer;
+  position: fixed;
+  right: 20px;
+  bottom: -100px;
+  box-shadow: 0 1px 4px #FF4646;
+  transition: 0.4s;
+  transform: 0.4s;
+  animation: moveButtonUp 2s infinite linear;
+}
+@media (max-width: 768px) {
+  .button__top {
+    display: block;
+  }
+}
+.button__top .arrow_top {
+  background-image: url("./src/accets/svg/Vector (1).svg");
+  transform: rotate(270deg);
+  width: 24px;
+  height: 24px;
+  display: block;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.button__top_visible {
+  bottom: 20px;
+}
+
+@keyframes moveButtonUp {
+  0%, 100% {
+    transform: translateY(0em);
+  }
+  50% {
+    transform: translateY(-0.3em);
+  }
+}
+.arrow {
+  background-image: url("./src/accets/svg/Vector.svg");
+  display: inline-block;
+  width: 12.5px;
+  height: 12px;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.4;
+}
+.arrow_left {
+  transform: rotate(180deg);
+}
+
 .button__arrow_active {
   color: #FFFFFF;
   border: 1px solid #FFFFFF;
@@ -441,20 +498,6 @@ header {
   width: 200px;
   height: 200px;
   border-radius: 20px;
-}
-
-.arrow {
-  background-image: url("./src/accets/svg/Vector.svg");
-  display: inline-block;
-  width: 12.5px;
-  height: 12px;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.4;
-}
-
-.arrow_rotate {
-  transform: rotate(180deg);
 }
 
 .bestGifts {

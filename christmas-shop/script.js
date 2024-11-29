@@ -1,5 +1,6 @@
 window.onload = function () {
   addTagsClickHandler();
+  document.addEventListener('scroll', showButtonTop);
 }
 
 const addTagsClickHandler = () => {
@@ -36,4 +37,10 @@ const sortSelecredTab = clickedTab => {
         gift.classList.add('gift_disable');
     })
   }
+}
+
+const showButtonTop = () => {
+  this.scrollY >= 300 ?
+    document.querySelector('.button__top').classList.add('button__top_visible') :
+    document.querySelector('.button__top').classList.remove('button__top_visible');
 }
