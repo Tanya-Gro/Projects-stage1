@@ -161,7 +161,7 @@ p {
     background-color: #FFFFFF;
   }
   .button__arrow_active:hover span {
-    background-image: url("./accets/svg/Vector (1).svg");
+    background-image: url("./src/accets/svg/Vector (1).svg");
   }
 }
 
@@ -185,7 +185,6 @@ p {
     position: relative;
   }
 }
-
 .burger__line {
   top: 24px;
   left: 10px;
@@ -219,7 +218,7 @@ header {
 }
 
 .ico__logo {
-  background-image: url("./accets/ico-logo.svg");
+  background-image: url("./src/accets/ico-logo.svg");
   background-repeat: no-repeat;
   width: 24px;
   height: 24px;
@@ -269,7 +268,7 @@ header {
 
 .hero {
   background-color: #FF4646;
-  background-image: url("./accets/svg/bg-ball 1.svg"), url("./accets/png/bg-snow.png");
+  background-image: url("./src/accets/svg/bg-ball 1.svg"), url("./src/accets/png/bg-snow.png");
   background-position: center, center;
   background-size: 1440px, 1440px;
   background-repeat: no-repeat, no-repeat;
@@ -306,7 +305,7 @@ header {
 .about {
   padding: 60px 82px;
   background-color: #FF4646;
-  background-image: url("./accets/png/bg-snow.png");
+  background-image: url("./src/accets/png/bg-snow.png");
   background-position: center;
   background-size: 100%;
 }
@@ -379,10 +378,9 @@ header {
 }
 
 .about__image {
-  background-image: url("./accets/png/object.png");
+  background-image: url("./src/accets/png/object.png");
   background-repeat: no-repeat;
   background-position: center center;
-  /* background-size: 100%; */
   border-radius: 20px;
   height: 528px;
 }
@@ -390,7 +388,7 @@ header {
 .slider {
   padding: 60px 0;
   background-color: #FF4646;
-  background-image: url("./accets/png/bg-snow.png");
+  background-image: url("./src/accets/png/bg-snow.png");
   background-position: center;
   background-size: 100%;
   overflow: hidden;
@@ -446,7 +444,7 @@ header {
 }
 
 .arrow {
-  background-image: url("./accets/svg/Vector.svg");
+  background-image: url("./src/accets/svg/Vector.svg");
   display: inline-block;
   width: 12.5px;
   height: 12px;
@@ -461,7 +459,7 @@ header {
 
 .bestGifts {
   background-color: #FF4646;
-  background-image: url("./accets/png/bg-snow.png");
+  background-image: url("./src/accets/png/bg-snow.png");
   background-position: center;
   background-size: 100%;
   padding: 55px 82px;
@@ -530,7 +528,7 @@ header {
 
 .Gifts_gifts {
   background-color: #FF4646;
-  background-image: url("./accets/svg/bg-garland.svg");
+  background-image: url("./src/accets/svg/bg-garland.svg");
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100%;
@@ -602,7 +600,7 @@ header {
 
 .timer {
   background-color: #FF4646;
-  background-image: url("./accets/png/bg-forest.png"), url("./accets/png/bg-snow.png");
+  background-image: url("./src/accets/png/bg-forest.png"), url("./src/accets/png/bg-snow.png");
   background-position: top, top;
   background-repeat: no-repeat;
   background-size: 1440px, 1440px;

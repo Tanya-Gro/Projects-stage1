@@ -1,7 +1,7 @@
 .slider {
   padding: 60px 0;
   background-color: $color-background;
-  background-image: url("./accets/png/bg-snow.png");
+  background-image: url("./src/accets/png/bg-snow.png");
   background-position: center;
   background-size: 100%;
   overflow: hidden;
@@ -57,7 +57,7 @@
 }
 
 .arrow {
-  background-image: url("./accets/svg/Vector.svg");
+  background-image: url("./src/accets/svg/Vector.svg");
   display: inline-block;
   width: 12.5px;
   height: 12px;
