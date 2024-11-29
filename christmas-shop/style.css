@@ -598,6 +598,10 @@ header {
   padding: 5px 0 0;
 }
 
+.gift_disable {
+  display: none;
+}
+
 .timer {
   background-color: #FF4646;
   background-image: url("./src/accets/png/bg-forest.png"), url("./src/accets/png/bg-snow.png");
