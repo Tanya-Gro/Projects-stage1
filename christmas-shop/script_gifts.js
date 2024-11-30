@@ -1,5 +1,6 @@
 window.onload = function () {
   addTagsClickHandler();
+
   document.addEventListener('scroll', showButtonTop);
 }
 
