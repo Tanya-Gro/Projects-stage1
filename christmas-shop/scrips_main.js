@@ -1,3 +1,6 @@
+import girtBanch from "./gifts.json" with { type: "json"};
+import { GiftCard } from "./src/js/gift_card.js";
+
 const timerDays = document.querySelector('.h3-days');
 const timerHours = document.querySelector('.h3-hours');
 const timerMinutes = document.querySelector('.h3-minutes');
@@ -6,6 +9,20 @@ let time = Math.floor((Date.parse('31 Dec ' + new Date().getFullYear() + ' 23: 5
 let days, hours, minutes, remainder = 0;
 
 window.onload = function () {
+  // gifts cards
+  const giftsWrapper = document.querySelector('.gifts');
+  // console.log(new GiftCard(girtBanch[0]).generateGift());
+  const indexes = [];
+  let randomID;
+  for (let i = 0; i < 4; i += 1) {
+    do {
+      randomID = Math.floor(Math.random() * girtBanch.length);
+    } while (indexes.includes(randomID));
+    indexes.push(randomID);
+    giftsWrapper.append(new GiftCard(girtBanch[randomID]).generateGift());
+  }
+
+  // timer
   days = Math.floor(time / 86400);
   timerDays.innerText = days;
   remainder = time % 86400;
@@ -14,7 +31,6 @@ window.onload = function () {
   remainder = remainder % 3600;
   minutes = Math.floor(remainder / 60);
   timerMinutes.innerText = minutes;
-
   timerSeconds.innerText = remainder % 60;
 }
 

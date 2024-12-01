@@ -1,4 +1,4 @@
-.footer-icon, .contacts__content h3, .contacts__content h4, .tab-disable, .navigation_active, .button__arrow_active, .button__black, .h6_dark {
+.footer-icon, .contacts__content h3, .contacts__content h4, .tab-disable, .navigation_active, .button__arrow_active, .button__top, .button__black, .h6_dark {
   transition: all 0.3s ease-out;
 }
 
@@ -157,12 +157,8 @@ p {
   padding: 15px 15px;
   cursor: pointer;
   position: fixed;
-  right: 20px;
+  right: 8px;
   bottom: -100px;
-  box-shadow: 0 1px 4px #FF4646;
-  transition: 0.4s;
-  transform: 0.4s;
-  animation: moveButtonUp 2s infinite linear;
 }
 @media (max-width: 768px) {
   .button__top {
@@ -181,17 +177,9 @@ p {
 }
 
 .button__top_visible {
-  bottom: 20px;
+  bottom: 8px;
 }
 
-@keyframes moveButtonUp {
-  0%, 100% {
-    transform: translateY(0em);
-  }
-  50% {
-    transform: translateY(-0.3em);
-  }
-}
 .arrow {
   background-image: url("./src/accets/svg/Vector.svg");
   display: inline-block;

@@ -27,7 +27,6 @@
   }
 }
 
-
 .button__arrow {
   color: $color-staticWhite40;
   border: 1px solid $color-staticWhite40;
@@ -47,12 +46,12 @@
   padding: 15px 15px;
   cursor: pointer;
   position: fixed;
-  right: 20px;
+  right: 8px;
   bottom: -100px;
-  box-shadow: 0 1px 4px $color-background;
-  transition: 0.4s;
-  transform: 0.4s;
-  animation: moveButtonUp 2s infinite linear;
+  // box-shadow: 0 1px 4px $color-background;
+  @extend %transition;
+  // transform: 0.4s;
+  // animation: moveButtonUp 2s infinite linear;
 
   @include media-mediumScreen {
     display: block;
@@ -71,20 +70,20 @@
 }
 
 .button__top_visible {
-  bottom: 20px;
+  bottom: 8px;
 }
 
-@keyframes moveButtonUp {
+// @keyframes moveButtonUp {
 
-  0%,
-  100% {
-    transform: translateY(0em);
-  }
+//   0%,
+//   100% {
+//     transform: translateY(0em);
+//   }
 
-  50% {
-    transform: translateY(-0.3em);
-  }
-}
+//   50% {
+//     transform: translateY(-0.3em);
+//   }
+// }
 
 .arrow {
   background-image: url("./src/accets/svg/Vector.svg");
