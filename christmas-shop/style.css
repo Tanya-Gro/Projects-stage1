@@ -22,6 +22,10 @@ body {
   color: #181C29;
 }
 
+body.nonescroll {
+  overflow: hidden;
+}
+
 h1 {
   padding: 4px 7px;
   font-size: 1.2rem;
@@ -237,6 +241,116 @@ p {
 .burger__line::before {
   bottom: 8px;
   left: 0;
+}
+
+.modal__close-line::before, .modal__close-line {
+  position: absolute;
+  content: "";
+  background-color: #181C29;
+  width: 30px;
+  height: 2px;
+}
+
+.overlay {
+  background-color: rgba(24, 28, 41, 0.8);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  overflow: auto;
+}
+
+.modal {
+  background-color: rgb(236, 243, 248);
+  border-radius: 20px;
+  max-width: 400px;
+  position: relative;
+}
+
+.modal__image {
+  display: block;
+  width: 400px;
+  height: 230px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.work {
+  background-image: url(./src/accets/png/gift-for-work.png);
+}
+
+.health {
+  background-image: url(./src/accets/png/gift-for-health.png);
+}
+
+.harmony {
+  background-image: url(./src/accets/png/gift-for-harmony.png);
+}
+
+.modal__close-btn {
+  width: 40px;
+  height: 40px;
+  padding: 10px 10px;
+  position: absolute;
+  left: 345px;
+  top: 12px;
+  cursor: pointer;
+}
+
+.modal__close-line {
+  top: 20px;
+  transform: rotate(45deg);
+}
+.modal__close-line::before {
+  transform: rotate(90deg);
+}
+
+.contentName {
+  margin: 9px 0;
+}
+
+.contentBlocksLabel {
+  margin: 20px 0 8px;
+}
+
+.contentBlockSummary {
+  padding: 0 8px;
+}
+
+.modal__content {
+  background-color: #FFFFFF;
+  padding: 20px 20px;
+  border-radius: 20px;
+}
+
+.modalContentBlock {
+  display: flex;
+  justify-content: space-between;
+}
+
+.redSnowflake {
+  display: block;
+  background-image: url(./src/accets/ico-logo.svg);
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+}
+
+.whiteSnowflake {
+  display: block;
+  background-image: url(./src/accets/ico-logo-white.svg);
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+}
+
+.modal-description-label {
+  width: 50%;
 }
 
 .wrapper {
@@ -525,7 +639,7 @@ header {
 }
 
 .gift__content {
-  background-color: #ECF3F8;
+  background-color: rgb(236, 243, 248);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -756,7 +870,7 @@ header {
 }
 
 .contacts__content {
-  background-color: #ECF3F8;
+  background-color: rgb(236, 243, 248);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
