@@ -1,4 +1,4 @@
-.footer-icon, .contacts__content h3, .contacts__content h4, .tab-disable, .navigation_active, .button__arrow_active, .button__black, .h6_dark {
+.footer-icon, .contacts__content h3, .contacts__content h4, .tab-disable, .navigation_active, .button__arrow_active, .button__top, .button__black, .h6_dark {
   transition: all 0.3s ease-out;
 }
 
@@ -20,6 +20,10 @@ body {
   text-transform: uppercase;
   text-align: left;
   color: #181C29;
+}
+
+body.nonescroll {
+  overflow: hidden;
 }
 
 h1 {
@@ -148,6 +152,51 @@ p {
   background-color: #FF4646;
 }
 
+.button__top {
+  display: none;
+  background-color: #FFFFFF;
+  border-radius: 100px;
+  border: 1px solid #FF4646;
+  box-shadow: 0 0 0.5;
+  padding: 15px 15px;
+  cursor: pointer;
+  position: fixed;
+  right: 8px;
+  bottom: -100px;
+}
+@media (max-width: 768px) {
+  .button__top {
+    display: block;
+  }
+}
+.button__top .arrow_top {
+  background-image: url("./src/accets/svg/Vector (1).svg");
+  transform: rotate(270deg);
+  width: 24px;
+  height: 24px;
+  display: block;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.button__top_visible {
+  bottom: 8px;
+}
+
+.arrow {
+  background-image: url("./src/accets/svg/Vector.svg");
+  display: inline-block;
+  width: 12.5px;
+  height: 12px;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.4;
+}
+.arrow_left {
+  transform: rotate(180deg);
+}
+
 .button__arrow_active {
   color: #FFFFFF;
   border: 1px solid #FFFFFF;
@@ -161,7 +210,7 @@ p {
     background-color: #FFFFFF;
   }
   .button__arrow_active:hover span {
-    background-image: url("./accets/svg/Vector (1).svg");
+    background-image: url("./src/accets/svg/Vector (1).svg");
   }
 }
 
@@ -185,7 +234,6 @@ p {
     position: relative;
   }
 }
-
 .burger__line {
   top: 24px;
   left: 10px;
@@ -193,6 +241,116 @@ p {
 .burger__line::before {
   bottom: 8px;
   left: 0;
+}
+
+.modal__close-line::before, .modal__close-line {
+  position: absolute;
+  content: "";
+  background-color: #181C29;
+  width: 30px;
+  height: 2px;
+}
+
+.overlay {
+  background-color: rgba(24, 28, 41, 0.8);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  overflow: auto;
+}
+
+.modal {
+  background-color: rgb(236, 243, 248);
+  border-radius: 20px;
+  max-width: 400px;
+  position: relative;
+}
+
+.modal__image {
+  display: block;
+  width: 400px;
+  height: 230px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
+
+.work {
+  background-image: url(./src/accets/png/gift-for-work.png);
+}
+
+.health {
+  background-image: url(./src/accets/png/gift-for-health.png);
+}
+
+.harmony {
+  background-image: url(./src/accets/png/gift-for-harmony.png);
+}
+
+.modal__close-btn {
+  width: 40px;
+  height: 40px;
+  padding: 10px 10px;
+  position: absolute;
+  left: 345px;
+  top: 12px;
+  cursor: pointer;
+}
+
+.modal__close-line {
+  top: 20px;
+  transform: rotate(45deg);
+}
+.modal__close-line::before {
+  transform: rotate(90deg);
+}
+
+.contentName {
+  margin: 9px 0;
+}
+
+.contentBlocksLabel {
+  margin: 20px 0 8px;
+}
+
+.contentBlockSummary {
+  padding: 0 8px;
+}
+
+.modal__content {
+  background-color: #FFFFFF;
+  padding: 20px 20px;
+  border-radius: 20px;
+}
+
+.modalContentBlock {
+  display: flex;
+  justify-content: space-between;
+}
+
+.redSnowflake {
+  display: block;
+  background-image: url(./src/accets/ico-logo.svg);
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+}
+
+.whiteSnowflake {
+  display: block;
+  background-image: url(./src/accets/ico-logo-white.svg);
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+}
+
+.modal-description-label {
+  width: 50%;
 }
 
 .wrapper {
@@ -219,7 +377,7 @@ header {
 }
 
 .ico__logo {
-  background-image: url("./accets/ico-logo.svg");
+  background-image: url("./src/accets/ico-logo.svg");
   background-repeat: no-repeat;
   width: 24px;
   height: 24px;
@@ -269,7 +427,7 @@ header {
 
 .hero {
   background-color: #FF4646;
-  background-image: url("./accets/svg/bg-ball 1.svg"), url("./accets/png/bg-snow.png");
+  background-image: url("./src/accets/svg/bg-ball 1.svg"), url("./src/accets/png/bg-snow.png");
   background-position: center, center;
   background-size: 1440px, 1440px;
   background-repeat: no-repeat, no-repeat;
@@ -306,7 +464,7 @@ header {
 .about {
   padding: 60px 82px;
   background-color: #FF4646;
-  background-image: url("./accets/png/bg-snow.png");
+  background-image: url("./src/accets/png/bg-snow.png");
   background-position: center;
   background-size: 100%;
 }
@@ -379,10 +537,9 @@ header {
 }
 
 .about__image {
-  background-image: url("./accets/png/object.png");
+  background-image: url("./src/accets/png/object.png");
   background-repeat: no-repeat;
   background-position: center center;
-  /* background-size: 100%; */
   border-radius: 20px;
   height: 528px;
 }
@@ -390,7 +547,7 @@ header {
 .slider {
   padding: 60px 0;
   background-color: #FF4646;
-  background-image: url("./accets/png/bg-snow.png");
+  background-image: url("./src/accets/png/bg-snow.png");
   background-position: center;
   background-size: 100%;
   overflow: hidden;
@@ -445,23 +602,9 @@ header {
   border-radius: 20px;
 }
 
-.arrow {
-  background-image: url("./accets/svg/Vector.svg");
-  display: inline-block;
-  width: 12.5px;
-  height: 12px;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.4;
-}
-
-.arrow_rotate {
-  transform: rotate(180deg);
-}
-
 .bestGifts {
   background-color: #FF4646;
-  background-image: url("./accets/png/bg-snow.png");
+  background-image: url("./src/accets/png/bg-snow.png");
   background-position: center;
   background-size: 100%;
   padding: 55px 82px;
@@ -496,7 +639,7 @@ header {
 }
 
 .gift__content {
-  background-color: #ECF3F8;
+  background-color: rgb(236, 243, 248);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -530,7 +673,7 @@ header {
 
 .Gifts_gifts {
   background-color: #FF4646;
-  background-image: url("./accets/svg/bg-garland.svg");
+  background-image: url("./src/accets/svg/bg-garland.svg");
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100%;
@@ -600,9 +743,13 @@ header {
   padding: 5px 0 0;
 }
 
+.gift_disable {
+  display: none;
+}
+
 .timer {
   background-color: #FF4646;
-  background-image: url("./accets/png/bg-forest.png"), url("./accets/png/bg-snow.png");
+  background-image: url("./src/accets/png/bg-forest.png"), url("./src/accets/png/bg-snow.png");
   background-position: top, top;
   background-repeat: no-repeat;
   background-size: 1440px, 1440px;
@@ -723,7 +870,7 @@ header {
 }
 
 .contacts__content {
-  background-color: #ECF3F8;
+  background-color: rgb(236, 243, 248);
   border-radius: 20px;
   display: flex;
   flex-direction: column;

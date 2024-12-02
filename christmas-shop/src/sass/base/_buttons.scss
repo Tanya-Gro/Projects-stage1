@@ -27,7 +27,6 @@
   }
 }
 
-
 .button__arrow {
   color: $color-staticWhite40;
   border: 1px solid $color-staticWhite40;
@@ -37,6 +36,69 @@
   margin: 0 10px;
   background-color: $color-background;
 }
+
+.button__top {
+  display: none;
+  background-color: $color-staticWhite;
+  border-radius: 100px;
+  border: 1px solid $color-background;
+  box-shadow: 0 0 0.5;
+  padding: 15px 15px;
+  cursor: pointer;
+  position: fixed;
+  right: 8px;
+  bottom: -100px;
+  // box-shadow: 0 1px 4px $color-background;
+  @extend %transition;
+  // transform: 0.4s;
+  // animation: moveButtonUp 2s infinite linear;
+
+  @include media-mediumScreen {
+    display: block;
+  }
+
+  .arrow_top {
+    background-image: url("./src/accets/svg/Vector (1).svg");
+    transform: rotate(270deg);
+    width: 24px;
+    height: 24px;
+    display: block;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.button__top_visible {
+  bottom: 8px;
+}
+
+// @keyframes moveButtonUp {
+
+//   0%,
+//   100% {
+//     transform: translateY(0em);
+//   }
+
+//   50% {
+//     transform: translateY(-0.3em);
+//   }
+// }
+
+.arrow {
+  background-image: url("./src/accets/svg/Vector.svg");
+  display: inline-block;
+  width: 12.5px;
+  height: 12px;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.4;
+
+  &_left {
+    transform: rotate(180deg);
+  }
+}
+
 
 .button__arrow_active {
   color: $color-staticWhite;
@@ -53,7 +115,7 @@
       background-color: $color-staticWhite;
 
       span {
-        background-image: url("./accets/svg/Vector (1).svg");
+        background-image: url("./src/accets/svg/Vector\ \(1\).svg");
       }
     }
   }
