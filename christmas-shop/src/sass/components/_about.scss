@@ -1,7 +1,7 @@
 .about {
   padding: 60px 82px;
   background-color: $color-background;
-  background-image: url("./accets/png/bg-snow.png");
+  background-image: url("./src/accets/png/bg-snow.png");
   background-position: center;
   background-size: 100%;
 
@@ -73,12 +73,9 @@
 }
 
 .about__image {
-  background-image: url("./accets/png/object.png");
+  background-image: url("./src/accets/png/object.png");
   background-repeat: no-repeat;
   background-position: center center;
-  /* background-size: 100%; */
   border-radius: 20px;
-  // width: 100%;
-  // min-width: 364px;
   height: 528px;
 }

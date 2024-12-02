@@ -19,6 +19,10 @@ body {
   // @include font ($size:, $height:, $weigh: 600, $color: $color-staticWhite, $transform: uppercase, $align: center)
 }
 
+body.nonescroll {
+  overflow: hidden;
+}
+
 h1 {
   padding: 4px 7px;
   font-size: 1.2rem;

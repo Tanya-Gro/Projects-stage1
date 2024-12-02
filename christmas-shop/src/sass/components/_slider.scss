@@ -1,7 +1,7 @@
 .slider {
   padding: 60px 0;
   background-color: $color-background;
-  background-image: url("./accets/png/bg-snow.png");
+  background-image: url("./src/accets/png/bg-snow.png");
   background-position: center;
   background-size: 100%;
   overflow: hidden;
@@ -54,18 +54,4 @@
   width: 200px;
   height: 200px;
   border-radius: 20px;
-}
-
-.arrow {
-  background-image: url("./accets/svg/Vector.svg");
-  display: inline-block;
-  width: 12.5px;
-  height: 12px;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.4;
-}
-
-.arrow_rotate {
-  transform: rotate(180deg);
 }

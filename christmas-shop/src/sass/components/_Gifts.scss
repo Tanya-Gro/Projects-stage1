@@ -3,7 +3,7 @@
 // ---------------------------------
 .Gifts_gifts {
   background-color: $color-background;
-  background-image: url("./accets/svg/bg-garland.svg");
+  background-image: url("./src/accets/svg/bg-garland.svg");
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 100%;
@@ -76,4 +76,8 @@
   flex-wrap: wrap;
   gap: 10px 12px;
   padding: 5px 0 0;
+}
+
+.gift_disable {
+  display: none;
 }
