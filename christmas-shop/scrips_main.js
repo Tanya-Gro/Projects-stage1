@@ -20,7 +20,7 @@ window.onload = function () {
       randomID = Math.floor(Math.random() * girtBanch.length);
     } while (indexes.includes(randomID));
     indexes.push(randomID);
-    giftsWrapper.append(new GiftCard(girtBanch[randomID]).generateGift());
+    giftsWrapper.append(new GiftCard(girtBanch[randomID], './src/accets/png/').generateGift());
   }
 
   // timer
