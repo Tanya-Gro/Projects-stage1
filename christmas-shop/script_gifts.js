@@ -1,4 +1,13 @@
+import girtBanch from "./gifts.json" with { type: "json"};
+import { GiftCard } from "./src/js/GiftCard.js";
+
 window.onload = function () {
+
+  const giftsWrapper = document.querySelector('.gifts__conteiner');
+  for (let i = 0; i < 36; i += 1) {
+    giftsWrapper.append(new GiftCard(girtBanch[i], "../src/accets/png/").generateGift());
+  }
+
   addTagsClickHandler();
 
   document.addEventListener('scroll', showButtonTop);
