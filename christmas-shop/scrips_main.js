@@ -1,11 +1,12 @@
 import girtBanch from "./gifts.json" with { type: "json"};
 import { GiftCard } from "./src/js/GiftCard.js";
-// import { Modal } from "./src/js/Modal.js";
+import { Burger } from "./src/js/Burger.js";
 
 const timerDays = document.querySelector('.h3-days');
 const timerHours = document.querySelector('.h3-hours');
 const timerMinutes = document.querySelector('.h3-minutes');
 const timerSeconds = document.querySelector('.h3-seconds');
+
 let time = Math.floor((Date.parse('31 Dec ' + new Date().getFullYear() + ' 23: 59: 59 GMT+0') - Date.now()) / 1000);
 let days, hours, minutes, remainder = 0;
 
@@ -34,8 +35,8 @@ window.onload = function () {
   timerMinutes.innerText = minutes;
   timerSeconds.innerText = remainder % 60;
 
-  // modal
-
+  //burger click ivent
+  document.querySelector('.burger').addEventListener('click', () => { new Burger().openBurger() });
 }
 
 const setTimer = () => {

@@ -1,9 +1,7 @@
-// import girtCards from "./gifts.json" with { type: "json"};
 import { Modal } from "./Modal.js";
 
 export class GiftCard {
   constructor({ name, description, category, superpowers }, path) {
-    // this.id = id;
     this.name = name;
     this.description = description;
     this.category = category;
@@ -30,11 +28,6 @@ export class GiftCard {
 
     if (this.category) {
 
-      // if (this.category === "For Health") template += `<img src="${path}gift-for-health.png"   alt="gift for health" class="gift__image"><div class="gift__description"> <h5 class="h5--green">${this.category}</h5>`;
-
-      // else if (this.category === "For Harmony") template += `<img src="${path}gift-for-harmony.png" alt="gift for harmony" class="gift__image"><div class="gift__description"> <h5 class="h5--pink">${this.category}</h5>`;
-
-      // else template += `<img src="${path}gift-for-work.png" alt="gift for work" class="gift__image"><div class="gift__description"> <h5 class="h5--blue">${this.category}</h5>`;
       let alt, h5class = '';
       if (this.category === "For Health") {
         this.path += 'gift-for-health.png';
