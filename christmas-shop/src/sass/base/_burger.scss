@@ -3,7 +3,7 @@
   background-color: #181C29;
   width: 20px;
   height: 2px;
-  transition: all .5s ease 0s;
+  transition: transform .5s ease 0s;
 }
 
 .burger {
@@ -18,20 +18,20 @@
 
   @include media-mediumScreen {
     display: block;
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
   }
 }
 
 .burger__line {
   @extend %burger__span;
   top: 24px;
-  left: 0px;
+  left: 10px;
 
   &::before {
     content: "";
     @extend %burger__span;
     bottom: 8px;
-    left: 0;
+    left: 0px;
   }
 }
 
@@ -53,6 +53,22 @@
   overflow: auto;
   height: calc(100vh - 63px);
   // transition: right .5s ease 0s;
+}
+
+.header__navigation.active ul li {
+  margin: 13px 4px;
+}
+
+.header__navigation.active ul li a {
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 3.648rem;
+  letter-spacing: 0.16em;
+  text-align: center;
+  padding: 12px 20px;
+  // text-underline-position: from-font;
+  // text-decoration-skip-ink: none;
+
 }
 
 .burger.active span {

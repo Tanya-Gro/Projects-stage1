@@ -219,7 +219,7 @@ p {
   background-color: #181C29;
   width: 20px;
   height: 2px;
-  transition: all 0.5s ease 0s;
+  transition: transform 0.5s ease 0s;
 }
 
 .burger {
@@ -235,18 +235,17 @@ p {
 @media (max-width: 768px) {
   .burger {
     display: block;
-    margin-bottom: 10px;
   }
 }
 
 .burger__line {
   top: 24px;
-  left: 0px;
+  left: 10px;
 }
 .burger__line::before {
   content: "";
   bottom: 8px;
-  left: 0;
+  left: 0px;
 }
 
 .header__navigation.active {
@@ -264,6 +263,19 @@ p {
   align-items: center;
   overflow: auto;
   height: calc(100vh - 63px);
+}
+
+.header__navigation.active ul li {
+  margin: 13px 4px;
+}
+
+.header__navigation.active ul li a {
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 3.648rem;
+  letter-spacing: 0.16em;
+  text-align: center;
+  padding: 12px 20px;
 }
 
 .burger.active span {
