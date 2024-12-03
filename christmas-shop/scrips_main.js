@@ -44,6 +44,13 @@ window.onload = function () {
     // console.log(event.target.classList.value, 1);
     if (document.body.classList.value === "nonescroll" || event.target.classList.value === 'burger active' || event.target.classList.value === 'burger__line') openBurger();
   });
+
+  window.addEventListener('resize', (e) => {
+    if (document.body.classList.value === "nonescroll" && window.innerWidth > 768) openBurger();
+  });
+
+  // slider
+  // let sliderWidthLeft = 
 }
 
 const setTimer = () => {
