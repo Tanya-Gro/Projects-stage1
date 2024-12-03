@@ -1,6 +1,6 @@
 export class Modal {
   constructor(attributes) {
-    // console.log(path, name, description, category, live, create, love, dream);
+    // console.log(attributes);
     this.path = attributes.path;
     this.name = attributes.name;
     this.description = attributes.description;
@@ -58,9 +58,9 @@ export class Modal {
     this.modalContent = this.createDomNode(this.modalContent, 'div', 'modal__content');
 
     // Category
-    if (this.category = "For work")
+    if (this.category === "For Work")
       this.modalContentCategory = this.createDomNode(this.modalContentCategory, 'h5', 'h5--blue');
-    else if (this.category = "For health")
+    else if (this.category === "For Health")
       this.modalContentCategory = this.createDomNode(this.modalContentCategory, 'h5', 'h5--green');
     else
       this.modalContentCategory = this.createDomNode(this.modalContentCategory, 'h5', 'h5--pink');
@@ -164,14 +164,14 @@ export class Modal {
   }
 
   openModal() {
-    console.log(this.overlay);
+    // console.log(this.overlay);
     document.body.append(this.overlay);
     document.body.classList.add('nonescroll');
   };
 
   closeModal(target) {
     // console.log(target.classList)
-    if (target.classList == 'overlay' || target.classList == 'modal__close-btn') {
+    if (target.classList == 'overlay' || target.classList == 'modal__close-btn' || target.classList == 'modal__close-line') {
       document.body.classList.remove('nonescroll');
       // document.querySelector('.overlay').remove();
       this.overlay.remove();
