@@ -269,7 +269,7 @@ p {
   margin: 13px 4px;
 }
 
-.header__navigation.active ul li a {
+.header__navigation.active ul li .navigation__link {
   font-size: 2.4rem;
   font-weight: 600;
   line-height: 3.648rem;
