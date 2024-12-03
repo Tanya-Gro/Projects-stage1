@@ -1,5 +1,6 @@
 import girtBanch from "./gifts.json" with { type: "json"};
 import { GiftCard } from "./src/js/GiftCard.js";
+import { openBurger } from "./src/js/Burger.js";
 
 window.onload = function () {
 
@@ -11,6 +12,14 @@ window.onload = function () {
   addTagsClickHandler();
 
   document.addEventListener('scroll', showButtonTop);
+
+  //burger click ivent
+  document.querySelector('.burger').addEventListener('click', () => openBurger());
+
+  document.querySelector('.header__navigation').addEventListener("click", (event) => {
+    // console.log(event.target.classList.value, 1);
+    if (document.body.classList.value === "nonescroll" || event.target.classList.value === 'burger active' || event.target.classList.value === 'burger__line') openBurger();
+  });
 }
 
 const addTagsClickHandler = () => {

@@ -1,6 +1,6 @@
 import girtBanch from "./gifts.json" with { type: "json"};
 import { GiftCard } from "./src/js/GiftCard.js";
-import { Burger } from "./src/js/Burger.js";
+import { openBurger } from "./src/js/Burger.js";
 
 const timerDays = document.querySelector('.h3-days');
 const timerHours = document.querySelector('.h3-hours');
@@ -16,6 +16,7 @@ window.onload = function () {
   const giftsWrapper = document.querySelector('.gifts');
   const indexes = [];
   let randomID;
+
   for (let i = 0; i < 4; i += 1) {
     do {
       randomID = Math.floor(Math.random() * girtBanch.length);
@@ -36,7 +37,13 @@ window.onload = function () {
   timerSeconds.innerText = remainder % 60;
 
   //burger click ivent
-  document.querySelector('.burger').addEventListener('click', () => { new Burger().openBurger() });
+  // const burger = document.querySelector('.burger');
+  document.querySelector('.burger').addEventListener('click', () => openBurger());
+
+  document.querySelector('.header__navigation').addEventListener("click", (event) => {
+    // console.log(event.target.classList.value, 1);
+    if (document.body.classList.value === "nonescroll" || event.target.classList.value === 'burger active' || event.target.classList.value === 'burger__line') openBurger();
+  });
 }
 
 const setTimer = () => {

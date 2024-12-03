@@ -26,9 +26,16 @@ header {
 .navigation {
   display: flex;
   list-style-type: none;
+}
 
+.header__navigation {
   @include media-mediumScreen {
-    display: none;
+    // display: none;
+    position: fixed;
+    right: 0;
+    background-color: $color-staticWhite;
+    transform: translate(100%, 0px);
+    transition: transform .5s;
   }
 }
 

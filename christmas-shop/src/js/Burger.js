@@ -1,27 +1,9 @@
-export class Burger {
-  constructor() {
-    this.openBurger = '';
-    this.closeBurger = '';
+export function openBurger() {
 
-    this.overlay = '';
-  }
-  openBurger() {
-    this.overlay = document.createElement('div');
-    this.overlay.classList = 'overlay';
-    this.overlay.addEventListener('click', (e) => this.closeBurger(e.target));
+  // console.log(111);
+  document.querySelector('.burger').classList.toggle('active');
 
-    //modify button close
-
-    document.body.append(this.overlay);
-    document.body.classList.add('nonescroll');
-
-
-  }
-
-  closeBurger(target) {
-    if (target.classList == 'overlay' || target.classList == 'burger__close-btn') {
-      document.body.classList.remove('nonescroll');
-      this.overlay.remove();
-    }
-  }
+  document.body.classList.toggle('nonescroll');
+  document.querySelector('.header__navigation').classList.toggle('active');
+  document.querySelector('.navigation').classList.toggle('active');
 }
