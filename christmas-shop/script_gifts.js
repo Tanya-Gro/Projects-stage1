@@ -50,7 +50,7 @@ const sortSelecredTab = clickedTab => {
 }
 
 const showButtonTop = () => {
-  this.scrollY >= 300 ?
+  window.scrollY >= 300 ?
     document.querySelector('.button__top').classList.add('button__top_visible') :
     document.querySelector('.button__top').classList.remove('button__top_visible');
 }

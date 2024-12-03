@@ -11,13 +11,12 @@
   width: 40px;
   height: 40px;
   padding: 20px 10px;
+  cursor: pointer;
 
   @include media-mediumScreen {
     display: block;
     position: relative;
   }
-
-  &:hover {}
 }
 
 .burger__line {
