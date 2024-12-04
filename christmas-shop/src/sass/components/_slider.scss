@@ -33,6 +33,7 @@
   position: relative;
   left: 65px;
   align-items: center;
+  transition: left .4s ease-in-out;
 
   @include media-preMediumScreen {
     left: -11px;
