@@ -173,7 +173,6 @@ export class Modal {
     // console.log(target.classList)
     if (target.classList == 'overlay' || target.classList == 'modal__close-btn' || target.classList == 'modal__close-line') {
       document.body.classList.remove('nonescroll');
-      // document.querySelector('.overlay').remove();
       this.overlay.remove();
     }
   };

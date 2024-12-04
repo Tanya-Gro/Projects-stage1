@@ -1,4 +1,12 @@
-.footer-icon, .contacts__content h3, .contacts__content h4, .tab-disable, .navigation_active, .button__arrow_active, .button__top, .button__black, .h6_dark {
+.footer-icon,
+.contacts__content h3,
+.contacts__content h4,
+.tab-disable,
+.navigation_active,
+.button__arrow_active,
+.button__top,
+.button__black,
+.h6_dark {
   transition: all 0.3s ease-out;
 }
 
@@ -70,9 +78,11 @@ h5,
 .h5--green {
   color: #06A44F;
 }
+
 .h5--blue {
   color: #4361FF;
 }
+
 .h5--pink {
   color: #FF43F7;
 }
@@ -102,10 +112,12 @@ h6 {
   text-align: center;
   color: #FFFFFF;
 }
+
 .h6_dark {
   color: #181C29;
   margin: 0 auto;
 }
+
 .h6_primary {
   color: #FF4646;
 }
@@ -135,6 +147,7 @@ p {
   color: #FFFFFF;
   border: 0;
 }
+
 @media (any-pointer: fine) {
   .button__black:hover {
     background-color: #FFFFFF;
@@ -164,11 +177,13 @@ p {
   right: 8px;
   bottom: -100px;
 }
+
 @media (max-width: 768px) {
   .button__top {
     display: block;
   }
 }
+
 .button__top .arrow_top {
   background-image: url("./src/accets/svg/Vector (1).svg");
   transform: rotate(270deg);
@@ -193,6 +208,7 @@ p {
   background-position: center;
   opacity: 0.4;
 }
+
 .arrow_left {
   transform: rotate(180deg);
 }
@@ -202,19 +218,23 @@ p {
   border: 1px solid #FFFFFF;
   cursor: pointer;
 }
+
 .button__arrow_active .arrow {
   opacity: 1;
 }
+
 @media (any-pointer: fine) {
   .button__arrow_active:hover {
     background-color: #FFFFFF;
   }
+
   .button__arrow_active:hover span {
     background-image: url("./src/accets/svg/Vector (1).svg");
   }
 }
 
-.burger__line::before, .burger__line {
+.burger__line::before,
+.burger__line {
   position: absolute;
   background-color: #181C29;
   width: 20px;
@@ -232,6 +252,7 @@ p {
   z-index: 5;
   transition: left 0.5s ease 0s;
 }
+
 @media (max-width: 768px) {
   .burger {
     display: block;
@@ -242,6 +263,7 @@ p {
   top: 24px;
   left: 10px;
 }
+
 .burger__line::before {
   content: "";
   bottom: 8px;
@@ -288,7 +310,8 @@ p {
   transform: rotate(90deg) translate(0px, 25%);
 }
 
-.modal__close-line::before, .modal__close-line {
+.modal__close-line::before,
+.modal__close-line {
   position: absolute;
   content: "";
   background-color: #181C29;
@@ -352,6 +375,7 @@ p {
   top: 20px;
   transform: rotate(45deg);
 }
+
 .modal__close-line::before {
   transform: rotate(90deg);
 }
@@ -410,6 +434,7 @@ header {
   justify-content: space-between;
   align-items: center;
 }
+
 @media (max-width: 1080px) {
   header {
     padding: 12px 8px 11px 28px;
@@ -463,6 +488,7 @@ header {
   background: rgba(255, 70, 70, 0.1019607843);
   color: #FF4646;
 }
+
 @media (any-pointer: fine) {
   .navigation__link-disable:hover {
     cursor: default;
@@ -488,11 +514,13 @@ header {
   justify-content: center;
   align-items: center;
 }
+
 @media (max-width: 768px) {
   .hero {
     background-size: 1250px, 1260px;
   }
 }
+
 @media (max-width: 600px) {
   .hero {
     background-position: top, center;
@@ -507,6 +535,7 @@ header {
   padding: 60px 0;
   color: #FFFFFF;
 }
+
 .hero__contant h2 {
   text-align: center;
   padding: 12px 0;
@@ -519,6 +548,7 @@ header {
   background-position: center;
   background-size: 100%;
 }
+
 @media (max-width: 1080px) {
   .about {
     padding: 60px 8px;
@@ -531,14 +561,17 @@ header {
   background-color: #FFFFFF;
   border-radius: 20px;
 }
+
 .about__container div {
   width: 50%;
 }
+
 @media (max-width: 600px) {
   .about__container {
     flex-direction: column;
     align-items: center;
   }
+
   .about__container div {
     width: 100%;
   }
@@ -551,36 +584,44 @@ header {
   align-items: flex-start;
   padding: 0 0 0 60px;
 }
+
 .about__content h6 {
   text-align: left;
 }
+
 .about__content h3 {
   padding: 20px 0;
   max-width: 360px;
 }
+
 @media (max-width: 768px) {
   .about__content h3 {
     max-width: 300px;
   }
 }
+
 @media (max-width: 380px) {
   .about__content h3 {
     max-width: 350px;
   }
 }
+
 .about__content p {
   max-width: 410px;
 }
+
 @media (max-width: 768px) {
   .about__content p {
     max-width: 270px;
   }
 }
+
 @media (max-width: 380px) {
   .about__content p {
     max-width: 325px;
   }
 }
+
 @media (max-width: 600px) {
   .about__content {
     padding: 60px 20px;
@@ -603,20 +644,24 @@ header {
   background-size: 100%;
   overflow: hidden;
 }
+
 .slider h3 {
   text-align: center;
   padding: 12px 0;
 }
+
 .slider .buttons {
   display: flex;
   justify-content: right;
   padding: 10px 70px;
 }
+
 @media (max-width: 768px) {
   .slider .buttons {
     padding: 10px 0px;
   }
 }
+
 @media (max-width: 380px) {
   .slider {
     padding: 62px 0;
@@ -630,7 +675,9 @@ header {
   position: relative;
   left: 65px;
   align-items: center;
+  transition: left .4s ease-in-out;
 }
+
 @media (max-width: 1080px) {
   .slider__content {
     left: -11px;
@@ -660,20 +707,24 @@ header {
   background-size: 100%;
   padding: 55px 82px;
 }
+
 .bestGifts h3 {
   text-align: center;
   padding: 10px 0;
 }
+
 @media (max-width: 1080px) {
   .bestGifts h3 {
     padding: 12px 0px;
   }
 }
+
 @media (max-width: 1080px) {
   .bestGifts {
     padding: 50px 8px;
   }
 }
+
 @media (max-width: 380px) {
   .bestGifts {
     padding: 47px 8px;
@@ -698,10 +749,11 @@ header {
 }
 
 @media (any-pointer: fine) {
-  .gift__content:hover .gift__description > h4 {
+  .gift__content:hover .gift__description>h4 {
     color: #FF4646;
   }
 }
+
 .gift__description {
   background-color: #FFFFFF;
   padding: 20px 20px;
@@ -710,9 +762,11 @@ header {
   min-height: 114px;
   width: 310px;
 }
+
 .gift__description h5 {
   padding-bottom: 10px;
 }
+
 .gift__description h4 {
   max-width: 270px;
 }
@@ -731,6 +785,7 @@ header {
   border-radius: 20px;
   padding: 59px 82px 58px;
 }
+
 .Gifts_gifts h2 {
   max-width: 430px;
   text-align: center;
@@ -738,11 +793,13 @@ header {
   margin: 0 auto;
   font-weight: 600;
 }
+
 @media (max-width: 1080px) {
   .Gifts_gifts {
     padding: 60px 68px;
   }
 }
+
 @media (max-width: 768px) {
   .Gifts_gifts {
     padding: 60px 13px;
@@ -759,6 +816,7 @@ header {
 .tab-enable {
   background-color: rgba(255, 255, 255, 0.2);
 }
+
 @media (any-pointer: fine) {
   .tab-enable:hover {
     user-select: none;
@@ -772,12 +830,14 @@ header {
   border-radius: 12px;
   color: #FFFFFF;
 }
+
 @media (any-pointer: fine) {
   .tab-disable:hover {
     background: rgba(255, 255, 255, 0.2);
     cursor: pointer;
   }
 }
+
 @media (max-width: 600px) {
   .tab {
     padding: 12px 8px;
@@ -811,17 +871,21 @@ header {
   justify-content: center;
   align-items: center;
 }
+
 .timer button {
   margin-bottom: 15px;
 }
+
 .timer h6 {
   padding: 7px 0;
 }
+
 @media (max-width: 768px) {
   .timer h6 {
     padding: 6px 0;
   }
 }
+
 @media (max-width: 768px) {
   .timer {
     background-size: 1435px, 1600px;
@@ -829,6 +893,7 @@ header {
     background-position: bottom, bottom;
   }
 }
+
 @media (max-width: 380px) {
   .timer {
     background-size: 1510px, 1700px;
@@ -836,13 +901,14 @@ header {
   }
 }
 
-.timer > h3 {
+.timer>h3 {
   max-width: 426px;
   text-align: center;
   padding: 8px 0 17px;
 }
+
 @media (max-width: 768px) {
-  .timer > h3 {
+  .timer>h3 {
     padding: 8px 0 20px;
   }
 }
@@ -856,6 +922,7 @@ header {
   width: 344px;
   padding: 10px 13px 13px;
 }
+
 @media (max-width: 768px) {
   .timer__content {
     padding: 11px 13px 11px;
@@ -876,12 +943,14 @@ header {
 .timer-seconds {
   width: 25%;
 }
+
 .timer-days h3,
 .timer-hours h3,
 .timer-minutes h3,
 .timer-seconds h3 {
   text-align: center;
 }
+
 .timer-days h5,
 .timer-hours h5,
 .timer-minutes h5,
@@ -896,11 +965,13 @@ header {
   justify-content: center;
   padding: 62px 82px;
 }
+
 @media (any-pointer: fine) {
   .footer .h6:hover {
     color: #FF4646;
   }
 }
+
 @media (max-width: 1080px) {
   .footer {
     padding: 60px 8px;
@@ -912,6 +983,7 @@ header {
   flex-direction: row;
   gap: 10px;
 }
+
 @media (max-width: 1080px) {
   .contacts {
     flex-direction: column;
@@ -929,18 +1001,22 @@ header {
   width: 33%;
   text-decoration: none;
 }
+
 .contacts__content h4 {
   padding: 10px 0 18px;
 }
+
 @media (max-width: 1080px) {
   .contacts__content {
     width: 100%;
   }
 }
+
 @media (any-pointer: fine) {
   .contacts__content:hover {
     cursor: pointer;
   }
+
   .contacts__content:hover h3,
   .contacts__content:hover h4 {
     color: #FF4646;
@@ -967,6 +1043,7 @@ header {
   cursor: pointer;
   margin: 3px 6px;
 }
+
 @media (any-pointer: fine) {
   .footer-icon:hover {
     filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
