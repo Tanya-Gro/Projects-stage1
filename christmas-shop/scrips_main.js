@@ -50,7 +50,36 @@ window.onload = function () {
   });
 
   // slider
-  // let sliderWidthLeft = 
+  // шаг надо высчитать на 3 ед и на 6 ед
+  let sliderStep = 135;
+  let sliderWidthR = 540;
+  let sliderPosition = 65;
+  const slider = document.querySelector('.slider__content');
+  const sliderLeftBtn = document.querySelector('.burron__left');
+  const sliderRightBtn = document.querySelector('.burron__right');
+
+  sliderLeftBtn.addEventListener('click', () => {
+    if (sliderLeftBtn.classList.contains('button__arrow_active')) {
+      sliderPosition += sliderStep;
+      slider.style.left = sliderPosition + 'px';
+      sliderWidthR += sliderStep;
+      if (sliderWidthR == 540) sliderLeftBtn.classList.remove('button__arrow_active');
+      if (!sliderRightBtn.classList.contains('button__arrow_active') && sliderWidthR > 0)
+        sliderRightBtn.classList.add('button__arrow_active');
+    }
+    console.log(sliderPosition, sliderWidthR)
+  });
+  sliderRightBtn.addEventListener('click', () => {
+    if (sliderRightBtn.classList.contains('button__arrow_active')) {
+      sliderPosition -= sliderStep;
+      slider.style.left = sliderPosition + 'px';
+      sliderWidthR -= sliderStep;
+      if (sliderWidthR == 0) sliderRightBtn.classList.remove('button__arrow_active');
+      if (!sliderLeftBtn.classList.contains('button__arrow_active') && sliderWidthR < 540)
+        sliderLeftBtn.classList.add('button__arrow_active');
+    }
+    console.log(sliderPosition, sliderWidthR)
+  });
 }
 
 const setTimer = () => {
