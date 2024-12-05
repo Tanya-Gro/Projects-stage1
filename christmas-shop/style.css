@@ -316,6 +316,11 @@ p {
   max-width: 400px;
   position: relative;
 }
+@media (max-width: 600px) {
+  .modal {
+    max-width: 364px;
+  }
+}
 
 .modal__image {
   display: block;
@@ -324,6 +329,11 @@ p {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
+}
+@media (max-width: 600px) {
+  .modal__image {
+    width: 364px;
+  }
 }
 
 .work {
@@ -346,6 +356,11 @@ p {
   left: 345px;
   top: 12px;
   cursor: pointer;
+}
+@media (max-width: 600px) {
+  .modal__close-btn {
+    left: 309px;
+  }
 }
 
 .modal__close-line {
@@ -397,6 +412,11 @@ p {
 
 .modal-description-label {
   width: 50%;
+}
+@media (max-width: 600px) {
+  .modal-description-label {
+    width: 44%;
+  }
 }
 
 .wrapper {
