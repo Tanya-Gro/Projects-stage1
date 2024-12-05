@@ -1,3 +1,4 @@
+import { openBurger } from "./Burger.js";
 export class Modal {
   constructor(attributes) {
     // console.log(attributes);
@@ -39,7 +40,6 @@ export class Modal {
 
     // Overlay
     this.overlay = this.createDomNode(this.overlay, 'div', 'overlay');
-    this.overlay.addEventListener('click', (e) => this.closeModal(e.target));
 
     // Modal window
     this.modal = this.createDomNode(this.modal, 'div', 'modal');
@@ -146,6 +146,11 @@ export class Modal {
   // setContent(content) { }
   appendModalElements() {
     this.overlay.append(this.modal);
+
+    this.overlay.addEventListener('click', (e) => this.closeModal(e.target));
+
+    // window.addEventListener('resize', this.eventResize);
+
     this.modal.append(this.modalImage);
     this.modal.append(this.modalContent);
     this.modalContent.append(this.modalContentCategory);
@@ -162,6 +167,13 @@ export class Modal {
     this.modalCloseBtn.append(this.modalCloseLine);
 
   }
+  // eventResize() {
+  //   console.log('resizing process');
+  //   if (!document.body.classList.contains('nonescroll')) {
+  //     openBurger();
+  //     document.body.classList.add('nonescroll');
+  //   }
+  // }
 
   openModal() {
     // console.log(this.overlay);
@@ -174,6 +186,7 @@ export class Modal {
     if (target.classList == 'overlay' || target.classList == 'modal__close-btn' || target.classList == 'modal__close-line') {
       document.body.classList.remove('nonescroll');
       this.overlay.remove();
+      // window.removeEventListener('resize', this.eventResize());
     }
   };
 }

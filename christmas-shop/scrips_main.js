@@ -10,6 +10,14 @@ const timerSeconds = document.querySelector('.h3-seconds');
 let time = Math.floor((Date.parse('31 Dec ' + new Date().getFullYear() + ' 23: 59: 59 GMT+0') - Date.now()) / 1000);
 let days, hours, minutes, remainder = 0;
 
+let sliderPosition;
+let sliderStep;
+let sliderWidthR;
+
+const slider = document.querySelector('.slider__content');
+const sliderLeftBtn = document.querySelector('.burron__left');
+const sliderRightBtn = document.querySelector('.burron__right');
+
 window.onload = function () {
 
   // gifts cards
@@ -38,73 +46,97 @@ window.onload = function () {
 
   //burger click ivent
   // const burger = document.querySelector('.burger');
-  document.querySelector('.burger').addEventListener('click', () => openBurger());
+  document.querySelector('.burger').addEventListener('click', () => {
+    // console.log(e.target);
+    // if (document.querySelector('.burger').classList.contains('active'))
+    //   openBurger('close');
+    // else 
+    openBurger();
+  });
 
   document.querySelector('.header__navigation').addEventListener("click", (event) => {
     // console.log(event.target.classList.value, 1);
-    if (document.body.classList.value === "nonescroll" || event.target.classList.value === 'burger active' || event.target.classList.value === 'burger__line') openBurger();
+    if (document.body.classList.contains("nonescroll") || event.target.classList.value === 'burger active' || event.target.classList.value === 'burger__line') openBurger('close');
   });
 
   // slider
-  // шаг надо высчитать на 3 ед и на 6 ед
-  // let sliderStep = 135;
-  // let sliderWidthR = 540;
-  let sliderPosition;
-  let sliderStep;
   if (window.innerWidth > 1080) sliderPosition = 65;
   else sliderPosition = -11;
 
-  if (window.innerWidth > 768) sliderStep = Math.ceil((2040 - window.innerWidth + sliderPosition) / 3);
-  else sliderStep = Math.ceil((2040 - window.innerWidth + sliderPosition) / 6);
+  // sliderWidthR = 2040 - window.innerWidth + sliderPosition;
 
-  let sliderWidthR = 2040 - window.innerWidth + sliderPosition;
+  // if (window.innerWidth > 768) sliderStep = Math.ceil(sliderWidthR / 3);
+  // else sliderStep = Math.ceil(sliderWidthR / 6);
 
-  console.log('position:', sliderPosition, 'width:', sliderWidthR, 'step:', sliderStep)
 
-  const slider = document.querySelector('.slider__content');
-  const sliderLeftBtn = document.querySelector('.burron__left');
-  const sliderRightBtn = document.querySelector('.burron__right');
+  // console.log('position:', sliderPosition, 'width:', sliderWidthR, 'step:', sliderStep)
 
+  // move slider on left
   sliderLeftBtn.addEventListener('click', () => {
     if (sliderLeftBtn.classList.contains('button__arrow_active')) {
+
       sliderPosition += sliderStep;
       slider.style.left = sliderPosition + 'px';
       sliderWidthR += sliderStep;
-      if (sliderPosition > -12) sliderLeftBtn.classList.remove('button__arrow_active');
-      if (!sliderRightBtn.classList.contains('button__arrow_active') && sliderWidthR > 0)
-        sliderRightBtn.classList.add('button__arrow_active');
+
+      if (sliderPosition > -12) {
+        sliderLeftBtn.classList.remove('button__arrow_active');
+        window.removeEventListener('resize', eventResizeByActionSlider);
+      }
+
+      if (!sliderRightBtn.classList.contains('button__arrow_active') && sliderWidthR > 0) sliderRightBtn.classList.add('button__arrow_active');
     }
-    console.log('LEFT position:', sliderPosition, 'width:', sliderWidthR, 'step:', sliderStep)
+    // console.log('LEFT position:', sliderPosition, 'width:', sliderWidthR, 'step:', sliderStep)
   });
+
+  // move slider on RIGHT
   sliderRightBtn.addEventListener('click', () => {
     if (sliderRightBtn.classList.contains('button__arrow_active')) {
+
+      if (!sliderLeftBtn.classList.contains('button__arrow_active') && (sliderPosition === 65 || sliderPosition === -11)) {
+        sliderLeftBtn.classList.add('button__arrow_active');
+
+        if (window.innerWidth > 1080) sliderPosition = 65;
+        else sliderPosition = -11;
+
+        // slider.style.left = sliderPosition + 'px';
+
+        sliderWidthR = 2040 - window.innerWidth + sliderPosition;
+
+        if (window.innerWidth > 768) sliderStep = Math.ceil(sliderWidthR / 3);
+        else sliderStep = Math.ceil(sliderWidthR / 6);
+
+        window.addEventListener('resize', eventResizeByActionSlider);
+      }
+
       sliderPosition -= sliderStep;
       slider.style.left = sliderPosition + 'px';
       sliderWidthR -= sliderStep;
+
       if (sliderWidthR <= 0) sliderRightBtn.classList.remove('button__arrow_active');
-      if (!sliderLeftBtn.classList.contains('button__arrow_active') && sliderPosition < -11)
-        sliderLeftBtn.classList.add('button__arrow_active');
+
     }
-    console.log('RIGHT position:', sliderPosition, 'width:', sliderWidthR, 'step:', sliderStep)
+    // console.log('RIGHT position:', sliderPosition, 'width:', sliderWidthR, 'step:', sliderStep)
   });
+}
 
-  window.addEventListener('resize', (e) => {
-    if (document.body.classList.value === "nonescroll" && window.innerWidth > 768) openBurger();
+const eventResizeByActionSlider = () => {
+  // console.log('resizing action')
+  // if (document.body.classList.contains("nonescroll") && window.innerWidth > 768) openBurger();
 
-    if (window.innerWidth > 1080) sliderPosition = 65;
-    else sliderPosition = -11;
-    slider.style.left = sliderPosition + 'px';
+  if (window.innerWidth > 1080) sliderPosition = 65;
+  else sliderPosition = -11;
 
-    sliderWidthR = 2040 - window.innerWidth + sliderPosition;
+  slider.style.left = sliderPosition + 'px';
+  // console.log(window.innerWidth, sliderPosition)
+  // sliderWidthR = 2040 - window.innerWidth + sliderPosition;
 
-    if (window.innerWidth > 768) sliderStep = Math.ceil((2040 - window.innerWidth + sliderPosition) / 3);
-    else sliderStep = Math.ceil((2040 - window.innerWidth + sliderPosition) / 6);
+  if (sliderLeftBtn.classList.contains('button__arrow_active')) sliderLeftBtn.classList.remove('button__arrow_active');
+  if (!sliderRightBtn.classList.contains('button__arrow_active')) sliderRightBtn.classList.add('button__arrow_active');
 
-    if (sliderLeftBtn.classList.contains('button__arrow_active')) sliderLeftBtn.classList.remove('button__arrow_active');
-    if (!sliderRightBtn.classList.contains('button__arrow_active')) sliderRightBtn.classList.add('button__arrow_active');
+  window.removeEventListener('resize', eventResizeByActionSlider);
 
-    console.log('position:', sliderPosition, 'width:', sliderWidthR, 'step:', sliderStep)
-  });
+  // console.log('Resizing position:', sliderPosition, 'width:', sliderWidthR, 'step:', sliderStep)
 }
 
 const setTimer = () => {
