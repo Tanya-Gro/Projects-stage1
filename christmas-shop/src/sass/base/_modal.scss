@@ -25,6 +25,10 @@
   border-radius: 20px;
   max-width: 400px;
   position: relative;
+
+  @include media-preSmallScreen {
+    max-width: 364px;
+  }
 }
 
 .modal__image {
@@ -34,6 +38,10 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
+
+  @include media-preSmallScreen {
+    width: 364px;
+  }
 }
 
 .work {
@@ -57,6 +65,10 @@
   left: 345px;
   top: 12px;
   cursor: pointer;
+
+  @include media-preSmallScreen {
+    left: 309px;
+  }
 }
 
 .modal__close-line {
@@ -111,4 +123,8 @@
 
 .modal-description-label {
   width: 50%;
+
+  @include media-preSmallScreen {
+    width: 44%;
+  }
 }
