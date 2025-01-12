@@ -53,9 +53,9 @@ function createDomNode(node, element, classes) {
 // добавляем уровни сложности
 function fillLavelsConteiner(node) {
   const levetsLabel = createDomNode(node, 'legend', 'levels--label');
-  levetsLabel.innerText = 'Levels of difficulty:';
+  levetsLabel.textContent = 'Levels of difficulty:';
   node.append(levetsLabel);
-  // levelsContainer.append(createDomNode(levelsContainer, 'legend', 'levels--label').innerText('Levels of difficulty'));
+  // levelsContainer.append(createDomNode(levelsContainer, 'legend', 'levels--label').textContent('Levels of difficulty'));
 
   for(let i = 0; i < levelsArray.length; i+=1) {
     const levelInputElement = createDomNode(node, 'input', 'level--input');
@@ -67,7 +67,7 @@ function fillLavelsConteiner(node) {
 
     const levelLabelElement = createDomNode(node, 'label', 'level--label');
     levelLabelElement.setAttribute('for', levelsArray[i]);
-    levelLabelElement.innerText = levelsArray[i];
+    levelLabelElement.textContent = levelsArray[i];
 
     node.append(levelInputElement);
     node.append(levelLabelElement);
@@ -81,7 +81,7 @@ function fillKeyboardConteiner(node) {
       const key = createDomNode(node, 'button', 'key keyboardContainer--numbers visible');
       key.setAttribute('name', numbers[i][0]);
       key.setAttribute('id', numbers[i][0]);
-      key.innerText = numbers[i][0];
+      key.textContent = numbers[i][0];
       node.append(key);
     }
 
@@ -89,7 +89,7 @@ function fillKeyboardConteiner(node) {
     const key = createDomNode(node, 'button', 'key keyboardContainer--letter');
     key.setAttribute('name', letters[i][0]);
     key.setAttribute('id', letters[i][0]);
-    key.innerText = letters[i][0];
+    key.textContent = letters[i][0];
     node.append(key);
   }
 };
