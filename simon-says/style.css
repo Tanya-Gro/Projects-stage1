@@ -18,6 +18,14 @@ html {
   display: none;
 }
 
+.green {
+  color: green;
+}
+
+.red {
+  color: green;
+}
+
 .key {
   display: none;
   border-radius: 5px;

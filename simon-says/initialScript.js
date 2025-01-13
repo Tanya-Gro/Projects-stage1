@@ -1,5 +1,8 @@
-const letters = [['A', 'Ф'],['B', 'И'],['C', 'С'],['D', 'В'],['E', 'У'],['F', 'А'],['G', 'П'],['H', 'Р'],['I', 'Ш'],['J', 'О'],['K', 'Л'],['L', 'Д'],['M', 'Ь'],['N', 'Т'],['O', 'Щ'],['P', 'З'],['Q', 'Й'],['R', 'К'],['S', 'Ы'],['T', 'Е'],['U', 'Г'],['V', 'М'],['W', 'Ц'],['Z', 'Я'],['Y', 'Н'],['Z', 'Я']];
-const numbers = [['0', ')'],['1', '!'],['2', '@'],['3', '#'],['4', '$'],['5', '%'],['6', '^'],['7', '&'],['8', '*'],['9', '(']];
+const letters = 'QWERTYUIOPASDFGHJKLZXCVBNM'.split('');
+const lettersKirilik = 'ЙЦУКЕНГШЩЗФЫВАПРОЛДЯЧСМИТЬ'.split('');
+// const letters = [['A', 'Ф'],['B', 'И'],['C', 'С'],['D', 'В'],['E', 'У'],['F', 'А'],['G', 'П'],['H', 'Р'],['I', 'Ш'],['J', 'О'],['K', 'Л'],['L', 'Д'],['M', 'Ь'],['N', 'Т'],['O', 'Щ'],['P', 'З'],['Q', 'Й'],['R', 'К'],['S', 'Ы'],['T', 'Е'],['U', 'Г'],['V', 'М'],['W', 'Ц'],['Z', 'Я'],['Y', 'Н'],['Z', 'Я']];
+const numbers = '0123456789'.split('');
+// const numbers = [['0', ')'],['1', '!'],['2', '@'],['3', '#'],['4', '$'],['5', '%'],['6', '^'],['7', '&'],['8', '*'],['9', '(']];
 //названия уровней д.б. уникальны
 const levelsArray = ['Easy', 'Medium', 'Hard'];
 
@@ -11,7 +14,7 @@ const levelsArray = ['Easy', 'Medium', 'Hard'];
   const levelsContainer = createDomNode(navigationContainer, 'div', 'levels');
   
   const roundsLabel = createDomNode(navigationContainer, 'p', 'roundsLabel');
-  roundsLabel.textContent = 'Round: \n 0/5';
+  roundsLabel.textContent = 'Round: 0/5\n Try: 1/2';
   
   const buttonReStart = createDomNode(navigationContainer, 'button', 'button buttonReStart');
   buttonReStart.textContent = 'New game';
@@ -22,7 +25,7 @@ const levelsArray = ['Easy', 'Medium', 'Hard'];
   const buttonStart = createDomNode(navigationContainer, 'button', 'button buttonStart active visible');
   buttonStart.textContent = 'Start';
   
-  const outputContainer = createDomNode(bodyElement, 'div', 'input');
+  const outputContainer = createDomNode(bodyElement, 'div', 'output');
   const keyboardContainer = createDomNode(bodyElement, 'div', 'keyboard');
   
   bodyElement.append(navigationContainer);
@@ -77,20 +80,20 @@ function fillLavelsConteiner(node) {
 // добавляем клавиатуру
 function fillKeyboardConteiner(node) {
   
-    for(let i = 0; i < numbers.length; i+=1) {
-      const key = createDomNode(node, 'button', 'key keyboardContainer--numbers visible key--' + numbers[i][0]);
-      key.setAttribute('name', numbers[i][0]);
-      key.textContent = numbers[i][0];
-      node.append(key);
-    }
+  for(let i = 0; i < numbers.length; i+=1) {
+    const key = createDomNode(node, 'button', 'key keyboardContainer--numbers visible key--' + numbers[i]);
+    key.setAttribute('value', numbers[i]);
+    key.textContent = numbers[i];
+    node.append(key);
+  }
 
   for(let i = 0; i < letters.length; i+=1) {
-    const key = createDomNode(node, 'button', 'key keyboardContainer--letter key--' + letters[i][0]);
-    key.setAttribute('name', letters[i][0]);
-    key.textContent = letters[i][0];
+    const key = createDomNode(node, 'button', 'key keyboardContainer--letter key--' + letters[i]);
+    key.setAttribute('value', letters[i]);
+    key.textContent = letters[i];
     node.append(key);
   }
 };
 
-export {letters, numbers, levelsArray};
+export {letters, lettersKirilik, numbers, levelsArray};
 // console.log(numbers.length)
