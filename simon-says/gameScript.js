@@ -6,6 +6,7 @@ const numberElements = document.querySelectorAll('.keyboardContainer--numbers');
 const letterElements = document.querySelectorAll('.keyboardContainer--letter');
 const output = document.querySelector('.outputContainer--p');
 const buttonStart = document.querySelector('.buttonStart');
+const roundsLabel = document.querySelector('.roundsLabel');
 
 let round;
 let attempt;
@@ -15,7 +16,7 @@ let taskNoneChecked;
 let taskInputValue = '';
 
 startInitial();
-
+//начальные настройки
 function startInitial() {
   round = 1;
   attempt = 1;
@@ -27,11 +28,11 @@ function startInitial() {
     item.addEventListener('click', (e) => changeLevel(e))
   }
   buttonStart.addEventListener('click', () => {
-    makeRadioDisabled();
+    addRadioDisabled();
     startGame();
   });
 }
-
+//пользователь изменяет уровень сложности
 function changeLevel (event) {
   // console.log(event)
   getOffVisibility(keyElements);
@@ -87,20 +88,45 @@ function generateTask() {
   return result;
 }
 //реализуем невозможность изменять уровень сложности
-function makeRadioDisabled() {
+function addRadioDisabled() {
   // блокируем radio button
   for (let item of levelInputElements){
     item.disabled = true;
   }
 }
-//добавляем обработчик нажатия на клавишу
-function addKeyEvents(){
-  //добавляем события на кнопки
-  for (let item of keyElements) {
-    item.addEventListener('click', (e) => clickKeyElement(e.target.value));
+//возвращаем возможность изменять уровень сложности
+function removeRadioDisabled() {
+  // блокируем radio button
+  for (let item of levelInputElements){
+    item.disabled = false;
   }
 }
-//начинаем играть
+//добавляем обработчик нажатия на клавишу
+const virtualClickHandler = function (e) {
+  clickKeyElement(e.target.value);
+};
+const clickHandler = function (e) {
+  clickKeyElement(e.key.toUpperCase());
+};
+function addKeyEvents() {
+
+  //добавляем события для ввода
+  for (let item of keyElements) {
+    item.addEventListener('click', virtualClickHandler);
+  }
+
+  document.addEventListener('keyup', clickHandler);
+}
+//удаляем обработчик нажатия на клавищ
+function removeKeyEvents() {
+  //удаляем события ввода
+  for (let item of keyElements) {
+    item.removeEventListener('click',  virtualClickHandler);
+  }
+  document.removeEventListener('keyup', clickHandler);
+}
+
+//начинаем играть /нажали СТАРТ/
 function startGame() {
   round = 1;
   attempt = 1;
@@ -121,12 +147,12 @@ function startGame() {
   //ввод произведен
   // console.log(levelInputElements)
 }
-
+//демонстрация задания
 function showTask (task) {
   // console.log('show symbol:', task[0]);
   clickKey('.key--' + task[0], task);
 }
-
+//имитируем нажание клавиш для демонстрации задания
 function clickKey(className, task) {
   const element = document.querySelector(className);
   // console.log(element);
@@ -139,9 +165,9 @@ function clickKey(className, task) {
     else setTimeout(() => {addKeyEvents()}, 1000);
   }, 1000);
 }
-
+//обрабатываем событие ввода с клавиатур, валидный/невалидный ввод
 function clickKeyElement (value) {
-  console.log('clicked: ', value);
+  // console.log('clicked: ', value);
   switch (level) {
     case 1:
       if(numbers.includes(value)) checkInput (value);
@@ -161,41 +187,83 @@ function clickKeyElement (value) {
   }
   // console.log('input isn`t valid');
 }
-
+//ввод валидный -> теперь проверяем на соответствие заданию
 function checkInput (value) {
   if(!task) console.log('something goes wrong, I can`t find task');
   
-  console.log('проверяем ', value);
-  if (task[0] === value) {userMakeCorrectInput (value);}
-  else {userMakeMistake ();}
+  // console.log('проверяем ', value);
+  // if (task[taskInputValue.length] === value) {
+  // console.log('value:', value, 'task:', task, taskNoneChecked, taskNoneChecked[0] === value)
+  if (taskNoneChecked[0] === value) {
+    userMakeCorrectInput (value);
+  } else {
+    userMakeMistake ();
+  }
 }
-
+//обрабатываем ошибку валидного ввода
 function userMakeMistake () {
+  removeKeyEvents();
 
   if (attempt === 2) {
+    //истрачены все попытки
     output.classList.add('red');
     output.textContent = 'Game over!';
     setTimeout(() => {
       output.classList.remove('red');
-      // togo:удаляем события с кнопок
-      // togo:перезапускаем интерфейс
-
+      output.textContent = '';
+      removeRadioDisabled();
+      //перезапускаем интерфейс
+      startInitial();
     }, 2000);
   } else {
+    //вторая попытка
     attempt += 1;
     output.textContent = 'Be mindful! You have the last attempt.';
     output.classList.add('green');
     setTimeout(() => {
       output.classList.remove('green');
+      taskInputValue = '';
+      output.textContent = '';
       showTask(task);
     },2000);
   }
 }
-
+//обрабатываем успешный ввод
 function userMakeCorrectInput (value) {
+  //отображаем пользовательский ввод
   taskInputValue += value;
   output.textContent = taskInputValue;
+  taskNoneChecked = taskNoneChecked.substring(1);
+  // если введено не все задание
+  if(task !==taskInputValue) return;
+  // если введено все задание
+  removeKeyEvents();
   // togo: проверка на конец задания
+  if(round === 5) {
+    output.textContent = 'Congratulations! You win!';
+    output.classList.add('green');
+    setTimeout(() => {
+      output.classList.remove('green');
+      output.textContent = '';
+      removeRadioDisabled();
+      startInitial();
+    },2000);
+  }
+  else {
+    round += 1;
+    output.textContent = 'Next round...';
+    output.classList.add('green');
+    setTimeout(() => {
+      output.classList.remove('green');
+      output.textContent = '';
+      roundsLabel.textContent = `Round: ${round}/5\n Try: ${attempt}/2`;
+      taskInputValue = '';
+      task = generateTask();
+      taskNoneChecked = task;
+      showTask(task);
+    },2000);
+  }
+    
   // togo: проверка на следуюзую итерацию
   
 }

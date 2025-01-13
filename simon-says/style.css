@@ -6,6 +6,7 @@
 
 html {
   font-size: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .navigation, .input, .keyboard {
@@ -14,8 +15,37 @@ html {
   padding: 10px 50px;
 }
 
+.navigation{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.levels{
+  margin: 20px auto;
+
+}
+
+.levels--label{
+  margin: 10px auto;
+  font-size: 1.6rem;
+}
+
+.level--label{
+  font-size: 1.2rem;
+  margin: 20px 40px auto 5px;
+}
 .buttonReStart, .buttonRepeat, .buttonStart {
   display: none;
+}
+
+.output {
+  display: flex;
+  /* justify-content: center; */
+}
+
+.outputContainer--p {
+  margin: 0 auto;
 }
 
 .green {
