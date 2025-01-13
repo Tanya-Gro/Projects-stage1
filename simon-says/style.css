@@ -8,8 +8,39 @@ html {
   font-size: 10px;
 }
 
+.navigation, .input, .keyboard {
+  width: 700px;
+  margin: 0 auto;
+  padding: 10px 50px;
+}
+
+.buttonReStart, .buttonRepeat, .buttonStart {
+  display: none;
+}
+
 .key {
   display: none;
+  border-radius: 5px;
+  border: 2px solid #7dc1ee;
+  transition: box-shadow 350ms ease-in-out;
+  transition: border 350ms ease-in-out;
+  cursor: pointer;
+}
+
+.key.active {
+  border: 2px solid #146194;
+  box-shadow: rgba(20, 97, 148, 0.25) 0px 50px 100px -20px inset;
+  transition: border 350ms ease-in-out;
+}
+
+.keyboardContainer--numbers{
+  width: 8%;
+  margin: 5px;
+}
+
+.keyboardContainer--letter {
+  width: 6%;
+  margin: 3px;
 }
 
 .visible {

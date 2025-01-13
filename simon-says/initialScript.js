@@ -78,17 +78,15 @@ function fillLavelsConteiner(node) {
 function fillKeyboardConteiner(node) {
   
     for(let i = 0; i < numbers.length; i+=1) {
-      const key = createDomNode(node, 'button', 'key keyboardContainer--numbers visible');
+      const key = createDomNode(node, 'button', 'key keyboardContainer--numbers visible key--' + numbers[i][0]);
       key.setAttribute('name', numbers[i][0]);
-      key.setAttribute('id', numbers[i][0]);
       key.textContent = numbers[i][0];
       node.append(key);
     }
 
   for(let i = 0; i < letters.length; i+=1) {
-    const key = createDomNode(node, 'button', 'key keyboardContainer--letter');
+    const key = createDomNode(node, 'button', 'key keyboardContainer--letter key--' + letters[i][0]);
     key.setAttribute('name', letters[i][0]);
-    key.setAttribute('id', letters[i][0]);
     key.textContent = letters[i][0];
     node.append(key);
   }
