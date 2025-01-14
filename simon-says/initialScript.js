@@ -14,7 +14,7 @@ const levelsArray = ['Easy', 'Medium', 'Hard'];
   const levelsContainer = createDomNode(navigationContainer, 'div', 'levels');
   
   const roundsLabel = createDomNode(navigationContainer, 'p', 'roundsLabel');
-  roundsLabel.textContent = 'Round: 0/5\n Try: 1/2';
+  roundsLabel.textContent = 'Round: 1/5\n Try: 1/2';
   
   const buttonReStart = createDomNode(navigationContainer, 'button', 'button buttonReStart');
   buttonReStart.textContent = 'New game';
@@ -40,7 +40,7 @@ const levelsArray = ['Easy', 'Medium', 'Hard'];
   // добавляем уровни сложности
   fillLavelsConteiner(levelsContainer);
   // добавляем поле вывода
-  outputContainer.append(createDomNode(outputContainer, 'p', 'outputContainer--p'))
+  outputContainer.append(createDomNode(outputContainer, 'p', 'output--p'))
   // добавляем клавиатуру
   fillKeyboardConteiner(keyboardContainer);
   // appendModalElements();

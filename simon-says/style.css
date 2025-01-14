@@ -22,30 +22,60 @@ html {
 }
 
 .levels{
-  margin: 20px auto;
+  padding: 10px 50px;
+  margin: 0 auto;
+}
 
+.level--input:first-child{
+  margin-left: 40px;
+}
+
+.level--input{
+  vertical-align: text-bottom;
+  margin: auto 5px;
 }
 
 .levels--label{
-  margin: 10px auto;
-  font-size: 1.6rem;
+  margin: 20px auto;
+  font-size: 2.6rem;
+  text-align: center;
 }
 
 .level--label{
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   margin: 20px 40px auto 5px;
 }
+
+.roundsLabel {
+  font-size: 2.0rem;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 .buttonReStart, .buttonRepeat, .buttonStart {
   display: none;
+  width: 100px;
+  height: 30px;
+  margin: 0 auto;
 }
 
 .output {
+  height: 30px;
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
+  align-items: center;
 }
 
-.outputContainer--p {
+.output--p {
   margin: 0 auto;
+  font-size: 1.6rem;
+  color: rgb(27, 55, 84);
+}
+
+.keyboard{
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
 }
 
 .green {
@@ -59,6 +89,7 @@ html {
 .key {
   display: none;
   border-radius: 5px;
+  height: 30px;
   border: 2px solid #7dc1ee;
   transition: box-shadow 350ms ease-in-out;
   transition: border 350ms ease-in-out;

@@ -4,7 +4,7 @@ const levelInputElements = document.querySelectorAll('.level--input');
 const keyElements = document.querySelectorAll('.key');
 const numberElements = document.querySelectorAll('.keyboardContainer--numbers');
 const letterElements = document.querySelectorAll('.keyboardContainer--letter');
-const output = document.querySelector('.outputContainer--p');
+const output = document.querySelector('.output--p');
 const buttonStart = document.querySelector('.buttonStart');
 const roundsLabel = document.querySelector('.roundsLabel');
 
@@ -15,7 +15,17 @@ let task;
 let taskNoneChecked;
 let taskInputValue = '';
 
-startInitial();
+(function() {
+  for(let item of levelInputElements) {
+    item.addEventListener('click', (e) => changeLevel(e))
+  }
+  buttonStart.addEventListener('click', () => {
+    addRadioDisabled();
+    startGame();
+  });
+
+  startInitial();
+})();
 //начальные настройки
 function startInitial() {
   round = 1;
@@ -24,13 +34,7 @@ function startInitial() {
   taskNoneChecked = '';
   taskInputValue = '';
 
-  for(let item of levelInputElements) {
-    item.addEventListener('click', (e) => changeLevel(e))
-  }
-  buttonStart.addEventListener('click', () => {
-    addRadioDisabled();
-    startGame();
-  });
+  roundsLabel.textContent = `Round: ${round}/5\n Try: ${attempt}/2`;
 }
 //пользователь изменяет уровень сложности
 function changeLevel (event) {
@@ -214,7 +218,7 @@ function userMakeMistake () {
       removeRadioDisabled();
       //перезапускаем интерфейс
       startInitial();
-    }, 2000);
+    }, 1500);
   } else {
     //вторая попытка
     attempt += 1;
@@ -222,6 +226,8 @@ function userMakeMistake () {
     output.classList.add('green');
     setTimeout(() => {
       output.classList.remove('green');
+      roundsLabel.textContent = `Round: ${round}/5\n Try: ${attempt}/2`;
+      taskNoneChecked = task;
       taskInputValue = '';
       output.textContent = '';
       showTask(task);
