@@ -6,7 +6,15 @@ const numberElements = document.querySelectorAll('.keyboardContainer--numbers');
 const letterElements = document.querySelectorAll('.keyboardContainer--letter');
 const output = document.querySelector('.output--p');
 const buttonStart = document.querySelector('.buttonStart');
+const buttonReStart = document.querySelector('.buttonReStart');
+const buttonRepeat = document.querySelector('.buttonRepeat');
 const roundsLabel = document.querySelector('.roundsLabel');
+const virtualClickHandler = function (e) {
+  clickKeyElement(e.target.value);
+};
+const clickHandler = function (e) {
+  clickKeyElement(e.key.toUpperCase());
+};
 
 let round;
 let attempt;
@@ -19,12 +27,23 @@ let taskInputValue = '';
   for(let item of levelInputElements) {
     item.addEventListener('click', (e) => changeLevel(e))
   }
+
   buttonStart.addEventListener('click', () => {
     addRadioDisabled();
     startGame();
   });
 
+  buttonReStart.addEventListener('click', () => {
+    removeRadioDisabled();
+    startInitial();
+  });
+
+  buttonRepeat.addEventListener('click', () => {
+    showTask(task);
+  });
+
   startInitial();
+
 })();
 //начальные настройки
 function startInitial() {
@@ -33,8 +52,12 @@ function startInitial() {
   level = 1;
   taskNoneChecked = '';
   taskInputValue = '';
-
-  roundsLabel.textContent = `Round: ${round}/5\n Try: ${attempt}/2`;
+  if(!buttonStart.classList.contains('visible')) {
+    buttonStart.classList.add('visible');
+    buttonReStart.classList.remove('visible');
+    buttonRepeat.classList.remove('visible');
+  }
+  roundsLabel.textContent = `Round: ${round}/5`;
 }
 //пользователь изменяет уровень сложности
 function changeLevel (event) {
@@ -106,12 +129,6 @@ function removeRadioDisabled() {
   }
 }
 //добавляем обработчик нажатия на клавишу
-const virtualClickHandler = function (e) {
-  clickKeyElement(e.target.value);
-};
-const clickHandler = function (e) {
-  clickKeyElement(e.key.toUpperCase());
-};
 function addKeyEvents() {
 
   //добавляем события для ввода
@@ -136,20 +153,15 @@ function startGame() {
   attempt = 1;
   task = '';
   // console.log('start game');
-
+  buttonStart.classList.remove('visible');
+  buttonReStart.classList.add('visible');
+  buttonRepeat.classList.add('visible');
+  buttonRepeat.disabled = true;
   // демонстрация задания
   task = generateTask();
   taskNoneChecked = task;
-  // добавляем блокировщик любого события
 
   showTask(task);
-
-  //добавлием события на ввод с клавы
-
-  //одижаем пользовательского ввода
-  
-  //ввод произведен
-  // console.log(levelInputElements)
 }
 //демонстрация задания
 function showTask (task) {
@@ -159,15 +171,17 @@ function showTask (task) {
 //имитируем нажание клавиш для демонстрации задания
 function clickKey(className, task) {
   const element = document.querySelector(className);
-  // console.log(element);
   element.classList.add('active');
   setTimeout(() => {
     element.classList.remove('active');
     if(task.substring(1)) setTimeout(() => {
       showTask(task.substring(1));
     }, 500);
-    else setTimeout(() => {addKeyEvents()}, 1000);
-  }, 1000);
+    else setTimeout(() => {
+      addKeyEvents();
+      buttonRepeat.disabled = false;
+    }, 500);
+  }, 500);
 }
 //обрабатываем событие ввода с клавиатур, валидный/невалидный ввод
 function clickKeyElement (value) {
@@ -226,12 +240,12 @@ function userMakeMistake () {
     output.classList.add('green');
     setTimeout(() => {
       output.classList.remove('green');
-      roundsLabel.textContent = `Round: ${round}/5\n Try: ${attempt}/2`;
+      roundsLabel.textContent = `Round: ${round}/5`;
       taskNoneChecked = task;
       taskInputValue = '';
       output.textContent = '';
       showTask(task);
-    },2000);
+    },1500);
   }
 }
 //обрабатываем успешный ввод
@@ -262,12 +276,12 @@ function userMakeCorrectInput (value) {
     setTimeout(() => {
       output.classList.remove('green');
       output.textContent = '';
-      roundsLabel.textContent = `Round: ${round}/5\n Try: ${attempt}/2`;
+      roundsLabel.textContent = `Round: ${round}/5`;
       taskInputValue = '';
       task = generateTask();
       taskNoneChecked = task;
       showTask(task);
-    },2000);
+    },1000);
   }
     
   // togo: проверка на следуюзую итерацию

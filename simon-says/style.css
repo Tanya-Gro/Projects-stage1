@@ -7,6 +7,7 @@
 html {
   font-size: 10px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: rgba(120, 118, 97, 0.2);
 }
 
 .navigation, .input, .keyboard {
@@ -52,13 +53,25 @@ html {
   padding: 20px;
 }
 
+.buttomContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
 .buttonReStart, .buttonRepeat, .buttonStart {
   display: none;
-  width: 100px;
-  height: 30px;
-  margin: 0 auto;
+  width: 150px;
+  height: 40px;
+  margin: 0 10px;
+  border-radius: 5px;
+  border: 2px solid rgb(170, 168, 188);
+  cursor: pointer;
+  color: #154c71;
+  font-size: 1.4rem;
 }
-
+.buttonStart{
+  font-size: 1.6rem;
+}
 .output {
   height: 30px;
   display: flex;
@@ -90,12 +103,18 @@ flex-wrap: wrap;
   display: none;
   border-radius: 5px;
   height: 30px;
-  border: 2px solid #7dc1ee;
+  border: 2px solid #9dc6e1;
   transition: box-shadow 350ms ease-in-out;
-  transition: border 350ms ease-in-out;
+  transition: background-color 350ms ease;
   cursor: pointer;
 }
-
+.key:focus{
+  border: 2px solid #5caee4;
+}
+.key:active{
+  background-color: #6b97b4;
+}
+/* .key: */
 .key.active {
   border: 2px solid #146194;
   box-shadow: rgba(20, 97, 148, 0.25) 0px 50px 100px -20px inset;

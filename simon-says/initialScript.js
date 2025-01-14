@@ -14,15 +14,16 @@ const levelsArray = ['Easy', 'Medium', 'Hard'];
   const levelsContainer = createDomNode(navigationContainer, 'div', 'levels');
   
   const roundsLabel = createDomNode(navigationContainer, 'p', 'roundsLabel');
-  roundsLabel.textContent = 'Round: 1/5\n Try: 1/2';
+  roundsLabel.textContent = 'Round: 1/5';
   
-  const buttonReStart = createDomNode(navigationContainer, 'button', 'button buttonReStart');
+  const buttomContainer = createDomNode(navigationContainer, 'div', 'buttomContainer');
+  const buttonReStart = createDomNode(buttomContainer, 'button', 'button buttonReStart');
   buttonReStart.textContent = 'New game';
   
-  const buttonRepeat = createDomNode(navigationContainer, 'button', 'button buttonRepeat');
+  const buttonRepeat = createDomNode(buttomContainer, 'button', 'button buttonRepeat');
   buttonRepeat.textContent = 'Repeat the sequence';
 
-  const buttonStart = createDomNode(navigationContainer, 'button', 'button buttonStart active visible');
+  const buttonStart = createDomNode(buttomContainer, 'button', 'button buttonStart active visible');
   buttonStart.textContent = 'Start';
   
   const outputContainer = createDomNode(bodyElement, 'div', 'output');
@@ -31,9 +32,10 @@ const levelsArray = ['Easy', 'Medium', 'Hard'];
   bodyElement.append(navigationContainer);
   navigationContainer.append(levelsContainer);
   navigationContainer.append(roundsLabel);
-  navigationContainer.append(buttonReStart);
-  navigationContainer.append(buttonRepeat);
-  navigationContainer.append(buttonStart);
+  navigationContainer.append(buttomContainer);
+  buttomContainer.append(buttonReStart);
+  buttomContainer.append(buttonRepeat);
+  buttomContainer.append(buttonStart);
   bodyElement.append(outputContainer);
   bodyElement.append(keyboardContainer);
 
