@@ -22,6 +22,7 @@ let level;
 let task;
 let taskNoneChecked;
 let taskInputValue = '';
+let countRepeat;
 
 (function() {
   for(let item of levelInputElements) {
@@ -39,8 +40,10 @@ let taskInputValue = '';
   });
 
   buttonRepeat.addEventListener('click', () => {
-    buttonRepeat.disabled = true;
-      showTask(task);
+    if(countRepeat <= 2) buttonRepeat.disabled = true;
+    console.log(countRepeat);
+    countRepeat += 1;
+    showTask(task);
   });
 
   startInitial();
@@ -51,6 +54,7 @@ function startInitial() {
   round = 1;
   attempt = 1;
   level = 1;
+  countRepeat = 1;
   taskNoneChecked = '';
   taskInputValue = '';
   if(!buttonStart.classList.contains('visible')) {
@@ -97,6 +101,7 @@ function getOnVisibility (NodeList) {
 }
 //генерируем задание
 function generateTask() {
+  countRepeat = 1;
   let result = '';
   let countSymbols = level === 1 ? numbers.length : level === 3 ? numbers.length + letters.length : letters.length;
   let randomNum;
@@ -147,11 +152,11 @@ function removeKeyEvents() {
   }
   document.removeEventListener('keyup', clickHandler);
 }
-
 //начинаем играть /нажали СТАРТ/
 function startGame() {
   round = 1;
   attempt = 1;
+  countRepeat = 1;
   task = '';
   // console.log('start game');
   buttonStart.classList.remove('visible');
@@ -180,7 +185,7 @@ function clickKey(className, task) {
     }, 500);
     else setTimeout(() => {
       addKeyEvents();
-      buttonRepeat.disabled = false;
+      if(countRepeat < 2) buttonRepeat.disabled = false;
     }, 700);
   }, 500);
 }
