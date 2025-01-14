@@ -59,7 +59,7 @@ html {
   flex-direction: row;
 }
 
-.buttonReStart, .buttonRepeat, .buttonStart {
+.buttonReStart, .buttonRepeat, .buttonStart, .buttonNext {
   display: none;
   width: 150px;
   height: 40px;
@@ -71,7 +71,7 @@ html {
   font-size: 1.4rem;
 }
 
-.buttonRepeat:disabled {
+.buttonRepeat:disabled, .buttonReStart:disabled {
   border: 2px solid rgb(190, 188, 203);
   cursor:auto;
   color: #516d80;

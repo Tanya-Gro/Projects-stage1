@@ -21,6 +21,9 @@ const levelsArray = ['Easy', 'Medium', 'Hard'];
   const buttonRepeat = createDomNode(buttomContainer, 'button', 'button buttonRepeat');
   buttonRepeat.textContent = 'Repeat the sequence';
 
+  const buttonNext = createDomNode(buttomContainer, 'button', 'button buttonNext');
+  buttonNext.textContent = 'Next';
+
   const buttonStart = createDomNode(buttomContainer, 'button', 'button buttonStart active visible');
   buttonStart.textContent = 'Start';
   
@@ -33,6 +36,7 @@ const levelsArray = ['Easy', 'Medium', 'Hard'];
   navigationContainer.append(buttomContainer);
   buttomContainer.append(buttonReStart);
   buttomContainer.append(buttonRepeat);
+  buttomContainer.append(buttonNext);
   buttomContainer.append(buttonStart);
   bodyElement.append(outputContainer);
   bodyElement.append(keyboardContainer);
