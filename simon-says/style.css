@@ -58,17 +58,25 @@ html {
   justify-content: center;
   flex-direction: row;
 }
+
 .buttonReStart, .buttonRepeat, .buttonStart {
   display: none;
   width: 150px;
   height: 40px;
   margin: 0 10px;
   border-radius: 5px;
-  border: 2px solid rgb(170, 168, 188);
+  border: 2px solid rgb(117, 115, 143);
   cursor: pointer;
-  color: #154c71;
+  color: rgb(42, 38, 86);
   font-size: 1.4rem;
 }
+
+.buttonRepeat:disabled {
+  border: 2px solid rgb(190, 188, 203);
+  cursor:auto;
+  color: #516d80;
+}
+
 .buttonStart{
   font-size: 1.6rem;
 }
@@ -107,6 +115,7 @@ flex-wrap: wrap;
   transition: box-shadow 350ms ease-in-out;
   transition: background-color 350ms ease;
   cursor: pointer;
+  font-size: 1.6rem;
 }
 .key:focus{
   border: 2px solid #5caee4;
@@ -134,4 +143,3 @@ flex-wrap: wrap;
 .visible {
   display: inline-block;
 }
-

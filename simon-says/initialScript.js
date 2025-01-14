@@ -1,8 +1,6 @@
 const letters = 'QWERTYUIOPASDFGHJKLZXCVBNM'.split('');
 const lettersKirilik = 'ЙЦУКЕНГШЩЗФЫВАПРОЛДЯЧСМИТЬ'.split('');
-// const letters = [['A', 'Ф'],['B', 'И'],['C', 'С'],['D', 'В'],['E', 'У'],['F', 'А'],['G', 'П'],['H', 'Р'],['I', 'Ш'],['J', 'О'],['K', 'Л'],['L', 'Д'],['M', 'Ь'],['N', 'Т'],['O', 'Щ'],['P', 'З'],['Q', 'Й'],['R', 'К'],['S', 'Ы'],['T', 'Е'],['U', 'Г'],['V', 'М'],['W', 'Ц'],['Z', 'Я'],['Y', 'Н'],['Z', 'Я']];
 const numbers = '0123456789'.split('');
-// const numbers = [['0', ')'],['1', '!'],['2', '@'],['3', '#'],['4', '$'],['5', '%'],['6', '^'],['7', '&'],['8', '*'],['9', '(']];
 //названия уровней д.б. уникальны
 const levelsArray = ['Easy', 'Medium', 'Hard'];
 
@@ -47,14 +45,12 @@ const levelsArray = ['Easy', 'Medium', 'Hard'];
   fillKeyboardConteiner(keyboardContainer);
   // appendModalElements();
 })();
-
 //создаем элементы
 function createDomNode(node, element, classes) {
   node = document.createElement(element);
   node.className = classes;
   return node;
 };
-
 // добавляем уровни сложности
 function fillLavelsConteiner(node) {
   const levetsLabel = createDomNode(node, 'legend', 'levels--label');
@@ -78,7 +74,6 @@ function fillLavelsConteiner(node) {
     node.append(levelLabelElement);
   }
 }
-
 // добавляем клавиатуру
 function fillKeyboardConteiner(node) {
   
@@ -96,6 +91,5 @@ function fillKeyboardConteiner(node) {
     node.append(key);
   }
 };
-
 export {letters, lettersKirilik, numbers, levelsArray};
 // console.log(numbers.length)

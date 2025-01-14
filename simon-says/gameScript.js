@@ -39,7 +39,8 @@ let taskInputValue = '';
   });
 
   buttonRepeat.addEventListener('click', () => {
-    showTask(task);
+    buttonRepeat.disabled = true;
+      showTask(task);
   });
 
   startInitial();
@@ -180,7 +181,7 @@ function clickKey(className, task) {
     else setTimeout(() => {
       addKeyEvents();
       buttonRepeat.disabled = false;
-    }, 500);
+    }, 700);
   }, 500);
 }
 //обрабатываем событие ввода с клавиатур, валидный/невалидный ввод
