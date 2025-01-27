@@ -29,6 +29,7 @@ const settings = {
     this.taskNoneChecked = this.task;
     this.taskInputValue ='';
     output.textContent = '';
+    if (roundsLabel.classList.contains('visible')) roundsLabel.classList.remove('visible');
     roundsLabel.textContent = `Round: ${this.round}/5`;
   },
   'virtualClickHandler' : function (e) {
@@ -183,6 +184,7 @@ function removeKeyEvents() {
 }
 //начинаем играть /нажали СТАРТ/
 function startGame() {
+  roundsLabel.classList.add('visible');
   settings.reset();
   buttonStart.classList.remove('visible');
   buttonReStart.classList.add('visible');

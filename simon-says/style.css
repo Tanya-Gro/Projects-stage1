@@ -19,7 +19,7 @@ html {
   justify-content: center;
 }
 .levels{
-  padding: 10px 50px;
+  padding: 20px 50px;
   margin: 0 auto;
 }
 .level--input:first-child{
@@ -39,6 +39,7 @@ html {
   margin: 20px 40px auto 5px;
 }
 .roundsLabel {
+  display: none;
   font-size: 2.0rem;
   margin: 0 auto;
   padding: 20px;
