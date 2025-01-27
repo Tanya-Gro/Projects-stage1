@@ -11,7 +11,7 @@ const levelsArray = ['Easy', 'Medium', 'Hard'];
   const navigationContainer = createDomNode(bodyElement, 'div', 'navigation');
   const levelsContainer = createDomNode(navigationContainer, 'div', 'levels');
   
-  const roundsLabel = createDomNode(navigationContainer, 'p', 'roundsLabel');
+  const roundsLabel = createDomNode(navigationContainer, 'p', 'roundsLabel roundsLabel--disable');
   roundsLabel.textContent = 'Round: 1/5';
   
   const buttomContainer = createDomNode(navigationContainer, 'div', 'buttomContainer');

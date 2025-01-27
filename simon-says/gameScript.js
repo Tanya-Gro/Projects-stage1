@@ -25,12 +25,12 @@ const settings = {
       this.attempt = 1;
       this.task = '';
       this.countRepeat = 1;
+      if (!roundsLabel.classList.contains('roundsLabel--disable')) roundsLabel.classList.add('roundsLabel--disable');
     }
+    roundsLabel.textContent = `Round: ${this.round}/5`;
     this.taskNoneChecked = this.task;
     this.taskInputValue ='';
     output.textContent = '';
-    if (roundsLabel.classList.contains('visible')) roundsLabel.classList.remove('visible');
-    roundsLabel.textContent = `Round: ${this.round}/5`;
   },
   'virtualClickHandler' : function (e) {
     clickKeyElement(e.target.value)
@@ -184,8 +184,8 @@ function removeKeyEvents() {
 }
 //начинаем играть /нажали СТАРТ/
 function startGame() {
-  roundsLabel.classList.add('visible');
   settings.reset();
+  roundsLabel.classList.remove('roundsLabel--disable');
   buttonStart.classList.remove('visible');
   buttonReStart.classList.add('visible');
   buttonRepeat.classList.add('visible');
