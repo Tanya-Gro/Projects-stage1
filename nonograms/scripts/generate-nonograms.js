@@ -1,4 +1,5 @@
 import nonograms_data from './data.json' with { type: 'json' }
+import {InitialElement} from "./initial-class.js";
 
 // console.log(nonograms_data);
 const namesSmallNonograms = nonograms_data.small;
@@ -9,11 +10,14 @@ const namesLargeNonograms = nonograms_data.large;
 class SetNonogramm {
   constructor (level = 'small', numberNonogramm = 0) {
     this.level = level;
-    this.numberNonogramm = numberNonogramm;
+    this.numberNonogramm = +numberNonogramm;
     this.nonogrammName = nonograms_data[this.level][this.numberNonogramm];
     this.nanoramData = nonograms_data[this.nonogrammName];
     this.rows = this.generateRows();
     this.colums = this.generateCollums();
+    this.fillCollums();
+    this.fillRows();
+    this.fillBody();
   }
   generateRows() {
     const rows = new Array(this.nanoramData.length).fill(new Array());
@@ -57,6 +61,41 @@ class SetNonogramm {
       "rows":this.rows,
       "collums":this.colums,
     };
+  }
+  fillCollums(){
+    console.log(this.colums);
+    const columsContainerElement = document.querySelector('.nanogram--colums-container');
+    for(let colum of this.colums) {
+      const nonogramCollumsContainerElement = new InitialElement(columsContainerElement, "div", "nanogram--colum").returnChild();
+      for(let item of colum) {
+        const nonogramCollumSpanElement = new InitialElement(nonogramCollumsContainerElement, "span", "nanogram--header-column").returnChild();
+        nonogramCollumSpanElement.textContent = item;
+      }
+    }
+  }
+  fillRows() {
+    console.log(this.rows);
+    const rowsContainerElement = document.querySelector('.nanogram--rows-container');
+    for(let row of this.rows) {
+      const nonogramRowsContainerElement = new InitialElement(rowsContainerElement, "div", "nanogram--row").returnChild();
+      for(let item of row) {
+        const nonogramRowSpanElement = new InitialElement(nonogramRowsContainerElement, "span", "nanogram--header-row").returnChild();
+        nonogramRowSpanElement.textContent = item;
+      }
+    }
+  }
+  fillBody() {
+    console.log(this.nanoramData);
+    const dataContainerElement = document.querySelector('.nanogram--body-container');
+    dataContainerElement.style.gridTemplateColumns = `repeat(${this.nanoramData[0].length}, 1fr)`;
+    for(let i = 0; i < this.nanoramData.length; i += 1) {
+      // const nonogramDataContainerElement = new InitialElement(dataContainerElement, "div", "nanogram--row-data").returnChild();
+      for(let j = 0; j < this.nanoramData[i].length; j += 1) {
+        const nonogramDataButtonElement = new InitialElement(dataContainerElement, "button", "nanogram--row nanogram--column nanogram--data-button").returnChild();
+        nonogramDataButtonElement.setAttribute('data-row', i);
+        nonogramDataButtonElement.setAttribute('data-column', j);
+      }
+    }
   }
 }
 
