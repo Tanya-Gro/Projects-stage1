@@ -16,6 +16,57 @@ body {
   background-color: var(--primary-color);
 
 }
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.header--logoImage {
+  width: 80px;
+  padding-right: 30px;
+}
+
+.navigation--main {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  list-style-type: none;
+}
+
+.navigation--main-item {
+  margin: 10px 30px;
+  padding: 10px 30px;
+  border-radius: 5px;
+  background-color: rgba(128, 128, 128, 0.3);
+  cursor: pointer;
+  min-width: 170px;
+  text-align: center;
+}
+.submenu {
+  display: none;
+  list-style-type: none;
+  list-style-type: none;
+  position: absolute;
+  background-color: rgba(209, 209, 209, 0.9);
+  border-radius: 5px;
+  font-size: 0.9rem;
+  min-width: 140px;
+}
+
+.submenu.visible {
+  display: block;
+}
+.smallItem, .mediumItem, .largeItem {
+  padding: 5px 10px;
+  margin: 10px 17px;
+  text-align: center;
+  cursor: pointer;
+  background-color: rgba(128, 128, 128, 0.4);
+  border-radius: 5px;
+}
+
 .timer {
   padding: 20px;
   display: inline-block;
@@ -42,6 +93,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: end;
+  background-color: rgba(128, 128, 128, 0.13);
 }
 .nanogram--colum{
   display: flex;
@@ -62,6 +114,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: end;
+  background-color: rgba(128, 128, 128, 0.13);
 }
 .nanogram--row{
   display: flex;
