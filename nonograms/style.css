@@ -53,6 +53,7 @@ header {
   border-radius: 5px;
   font-size: 0.9rem;
   min-width: 140px;
+  cursor: auto;
 }
 
 .submenu.visible {
@@ -80,53 +81,87 @@ header {
 .nanogram--wrapper {
   display: grid;
   grid-template-columns: max-content max-content;
-  border: 1px solid gray;
+  border: 3px solid gray;
   margin: 0 auto;
 }
 .nanogram--wrapper::before {
   content: '';
   display: inline-block;
   background-color: rgba(128, 128, 128, 0.5);
+  border-right: 3px solid gray;
+  border-bottom: 3px solid gray;
 }
 
 .nanogram--colums-container {
   display: flex;
   flex-direction: row;
-  align-items: end;
+  /* align-items: end; */
   background-color: rgba(128, 128, 128, 0.13);
+  border-bottom: 3px solid gray;
 }
-.nanogram--colum{
+.nanogram--column:nth-child(5n):not(:last-child){
+  border-right: 3px solid gray;
+  }
+
+.nanogram--column:not(:last-child){
+  border-right: 1px solid gray;
+}
+.nanogram--column{
   display: flex;
   flex-direction: column;
-  align-items: end;
+  /* align-items: end; */
+  justify-content: end;
+  height: 100%;
 }
+/* .nanogram--header-column {
+  border-top: 1px solid gray;
+} */
+/* .nanogram--header-column, .nanogram--header-row {
+  border-left: 1px solid gray;
+} */
 .nanogram--header-column, .nanogram--header-row {
   display: inline-block;
-  border: 1px solid gray;
   width: 33px;
   height: 33px;
   text-align: center;
+  align-content: center;
 }
-.nanogram--header-column:not(:first-child){
+/* .nanogram--header-column:not(:first-child){
   border-top: 0px;
-}
+} */
 .nanogram--rows-container {
   display: flex;
   flex-direction: column;
   align-items: end;
   background-color: rgba(128, 128, 128, 0.13);
+  border-right: 3px solid gray;
+}
+.nanogram--row:nth-child(5n):not(:last-child){
+border-bottom: 3px solid gray;
+}
+.nanogram--row:not(:last-child){
+  border-bottom: 1px solid gray;
 }
 .nanogram--row{
   display: flex;
   flex-direction: row;
-  align-items: end;
+  justify-content: end;
+  width: 100%;
+  /* align-items: end; */
 }
-.nanogram--body-container{
+/* .nanogram--body-container{
   display: grid;
+} */
+.nanogram--data-button:not(:last-child) {
+  border-right: 1px solid gray;
 }
 .nanogram--data-button {
-  width: 33px;
+  /* width: 34px; */
+  width: 34px;
   height: 33px;
   display: inline-block;
-  border: 1px solid grey;
+  border: 0px;
+}
+.nanogram--body-container .nanogram--row{
+  justify-content: space-around;
 }
