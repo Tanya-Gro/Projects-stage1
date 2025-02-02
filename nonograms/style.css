@@ -161,6 +161,8 @@ border-bottom: 3px solid gray;
   height: 33px;
   display: inline-block;
   border: 0px;
+  font-size: 2rem;
+  line-height: 2rem;
 }
 .nanogram--body-container .nanogram--row{
   justify-content: space-around;

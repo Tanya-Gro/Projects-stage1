@@ -13,11 +13,13 @@ class SetNonogramm {
     this.numberNonogramm = +numberNonogramm;
     this.nonogrammName = nonograms_data[this.level][this.numberNonogramm];
     this.nanoramData = nonograms_data[this.nonogrammName];
+    this.inputData = this.nanoramData.map(arr => arr.map(item => 0))
     this.rows = this.generateRows();
     this.colums = this.generateCollums();
     this.fillCollums();
     this.fillRows();
     this.fillBody();
+    // console.log(this.nanoramData, this.rows,this.colums,this.inputData)
   }
   generateRows() {
     const rows = new Array(this.nanoramData.length).fill(new Array());
@@ -63,7 +65,7 @@ class SetNonogramm {
     };
   }
   fillCollums(){
-    console.log(this.colums);
+    // console.log(this.colums);
     const columsContainerElement = document.querySelector('.nanogram--colums-container');
     columsContainerElement.innerHTML = '';
     for(let colum of this.colums) {
@@ -75,7 +77,7 @@ class SetNonogramm {
     }
   }
   fillRows() {
-    console.log(this.rows);
+    // console.log(this.rows);
     const rowsContainerElement = document.querySelector('.nanogram--rows-container');
     rowsContainerElement.innerHTML = '';
     for(let row of this.rows) {
@@ -87,10 +89,9 @@ class SetNonogramm {
     }
   }
   fillBody() {
-    console.log(this.nanoramData);
+    // console.log(this.nanoramData);
     const dataContainerElement = document.querySelector('.nanogram--body-container');
     dataContainerElement.innerHTML = '';
-    // dataContainerElement.style.gridTemplateColumns = `repeat(${this.nanoramData[0].length}, 1fr)`;
     for(let i = 0; i < this.nanoramData.length; i += 1) {
       // const nonogramDataContainerElement = new InitialElement(dataContainerElement, "div", "nanogram--row-data").returnChild();
       const nonogramDataRowElement = new InitialElement(dataContainerElement, "div", "nanogram--row").returnChild();
@@ -98,9 +99,45 @@ class SetNonogramm {
         const nonogramDataButtonElement = new InitialElement(nonogramDataRowElement, "button", "nanogram--column nanogram--data-button").returnChild();
         nonogramDataButtonElement.setAttribute('data-row', i);
         nonogramDataButtonElement.setAttribute('data-column', j);
+        nonogramDataButtonElement.addEventListener('click', (e) => this.byClickCell(e, 'left'));
+        nonogramDataButtonElement.addEventListener('contextmenu', (e) => this.byClickCell(e, 'right'));
       }
     }
   }
+  byClickCell(e, mouseButton){
+    // console.log(inputData,);
+    const buttonElement = e.target;
+    // console.log(e.target, this.inputData)
+    console.log(this.inputData)
+    const row = +buttonElement.getAttribute('data-row');
+    const coll = +buttonElement.getAttribute('data-column');
+switch(mouseButton){
+  case 'left':
+    if(this.inputData[row][coll] === 1) {
+      buttonElement.style.backgroundColor = 'var(--primary-color)';
+      this.inputData[row][coll] = 0;
+    } else {
+      buttonElement.style.backgroundColor = 'black';
+      this.inputData[row][coll] = 1;
+      buttonElement.textContent = '';
+    }
+    break;
+  case 'right':
+    if(this.inputData[row][coll] === -1){
+      buttonElement.textContent = '';
+      this.inputData[row][coll] = 0;
+    } else {
+      // if (this.inputData[row][coll] === 1) buttonElement.style.backgroundColor = 'var(--primary-color)';
+      buttonElement.style.backgroundColor = 'var(--primary-color)';
+      buttonElement.textContent = '×';
+      this.inputData[row][coll] = -1;
+    }
+    e.preventDefault();
+    break;
+  }
+    // console.log(row, coll)
+  }
+
 }
 
 export {namesSmallNonograms, namesMediumNonograms, namesLargeNonograms, SetNonogramm};
