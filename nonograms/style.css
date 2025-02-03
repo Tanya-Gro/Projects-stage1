@@ -1,5 +1,9 @@
 :root {
   --primary-color: rgba(239, 242, 239, 1);
+  --text-color: #386C38;
+  --font-color-dark: rgba(167.19, 203.45, 167.19, 0.6); 
+  --font-color-light: rgba(113, 157, 113, 0.1); 
+  --colored-cell: black; 
 }
 * {
 margin: 0;
@@ -9,6 +13,7 @@ box-sizing: border-box;
 
 html {
   font-size: 20px;
+  color: var(--text-color);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -39,7 +44,9 @@ header {
   margin: 10px 30px;
   padding: 10px 30px;
   border-radius: 5px;
-  background-color: rgba(128, 128, 128, 0.3);
+  border: 2px solid var(--text-color);
+  background-color: var(--font-color-dark);
+  color: var(--text-color);
   cursor: pointer;
   min-width: 170px;
   text-align: center;
@@ -49,7 +56,8 @@ header {
   list-style-type: none;
   list-style-type: none;
   position: absolute;
-  background-color: rgba(209, 209, 209, 0.9);
+  /* background-color: rgba(209, 209, 209, 0.9); */
+  background-color: var(--font-color-dark);
   border-radius: 5px;
   font-size: 0.9rem;
   min-width: 140px;
@@ -64,8 +72,9 @@ header {
   margin: 10px 17px;
   text-align: center;
   cursor: pointer;
-  background-color: rgba(128, 128, 128, 0.4);
+  background-color: var(--font-color-dark);
   border-radius: 5px;
+  border: 1px solid var(--text-color);
 }
 
 .timer {
@@ -87,7 +96,7 @@ header {
 .nanogram--wrapper::before {
   content: '';
   display: inline-block;
-  background-color: rgba(128, 128, 128, 0.5);
+  background-color: var(--font-color-dark);
   border-right: 3px solid gray;
   border-bottom: 3px solid gray;
 }
@@ -96,7 +105,7 @@ header {
   display: flex;
   flex-direction: row;
   /* align-items: end; */
-  background-color: rgba(128, 128, 128, 0.13);
+  background-color: var(--font-color-light);
   border-bottom: 3px solid gray;
 }
 .nanogram--column:nth-child(5n):not(:last-child){
@@ -133,7 +142,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: end;
-  background-color: rgba(128, 128, 128, 0.13);
+  background-color: var(--font-color-light);
   border-right: 3px solid gray;
 }
 .nanogram--row:nth-child(5n):not(:last-child){
@@ -163,6 +172,11 @@ border-bottom: 3px solid gray;
   border: 0px;
   font-size: 2rem;
   line-height: 2rem;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+.nanogram--data-button.button--colored {
+  background-color: var(--colored-cell);
 }
 .nanogram--body-container .nanogram--row{
   justify-content: space-around;
@@ -177,9 +191,9 @@ border-bottom: 3px solid gray;
 .options--button-sound{
   height: 35px;
   min-width: 40px;
-  margin: 0;
+  margin: 10px 10px;
   padding: 2px;
-  border: 3px solid rgb(118, 118, 118);
+  border: 2px solid var(--text-color);
   /* background-color: white; */
 }
 
@@ -190,7 +204,7 @@ border-bottom: 3px solid gray;
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(128, 128, 128, 0.3);
+  background-color: var(--font-color-dark);
   /* display: flex; */
   align-items: center;
   justify-content: center;
@@ -208,7 +222,7 @@ border-bottom: 3px solid gray;
   justify-content: center;
   padding: 50px 30px;
   border-radius: 10px;
-  border: 2px solid rgba(128, 128, 128, 1);
+  border: 2px solid var(--font-color-light);
 
 }
 

@@ -85,11 +85,18 @@ navigationItemLargeElement.addEventListener('click', () => {
 const navigationItemRandomElement = new InitialElement(navigationElement, "li", "navigation--main-item").returnChild();
 navigationItemRandomElement.textContent = 'RANDOM';
 navigationItemRandomElement.addEventListener('click',  () => {
+  if (navigationSmallSubmenu.classList.contains('visible'))
+    navigationSmallSubmenu.classList.toggle('visible');
+  if (navigationMediumSubmenu.classList.contains('visible'))
+    navigationMediumSubmenu.classList.toggle('visible');
+  if (navigationLargeSubmenu.classList.contains('visible'))
+    navigationLargeSubmenu.classList.toggle('visible');
+
   const countSmallNonograms = namesSmallNonograms.length;
   const countMediumNonograms = namesMediumNonograms.length;
   const countLargeNonograms = namesLargeNonograms.length;
   const randomNumber = Math.floor(Math.random()*(countSmallNonograms + countMediumNonograms + countLargeNonograms))+1;
-  console.log(randomNumber)
+  // console.log(randomNumber)
   if (randomNumber <= countSmallNonograms) objectNonogram = new SetNonogramm('small', randomNumber - 1);
   else {
     if(randomNumber <= (countSmallNonograms + countMediumNonograms))
@@ -116,32 +123,62 @@ const nonogramBodyElement = new InitialElement(nonogramContainerElement, "div", 
 // options button group ----------------------------------------------------------------------------------------
 const optionsGroupElement = new InitialElement(nanogramElement, "div", "options-group").returnChild();
 const optionsResetButtonElement = new InitialElement(optionsGroupElement, "button", "options--button navigation--main-item").returnChild();
+optionsResetButtonElement.setAttribute('title','Press to restart');
 optionsResetButtonElement.textContent = 'RESET';
 optionsResetButtonElement.addEventListener('click', () => objectNonogram.resetNonogram());
 
 const optionsSolutionButtonElement = new InitialElement(optionsGroupElement, "button", "options--button navigation--main-item").returnChild();
 optionsSolutionButtonElement.textContent = 'SOLUTION';
+optionsSolutionButtonElement.setAttribute('title','Press to show the SOLUTION');
 optionsSolutionButtonElement.addEventListener('click',  () => {
   objectNonogram.showSolution();
   // optionsSolutionButtonElement.disable = true;
 });
 
 const optionsSoundButtonElement = new InitialElement(optionsGroupElement, "input", "options--button navigation--main-item options--button-sound").returnChild();
-// .setAttribute('src', './assets/favicon.png');
 optionsSoundButtonElement.setAttribute('type', 'image');
 optionsSoundButtonElement.setAttribute('data-value', 'unmute');
 optionsSoundButtonElement.setAttribute('src', './assets/unmute.svg');
-// optionsSoundButtonElement.style.backgroundImage = './assets/unmute.png';
-// optionsSoundButtonElement.style.backgroundImage = 'url("./assets/unmute.png")';
+optionsSoundButtonElement.setAttribute('title', 'Audio: on');
 optionsSoundButtonElement.addEventListener('click',  () => {
   if (optionsSoundButtonElement.dataset.value === 'unmute') {
     optionsSoundButtonElement.dataset.value = 'mute';
     optionsSoundButtonElement.setAttribute('src', './assets/mute.svg');
+    optionsSoundButtonElement.setAttribute('title', 'Audio: off');
     objectNonogram.switchSoundEffects('off');
   } else {
     optionsSoundButtonElement.dataset.value = 'unmute';
     optionsSoundButtonElement.setAttribute('src', './assets/unmute.svg');
+    optionsSoundButtonElement.setAttribute('title', 'Audio: on');
     objectNonogram.switchSoundEffects('on');
+  }
+});
+
+const optionsThemeButtonElement = new InitialElement(optionsGroupElement, "input", "options--button navigation--main-item options--button-sound").returnChild();
+optionsThemeButtonElement.setAttribute('type', 'image');
+optionsThemeButtonElement.setAttribute('data-value', 'light');
+optionsThemeButtonElement.setAttribute('title', 'Light theme');
+optionsThemeButtonElement.setAttribute('src', './assets/light.svg');
+optionsThemeButtonElement.addEventListener('click',  () => {
+  if (optionsThemeButtonElement.dataset.value === 'light') {
+    optionsThemeButtonElement.dataset.value = 'night';
+    optionsThemeButtonElement.setAttribute('src', './assets/night.svg');
+    optionsThemeButtonElement.setAttribute('title', 'Night theme');
+    document.documentElement.style.setProperty('--primary-color', 'rgba(27, 44, 27, 1)');
+    document.documentElement.style.setProperty('--text-color', 'rgba(175.92, 214.08, 175.92, 1)');
+    // document.documentElement.style.setProperty('--font-color-dark', 'rgba(167.19, 203.45, 167.19, 0.4)');
+    // document.documentElement.style.setProperty('--font-color-light', 'rgba(113, 157, 113, 0.1)');
+    document.documentElement.style.setProperty('--colored-cell', 'rgba(239, 242, 239, 1)');
+
+  } else {
+    optionsThemeButtonElement.dataset.value = 'light';
+    optionsThemeButtonElement.setAttribute('title', 'Light theme');
+    optionsThemeButtonElement.setAttribute('src', './assets/light.svg');
+    document.documentElement.style.setProperty('--primary-color', 'rgba(239, 242, 239, 1)');
+    document.documentElement.style.setProperty('--text-color', '#386C38');
+    document.documentElement.style.setProperty('--font-color-dark', 'rgba(167.19, 203.45, 167.19, 0.4)');
+    document.documentElement.style.setProperty('--font-color-light', 'rgba(113, 157, 113, 0.1)');
+    document.documentElement.style.setProperty('--colored-cell', 'black');
   }
 });
 

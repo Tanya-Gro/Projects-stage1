@@ -113,40 +113,39 @@ class SetNonogramm {
       }
     }
   }
- async byClickCell(e, mouseButton){
+  byClickCell(e, mouseButton){
     // console.log(inputData,);
-  const buttonElement = e.target;
+    const buttonElement = e.target;
     // console.log(e.target, this.inputData)
-  // console.log(this.inputData)
+    // console.log(this.inputData)
     const row = +buttonElement.getAttribute('data-row');
     const coll = +buttonElement.getAttribute('data-column');
-  switch(mouseButton){
-    case 'left':
-      if(this.inputData[row][coll] === 1) {
-        buttonElement.style.backgroundColor = 'var(--primary-color)';
-        if (this.soundStatus) new Audio('./assets/mp3/cancel.mp3').play();
-        this.inputData[row][coll] = 0;
-      } else {
-        buttonElement.style.backgroundColor = 'black';
-        this.inputData[row][coll] = 1;
-        if (this.soundStatus)  new Audio('./assets/mp3/ok.mp3').play();
-        buttonElement.textContent = '';
-      }
-      break;
+    switch(mouseButton){
+      case 'left':
+        if(this.inputData[row][coll] === 1) {
+          buttonElement.classList.remove('button--colored');
+          if (this.soundStatus) new Audio('./assets/mp3/cancel.mp3').play();
+          this.inputData[row][coll] = 0;
+        } else {
+          buttonElement.classList.add('button--colored');
+          this.inputData[row][coll] = 1;
+          if (this.soundStatus)  new Audio('./assets/mp3/ok.mp3').play();
+          buttonElement.textContent = '';
+        }
+        break;
       case 'right':
         if(this.inputData[row][coll] === -1){
           if (this.soundStatus) new Audio('./assets/mp3/cancel.mp3').play();
-        buttonElement.textContent = '';
-        this.inputData[row][coll] = 0;
-      } else {
-        // if (this.inputData[row][coll] === 1) buttonElement.style.backgroundColor = 'var(--primary-color)';
-        buttonElement.style.backgroundColor = 'var(--primary-color)';
-        if (this.soundStatus) new Audio('./assets/mp3/clear.mp3').play();
-        buttonElement.textContent = '×';
-        this.inputData[row][coll] = -1;
-      }
-      e.preventDefault();
-      break;
+          buttonElement.textContent = '';
+          this.inputData[row][coll] = 0;
+        } else {
+          if (buttonElement.classList.contains('button--colored')) buttonElement.classList.remove('button--colored');
+          if (this.soundStatus) new Audio('./assets/mp3/clear.mp3').play();
+          buttonElement.textContent = '×';
+          this.inputData[row][coll] = -1;
+        }
+        e.preventDefault();
+        break;
     }
     this.checkResult()
     // console.log(row, coll)
@@ -169,7 +168,8 @@ class SetNonogramm {
     const cellsNonogtamElements = document.querySelectorAll('.nanogram--data-button');
     cellsNonogtamElements.forEach((buttonElement => {
       buttonElement.textContent = '';
-      buttonElement.style.backgroundColor = 'var(--primary-color)';
+      if (buttonElement.classList.contains('button--colored')) buttonElement.classList.remove('button--colored');
+      // buttonElement.style.backgroundColor = 'var(--primary-color)';
     }))
   };
   showSolution(){
@@ -185,7 +185,8 @@ class SetNonogramm {
         // console.log('знач:', itemRowCol, 'стр:', indexRow, 'столб:', indexColumn)
         if (itemRowCol === 1) 
           rowButtonsNonogram.forEach(button => {
-            if (button.dataset.column == indexColumn) button.style.backgroundColor = 'black';
+            // if (button.dataset.column == indexColumn) button.style.backgroundColor = 'var(--colored-cell)';
+            if (button.dataset.column == indexColumn) button.classList.add('button--colored');
           });
       });
     });
@@ -202,6 +203,7 @@ class SetNonogramm {
         break;
     }
   }
+
 }
 
 export {namesSmallNonograms, namesMediumNonograms, namesLargeNonograms, SetNonogramm};
