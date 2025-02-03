@@ -158,6 +158,21 @@ class SetNonogramm {
       buttonElement.style.backgroundColor = 'var(--primary-color)';
     }))
   };
+  showSolution(){
+    // todo: неактивность кноспи сохранения
+    this.resetNonogram();
+    // console.log(this.nanoramData);
+    this.nanoramData.forEach((itemRow, indexRow)=> {
+      const rowButtonsNonogram = document.querySelectorAll(`[data-row="${indexRow}"]`);
+      itemRow.forEach((itemRowCol, indexColumn) => {
+        // console.log('знач:', itemRowCol, 'стр:', indexRow, 'столб:', indexColumn)
+        if (itemRowCol === 1) 
+          rowButtonsNonogram.forEach(button => {
+            if (button.dataset.column == indexColumn) button.style.backgroundColor = 'black';
+          });
+      });
+    });
+  };
 }
 
 export {namesSmallNonograms, namesMediumNonograms, namesLargeNonograms, SetNonogramm};

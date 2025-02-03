@@ -116,9 +116,15 @@ const nonogramBodyElement = new InitialElement(nonogramContainerElement, "div", 
 // options button group ----------------------------------------------------------------------------------------
 const optionsGroupElement = new InitialElement(nanogramElement, "div", "options-group").returnChild();
 const optionsResetButtonElement = new InitialElement(optionsGroupElement, "button", "options--button navigation--main-item").returnChild();
-optionsResetButtonElement.textContent = 'Reset';
+optionsResetButtonElement.textContent = 'RESET';
 optionsResetButtonElement.addEventListener('click', () => objectNonogram.resetNonogram());
-// optionsResetButtonElement.addEventListener('click', );
+
+const optionsSolutionButtonElement = new InitialElement(optionsGroupElement, "button", "options--button navigation--main-item").returnChild();
+optionsSolutionButtonElement.textContent = 'SOLUTION';
+optionsSolutionButtonElement.addEventListener('click',  () => {
+  objectNonogram.showSolution();
+  // optionsSolutionButtonElement.disable = true;
+});
 
 // modal window ------------------------------------------------------------------------------------------------
 const modalOverlayElement = new InitialElement(bodyElement, "div", "modal-overlay").returnChild();
