@@ -22,7 +22,10 @@ const navigationSmallSubmenu = new InitialElement(navigationItemSmallElement, "u
 for (let i = 0; i < namesSmallNonograms.length; i+= 1) {
   let navigationSmallItem = new InitialElement(navigationSmallSubmenu, "li", "smallItem").returnChild();
   navigationSmallItem.textContent = namesSmallNonograms[i];
-  navigationSmallItem.addEventListener('click',  () => objectNonogram = new SetNonogramm('small', i).returnResult());
+  navigationSmallItem.addEventListener('click',  () => {
+    objectNonogram = new SetNonogramm('small', i);
+    objectNonogram.returnResult();
+  });
 }
 
 navigationItemSmallElement.addEventListener('click', () => {
@@ -42,7 +45,10 @@ const navigationMediumSubmenu = new InitialElement(navigationItemMediumElement, 
 for (let i = 0; i < namesMediumNonograms.length; i+= 1) {
   let navigationMediumElement = new InitialElement(navigationMediumSubmenu, "li", "mediumItem").returnChild();
   navigationMediumElement.textContent = namesMediumNonograms[i];
-  navigationMediumElement.addEventListener('click',  () => objectNonogram = new SetNonogramm('medium', i).returnResult());
+  navigationMediumElement.addEventListener('click',  () => {
+    objectNonogram = new SetNonogramm('medium', i)
+    objectNonogram.returnResult()
+  });
 }
 
 navigationItemMediumElement.addEventListener('click', () => {
@@ -61,7 +67,10 @@ const navigationLargeSubmenu = new InitialElement(navigationItemLargeElement, "u
 for (let i = 0; i < namesLargeNonograms.length; i+= 1) {
   let navigationLargeItem = new InitialElement(navigationLargeSubmenu, "li", "largeItem").returnChild();
   navigationLargeItem.textContent = namesLargeNonograms[i];
-  navigationLargeItem.addEventListener('click',  () => objectNonogram = new SetNonogramm('large', i).returnResult());
+  navigationLargeItem.addEventListener('click',  () => {
+    objectNonogram = new SetNonogramm('large', i)
+    objectNonogram.returnResult();
+  });
 }
 
 navigationItemLargeElement.addEventListener('click', () => {
@@ -88,9 +97,14 @@ const nonogramRowsElement = new InitialElement(nonogramContainerElement, "div", 
 const nonogramBodyElement = new InitialElement(nonogramContainerElement, "div", "nanogram--body-container").returnChild();
 // const wrapperElement = new InitialElement(bodyElement, "div", "wrapper light");
 
-// function getNanogram (nonogram_levet = 'small', value = 0) {
-//   const nanogramElement = new InitialElement(nanogramElement, "main", "nanogram wrapper").returnChild();
-// }
+// options button group ----------------------------------------------------------------------------------------
+const optionsGroupElement = new InitialElement(nanogramElement, "div", "options-group").returnChild();
+const optionsResetButtonElement = new InitialElement(optionsGroupElement, "button", "options--button navigation--main-item").returnChild();
+optionsResetButtonElement.textContent = 'Reset';
+optionsResetButtonElement.addEventListener('click', () => objectNonogram.resetNonogram());
+// optionsResetButtonElement.addEventListener('click', );
+
+// modal window ------------------------------------------------------------------------------------------------
 const modalOverlayElement = new InitialElement(bodyElement, "div", "modal-overlay").returnChild();
 const modalElement = new InitialElement(modalOverlayElement, "div", "modal").returnChild();
 const modalSpanElement = new InitialElement(modalElement, "span", "modal--span timer").returnChild();
@@ -100,5 +114,6 @@ modalButtonElement.textContent = 'Ok';
 modalButtonElement.addEventListener('click', () => {
   modalOverlayElement.classList.remove('active');
 })
-objectNonogram = new SetNonogramm().returnResult();
+objectNonogram = new SetNonogramm();
+objectNonogram.returnResult();
 // console.log(new SetNonogramm('small', 0).returnResult());
