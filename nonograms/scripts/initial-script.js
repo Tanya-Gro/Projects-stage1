@@ -7,7 +7,7 @@ let objectNonogram;
 
 const headerBlockElement = new InitialElement(bodyElement, "header", "header-container wrapper").returnChild();
 const headerLogoElement = new InitialElement(headerBlockElement, "img", "header--logoImage").returnChild();
-headerLogoElement.setAttribute('src', './assets/favicon.ico');
+headerLogoElement.setAttribute('src', './assets/favicon.png');
 headerLogoElement.setAttribute('alt', 'logo');
 const headerTextElement = new InitialElement(headerBlockElement, "h1", "header--logoText").returnChild();
 headerTextElement.textContent = "Nonograms"
@@ -124,6 +124,25 @@ optionsSolutionButtonElement.textContent = 'SOLUTION';
 optionsSolutionButtonElement.addEventListener('click',  () => {
   objectNonogram.showSolution();
   // optionsSolutionButtonElement.disable = true;
+});
+
+const optionsSoundButtonElement = new InitialElement(optionsGroupElement, "input", "options--button navigation--main-item options--button-sound").returnChild();
+// .setAttribute('src', './assets/favicon.png');
+optionsSoundButtonElement.setAttribute('type', 'image');
+optionsSoundButtonElement.setAttribute('data-value', 'unmute');
+optionsSoundButtonElement.setAttribute('src', './assets/unmute.svg');
+// optionsSoundButtonElement.style.backgroundImage = './assets/unmute.png';
+// optionsSoundButtonElement.style.backgroundImage = 'url("./assets/unmute.png")';
+optionsSoundButtonElement.addEventListener('click',  () => {
+  if (optionsSoundButtonElement.dataset.value === 'unmute') {
+    optionsSoundButtonElement.dataset.value = 'mute';
+    optionsSoundButtonElement.setAttribute('src', './assets/mute.svg');
+    objectNonogram.switchSoundEffects('off');
+  } else {
+    optionsSoundButtonElement.dataset.value = 'unmute';
+    optionsSoundButtonElement.setAttribute('src', './assets/unmute.svg');
+    objectNonogram.switchSoundEffects('on');
+  }
 });
 
 // modal window ------------------------------------------------------------------------------------------------

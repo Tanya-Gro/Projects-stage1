@@ -19,6 +19,15 @@ class SetNonogramm {
     this.fillCollums();
     this.fillRows();
     this.fillBody();
+    this.soundStatus = true;
+    // this.soundOk = new Audio('./assets/mp3/ok.mp3');
+    // this.soundCancel = new Audio('./assets/mp3/cancel.mp3');
+    // this.soundClear = new Audio('./assets/mp3/clear.mp3');
+    this.soundSolution = new Audio('./assets/mp3/solution.mp3');
+    this.soundFinal = new Audio('./assets/mp3/final.mp3');
+    this.soundOn = new Audio('./assets/mp3/on.mp3');
+    this.soundOff = new Audio('./assets/mp3/off.mp3');
+    this.soundReset = new Audio('./assets/mp3/reset.mp3');
     // console.log(this.nanoramData, this.rows,this.colums,this.inputData)
   }
   generateRows() {
@@ -104,31 +113,35 @@ class SetNonogramm {
       }
     }
   }
-  byClickCell(e, mouseButton){
+ async byClickCell(e, mouseButton){
     // console.log(inputData,);
   const buttonElement = e.target;
     // console.log(e.target, this.inputData)
-  console.log(this.inputData)
+  // console.log(this.inputData)
     const row = +buttonElement.getAttribute('data-row');
     const coll = +buttonElement.getAttribute('data-column');
   switch(mouseButton){
     case 'left':
       if(this.inputData[row][coll] === 1) {
         buttonElement.style.backgroundColor = 'var(--primary-color)';
+        if (this.soundStatus) new Audio('./assets/mp3/cancel.mp3').play();
         this.inputData[row][coll] = 0;
       } else {
         buttonElement.style.backgroundColor = 'black';
         this.inputData[row][coll] = 1;
+        if (this.soundStatus)  new Audio('./assets/mp3/ok.mp3').play();
         buttonElement.textContent = '';
       }
       break;
-    case 'right':
-      if(this.inputData[row][coll] === -1){
+      case 'right':
+        if(this.inputData[row][coll] === -1){
+          if (this.soundStatus) new Audio('./assets/mp3/cancel.mp3').play();
         buttonElement.textContent = '';
         this.inputData[row][coll] = 0;
       } else {
         // if (this.inputData[row][coll] === 1) buttonElement.style.backgroundColor = 'var(--primary-color)';
         buttonElement.style.backgroundColor = 'var(--primary-color)';
+        if (this.soundStatus) new Audio('./assets/mp3/clear.mp3').play();
         buttonElement.textContent = '×';
         this.inputData[row][coll] = -1;
       }
@@ -143,15 +156,16 @@ class SetNonogramm {
     for(let i = 0; i < this.nanoramData.length; i += 1) {
       if (this.nanoramData[i].join('') !== this.inputData[i].join('').replaceAll('-1', '0')) return;
     }
-    // console.log('happy end')
+    if (this.soundStatus) this.soundFinal.play();
     document.querySelector(".modal-overlay").classList.add('active');
     this.resetNonogram();
   }
   resetNonogram(){
+    if (this.soundStatus) this.soundReset.play();
     this.inputData.forEach(element => {
       element.fill(0);
     });
-    console.log(this.inputData);
+    // console.log(this.inputData);
     const cellsNonogtamElements = document.querySelectorAll('.nanogram--data-button');
     cellsNonogtamElements.forEach((buttonElement => {
       buttonElement.textContent = '';
@@ -161,6 +175,9 @@ class SetNonogramm {
   showSolution(){
     // todo: неактивность кноспи сохранения
     this.resetNonogram();
+    this.soundSolution.volume = 0.1;
+    if (this.soundStatus) this.soundSolution.play();
+
     // console.log(this.nanoramData);
     this.nanoramData.forEach((itemRow, indexRow)=> {
       const rowButtonsNonogram = document.querySelectorAll(`[data-row="${indexRow}"]`);
@@ -173,6 +190,18 @@ class SetNonogramm {
       });
     });
   };
+  switchSoundEffects(set){
+    switch(set) {
+      case 'on':
+        this.soundOn.play();
+        this.soundStatus = true;
+        break;
+      case 'off':
+        this.soundOff.play();
+        this.soundStatus = false;
+        break;
+    }
+  }
 }
 
 export {namesSmallNonograms, namesMediumNonograms, namesLargeNonograms, SetNonogramm};

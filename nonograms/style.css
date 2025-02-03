@@ -173,6 +173,16 @@ border-bottom: 3px solid gray;
   flex-direction: row;
   align-items: center;
 }
+
+.options--button-sound{
+  height: 35px;
+  min-width: 40px;
+  margin: 0;
+  padding: 2px;
+  border: 3px solid rgb(118, 118, 118);
+  /* background-color: white; */
+}
+
 .modal-overlay{
   display: none;
   position: fixed;
