@@ -91,6 +91,14 @@ const nonogramBodyElement = new InitialElement(nonogramContainerElement, "div", 
 // function getNanogram (nonogram_levet = 'small', value = 0) {
 //   const nanogramElement = new InitialElement(nanogramElement, "main", "nanogram wrapper").returnChild();
 // }
-
+const modalOverlayElement = new InitialElement(bodyElement, "div", "modal-overlay").returnChild();
+const modalElement = new InitialElement(modalOverlayElement, "div", "modal").returnChild();
+const modalSpanElement = new InitialElement(modalElement, "span", "modal--span timer").returnChild();
+modalSpanElement.textContent= 'Great! You have solved the nonogram!';
+const modalButtonElement = new InitialElement(modalElement, "button", "modal--button navigation--main-item").returnChild();
+modalButtonElement.textContent = 'Ok';
+modalButtonElement.addEventListener('click', () => {
+  modalOverlayElement.classList.remove('active');
+})
 objectNonogram = new SetNonogramm().returnResult();
 // console.log(new SetNonogramm('small', 0).returnResult());

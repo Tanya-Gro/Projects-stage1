@@ -106,38 +106,58 @@ class SetNonogramm {
   }
   byClickCell(e, mouseButton){
     // console.log(inputData,);
-    const buttonElement = e.target;
+  const buttonElement = e.target;
     // console.log(e.target, this.inputData)
-    console.log(this.inputData)
+  console.log(this.inputData)
     const row = +buttonElement.getAttribute('data-row');
     const coll = +buttonElement.getAttribute('data-column');
-switch(mouseButton){
-  case 'left':
-    if(this.inputData[row][coll] === 1) {
-      buttonElement.style.backgroundColor = 'var(--primary-color)';
-      this.inputData[row][coll] = 0;
-    } else {
-      buttonElement.style.backgroundColor = 'black';
-      this.inputData[row][coll] = 1;
-      buttonElement.textContent = '';
+  switch(mouseButton){
+    case 'left':
+      if(this.inputData[row][coll] === 1) {
+        buttonElement.style.backgroundColor = 'var(--primary-color)';
+        this.inputData[row][coll] = 0;
+      } else {
+        buttonElement.style.backgroundColor = 'black';
+        this.inputData[row][coll] = 1;
+        buttonElement.textContent = '';
+      }
+      break;
+    case 'right':
+      if(this.inputData[row][coll] === -1){
+        buttonElement.textContent = '';
+        this.inputData[row][coll] = 0;
+      } else {
+        // if (this.inputData[row][coll] === 1) buttonElement.style.backgroundColor = 'var(--primary-color)';
+        buttonElement.style.backgroundColor = 'var(--primary-color)';
+        buttonElement.textContent = '×';
+        this.inputData[row][coll] = -1;
+      }
+      e.preventDefault();
+      break;
     }
-    break;
-  case 'right':
-    if(this.inputData[row][coll] === -1){
-      buttonElement.textContent = '';
-      this.inputData[row][coll] = 0;
-    } else {
-      // if (this.inputData[row][coll] === 1) buttonElement.style.backgroundColor = 'var(--primary-color)';
-      buttonElement.style.backgroundColor = 'var(--primary-color)';
-      buttonElement.textContent = '×';
-      this.inputData[row][coll] = -1;
-    }
-    e.preventDefault();
-    break;
-  }
+    this.checkResult()
     // console.log(row, coll)
   }
-
+  checkResult() {
+    // console.log(this.nanoramData, this.inputData)
+    for(let i = 0; i < this.nanoramData.length; i += 1) {
+      if (this.nanoramData[i].join('') !== this.inputData[i].join('').replaceAll('-1', '0')) return;
+    }
+    // console.log('happy end')
+    document.querySelector(".modal-overlay").classList.add('active');
+    this.resetNonogram();
+  }
+  resetNonogram(){
+    this.inputData.forEach(element => {
+      element.fill(0);
+    });
+    console.log(this.inputData);
+    const cellsNonogtamElements = document.querySelectorAll('.nanogram--data-button');
+    cellsNonogtamElements.forEach((buttonElement => {
+      buttonElement.textContent = '';
+      buttonElement.style.backgroundColor = 'var(--primary-color)';
+    }))
+  };
 }
 
 export {namesSmallNonograms, namesMediumNonograms, namesLargeNonograms, SetNonogramm};
