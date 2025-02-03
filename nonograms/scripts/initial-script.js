@@ -72,7 +72,6 @@ for (let i = 0; i < namesLargeNonograms.length; i+= 1) {
     objectNonogram.returnResult();
   });
 }
-
 navigationItemLargeElement.addEventListener('click', () => {
   navigationLargeSubmenu.classList.toggle('visible');
   if (navigationSmallSubmenu.classList.contains('visible') && navigationLargeSubmenu.classList.contains('visible'))
@@ -82,6 +81,23 @@ navigationItemLargeElement.addEventListener('click', () => {
     navigationMediumSubmenu.classList.toggle('visible');
   }
 );
+
+const navigationItemRandomElement = new InitialElement(navigationElement, "li", "navigation--main-item").returnChild();
+navigationItemRandomElement.textContent = 'RANDOM';
+navigationItemRandomElement.addEventListener('click',  () => {
+  const countSmallNonograms = namesSmallNonograms.length;
+  const countMediumNonograms = namesMediumNonograms.length;
+  const countLargeNonograms = namesLargeNonograms.length;
+  const randomNumber = Math.floor(Math.random()*(countSmallNonograms + countMediumNonograms + countLargeNonograms))+1;
+  console.log(randomNumber)
+  if (randomNumber <= countSmallNonograms) objectNonogram = new SetNonogramm('small', randomNumber - 1);
+  else {
+    if(randomNumber <= (countSmallNonograms + countMediumNonograms))
+      objectNonogram = new SetNonogramm('medium', randomNumber - countSmallNonograms - 1);
+      else objectNonogram = new SetNonogramm('large', randomNumber - countSmallNonograms - countMediumNonograms - 1)
+  }
+  objectNonogram.returnResult();
+});
 
 // NONOGRAM ----------------------------------------------------------------------------------------------------
 const nanogramElement = new InitialElement(bodyElement, "main", "nanogram wrapper").returnChild();
