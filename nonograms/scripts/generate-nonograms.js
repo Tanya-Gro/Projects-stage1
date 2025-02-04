@@ -28,6 +28,8 @@ class SetNonogramm {
     this.soundOn = new Audio('./assets/mp3/on.mp3');
     this.soundOff = new Audio('./assets/mp3/off.mp3');
     this.soundReset = new Audio('./assets/mp3/reset.mp3');
+    this.timerElement = document.querySelector('.nonogramTimer');
+    this.timer;
     // console.log(this.nonogramData, this.rows,this.colums,this.inputData)
   }
   generateRows() {
@@ -118,11 +120,30 @@ class SetNonogramm {
       }
     }
   }
+  resetTimer(){
+    if (this.timerElement.classList.contains('enable')){
+      clearInterval(this.timer);
+      this.timerElement.classList.remove('enable');
+      this.timerElement.textContent = '00:00';
+    }
+  }
+  updateTimet(sec) {
+    this.timerElement.textContent = `${Math.floor(sec / 60).toString().padStart(2,'0')}:${(sec % 60).toString().padStart(2,'0')}`
+  }
   byClickCell(e, mouseButton){
-    // console.log(inputData,);
     const buttonElement = e.target;
     // console.log(e.target, this.inputData)
-    // console.log(this.inputData)
+    // start timer
+
+    if (!this.timerElement.classList.contains('enable')){
+      const time = this.timerElement.textContent.split(':').map((item)=> item = Number(item));
+      let sec = time[0] * 60 + time[1];
+      this.timerElement.classList.add('enable');
+      this.timer = setInterval(() => {
+        sec += 1;
+        this.updateTimet(sec);
+      },1000);
+    }
     const row = +buttonElement.getAttribute('data-row');
     const coll = +buttonElement.getAttribute('data-column');
     switch(mouseButton){
@@ -162,14 +183,20 @@ class SetNonogramm {
     }
     if (this.soundStatus) this.soundFinal.play();
     document.querySelector(".modal-overlay").classList.add('active');
-    // document.querySelector("modal--span timer").textContent = 'Great! You have solved the nonogram!';
+    const time = this.timerElement.textContent.split(':');
+    const text = 'Great! You have solved nonogram in ';
+    if(+time[0] > 0) text += `${+time[0]} min, `;
+    document.querySelector(".modal--span.timer").textContent = `${text}${+time[1]} sec!`;
     this.resetNonogram();
   }
   resetNonogram(){
+    this.resetTimer();
+
     if (this.soundStatus) this.soundReset.play();
     this.inputData.forEach(element => {
       element.fill(0);
     });
+
     // console.log(this.inputData);
     const cellsNonogtamElements = document.querySelectorAll('.nanogram--data-button');
     cellsNonogtamElements.forEach((buttonElement => {

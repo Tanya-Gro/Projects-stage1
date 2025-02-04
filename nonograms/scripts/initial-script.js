@@ -23,8 +23,10 @@ for (let i = 0; i < namesSmallNonograms.length; i+= 1) {
   let navigationSmallItem = new InitialElement(navigationSmallSubmenu, "li", "smallItem").returnChild();
   navigationSmallItem.textContent = namesSmallNonograms[i];
   navigationSmallItem.addEventListener('click',  () => {
+    if (timerElement.classList.contains('enable')){
+      objectNonogram.resetTimer();
+    }
     objectNonogram = new SetNonogramm('small', i);
-    // objectNonogram.returnResult();
   });
 }
 
@@ -46,8 +48,10 @@ for (let i = 0; i < namesMediumNonograms.length; i+= 1) {
   let navigationMediumElement = new InitialElement(navigationMediumSubmenu, "li", "mediumItem").returnChild();
   navigationMediumElement.textContent = namesMediumNonograms[i];
   navigationMediumElement.addEventListener('click',  () => {
+    if (timerElement.classList.contains('enable')){
+      objectNonogram.resetTimer();
+    }
     objectNonogram = new SetNonogramm('medium', i)
-    // objectNonogram.returnResult()
   });
 }
 
@@ -67,9 +71,12 @@ const navigationLargeSubmenu = new InitialElement(navigationItemLargeElement, "u
 for (let i = 0; i < namesLargeNonograms.length; i+= 1) {
   let navigationLargeItem = new InitialElement(navigationLargeSubmenu, "li", "largeItem").returnChild();
   navigationLargeItem.textContent = namesLargeNonograms[i];
+
   navigationLargeItem.addEventListener('click',  () => {
+    if (timerElement.classList.contains('enable')){
+      objectNonogram.resetTimer();
+    }
     objectNonogram = new SetNonogramm('large', i)
-    // objectNonogram.returnResult();
   });
 }
 navigationItemLargeElement.addEventListener('click', () => {
@@ -84,7 +91,12 @@ navigationItemLargeElement.addEventListener('click', () => {
 
 const navigationItemRandomElement = new InitialElement(navigationElement, "li", "navigation--main-item").returnChild();
 navigationItemRandomElement.textContent = 'RANDOM';
+
 navigationItemRandomElement.addEventListener('click',  () => {
+  if (timerElement.classList.contains('enable')){
+    objectNonogram.resetTimer();
+  }
+
   if (navigationSmallSubmenu.classList.contains('visible'))
     navigationSmallSubmenu.classList.toggle('visible');
   if (navigationMediumSubmenu.classList.contains('visible'))
@@ -110,7 +122,7 @@ navigationItemRandomElement.addEventListener('click',  () => {
 const nanogramElement = new InitialElement(bodyElement, "main", "nanogram wrapper").returnChild();
 //todo: timer---------------------------------------------------------------------------------------------------
 const timerBlockElement = new InitialElement(nanogramElement, "div", "timer-container wrapper").returnChild();
-const timerElement = new InitialElement(timerBlockElement, "span", "timer").returnChild();
+const timerElement = new InitialElement(timerBlockElement, "span", "timer nonogramTimer").returnChild();
 timerElement.textContent = '00:00';
 
 //body nonogram ------------------------------------------------------------------------------------------------
@@ -152,6 +164,9 @@ optionsContinueButtonElement.addEventListener('click',  () => {
   if (localStorage.getItem('lastgame')) {
     let curentResult = objectNonogram.returnResult();
     let savedResult = JSON.parse(localStorage.getItem('lastgame'));
+    if (timerElement.classList.contains('enable')){
+      objectNonogram.resetTimer();
+    }
     if(curentResult.level !== savedResult.level || curentResult.nonogrammName !== savedResult.nonogrammName) 
       objectNonogram = new SetNonogramm(savedResult.level,savedResult.numberNonogramm);
 
