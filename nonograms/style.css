@@ -122,12 +122,7 @@ header {
   justify-content: end;
   height: 100%;
 }
-/* .nanogram--header-column {
-  border-top: 1px solid gray;
-} */
-/* .nanogram--header-column, .nanogram--header-row {
-  border-left: 1px solid gray;
-} */
+
 .nanogram--header-column, .nanogram--header-row {
   display: inline-block;
   width: 33px;
@@ -135,9 +130,7 @@ header {
   text-align: center;
   align-content: center;
 }
-/* .nanogram--header-column:not(:first-child){
-  border-top: 0px;
-} */
+
 .nanogram--rows-container {
   display: flex;
   flex-direction: column;
@@ -158,9 +151,7 @@ border-bottom: 3px solid gray;
   width: 100%;
   /* align-items: end; */
 }
-/* .nanogram--body-container{
-  display: grid;
-} */
+
 .nanogram--data-button:not(:last-child) {
   border-right: 1px solid gray;
 }
@@ -186,6 +177,17 @@ border-bottom: 3px solid gray;
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin: 10px;
+}
+.options--button{
+  margin: 10px;
+  padding: 10px;
+  min-width: 110px;
+}
+.options--button:disabled{
+border-color: var(--font-color-dark);
+color: var(--font-color-dark);
+cursor: auto;
 }
 
 .options--button-sound{

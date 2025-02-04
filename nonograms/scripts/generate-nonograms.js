@@ -20,17 +20,16 @@ class SetNonogramm {
     this.fillRows();
     this.fillBody();
     this.soundStatus = true;
-    // this.soundOk = new Audio('./assets/mp3/ok.mp3');
-    // this.soundCancel = new Audio('./assets/mp3/cancel.mp3');
-    // this.soundClear = new Audio('./assets/mp3/clear.mp3');
     this.soundSolution = new Audio('./assets/mp3/solution.mp3');
     this.soundFinal = new Audio('./assets/mp3/final.mp3');
     this.soundOn = new Audio('./assets/mp3/on.mp3');
     this.soundOff = new Audio('./assets/mp3/off.mp3');
-    this.soundReset = new Audio('./assets/mp3/reset.mp3');
+    // this.soundReset = new Audio('./assets/mp3/reset.mp3');
     this.timerElement = document.querySelector('.nonogramTimer');
+    this.saveButtonElement = document.querySelector('.option--button-save');
     this.timer;
     // console.log(this.nonogramData, this.rows,this.colums,this.inputData)
+    this.isPauseByClicking = false;
   }
   generateRows() {
     const rows = new Array(this.nonogramData.length).fill(new Array());
@@ -109,19 +108,38 @@ class SetNonogramm {
     const dataContainerElement = document.querySelector('.nanogram--body-container');
     dataContainerElement.innerHTML = '';
     for(let i = 0; i < this.nonogramData.length; i += 1) {
-      // const nonogramDataContainerElement = new InitialElement(dataContainerElement, "div", "nanogram--row-data").returnChild();
       const nonogramDataRowElement = new InitialElement(dataContainerElement, "div", "nanogram--row").returnChild();
       for(let j = 0; j < this.nonogramData[i].length; j += 1) {
         const nonogramDataButtonElement = new InitialElement(nonogramDataRowElement, "button", "nanogram--column nanogram--data-button").returnChild();
         nonogramDataButtonElement.setAttribute('data-row', i);
         nonogramDataButtonElement.setAttribute('data-column', j);
-        nonogramDataButtonElement.addEventListener('click', (e) => this.byClickCell(e, 'left'));
-        nonogramDataButtonElement.addEventListener('contextmenu', (e) => this.byClickCell(e, 'right'));
       }
+    }
+    this.setButtonsEvent();
+  }
+  setButtonsEvent() {
+    const nonogramDataElements = document.querySelectorAll('.nanogram--data-button');
+    for(let button of nonogramDataElements) {
+      // console.log(button);
+
+      button.addEventListener('click', (e) => this.byClickCell(e, 'left'));
+      button.addEventListener('contextmenu', (e) => this.byClickCell(e, 'right'));
+      // this.leftClick = (e) => this.byClickCell(e, 'left');
+      // this.rightClick = (e) => this.byClickCell(e, 'right');
+      // button.addEventListener('click', this.leftClick);
+      // button.addEventListener('contextmenu', this.rightClick);
+    }
+  }
+  pauseTimer(){
+    if (this.timerElement.classList.contains('enable')){
+      this.saveButtonElement.disabled = true;
+      clearInterval(this.timer);
+      this.timerElement.classList.remove('enable');
     }
   }
   resetTimer(){
     if (this.timerElement.classList.contains('enable')){
+      this.saveButtonElement.disabled = true;
       clearInterval(this.timer);
       this.timerElement.classList.remove('enable');
       this.timerElement.textContent = '00:00';
@@ -131,11 +149,15 @@ class SetNonogramm {
     this.timerElement.textContent = `${Math.floor(sec / 60).toString().padStart(2,'0')}:${(sec % 60).toString().padStart(2,'0')}`
   }
   byClickCell(e, mouseButton){
-    const buttonElement = e.target;
-    // console.log(e.target, this.inputData)
-    // start timer
+    // console.log(e, mouseButton)
+    // проверка: заблокирован ввод?
+    if (this.isPauseByClicking) return;
 
+    const buttonElement = e.target;
+
+    // start timer
     if (!this.timerElement.classList.contains('enable')){
+      this.saveButtonElement.disabled = false;
       const time = this.timerElement.textContent.split(':').map((item)=> item = Number(item));
       let sec = time[0] * 60 + time[1];
       this.timerElement.classList.add('enable');
@@ -192,7 +214,6 @@ class SetNonogramm {
   resetNonogram(){
     this.resetTimer();
 
-    if (this.soundStatus) this.soundReset.play();
     this.inputData.forEach(element => {
       element.fill(0);
     });
@@ -226,8 +247,8 @@ class SetNonogramm {
   showSavigData(savingData) {
     this.inputData = savingData;
     // console.log(this.inputData, savingData);
-    this.soundSolution.volume = 0.1;
-    if (this.soundStatus) this.soundSolution.play();
+    // this.soundSolution.volume = 0.1;
+    // if (this.soundStatus) this.soundSolution.play();
 
     savingData.forEach((itemRow, indexRow)=> {
       const rowButtonsNonogram = document.querySelectorAll(`[data-row="${indexRow}"]`);

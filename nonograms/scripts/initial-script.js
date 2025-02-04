@@ -137,20 +137,30 @@ const optionsGroupElement = new InitialElement(nanogramElement, "div", "options-
 const optionsResetButtonElement = new InitialElement(optionsGroupElement, "button", "options--button navigation--main-item").returnChild();
 optionsResetButtonElement.setAttribute('title','Press to restart');
 optionsResetButtonElement.textContent = 'RESET';
-optionsResetButtonElement.addEventListener('click', () => objectNonogram.resetNonogram());
+optionsResetButtonElement.addEventListener('click', () => {
+  objectNonogram.isPauseByClicking = false;
+  optionsSolutionButtonElement.disabled = false;
+  if (objectNonogram.soundStatus) new Audio('./assets/mp3/reset.mp3').play();
+  objectNonogram.resetNonogram();
+});
 
 const optionsSolutionButtonElement = new InitialElement(optionsGroupElement, "button", "options--button navigation--main-item").returnChild();
 optionsSolutionButtonElement.textContent = 'SOLUTION';
 optionsSolutionButtonElement.setAttribute('title','Press to show the SOLUTION');
 optionsSolutionButtonElement.addEventListener('click',  () => {
+  optionsSaveButtonElement.disabled = true;
+  optionsSolutionButtonElement.disabled = true;
   objectNonogram.showSolution();
-  // optionsSolutionButtonElement.disable = true;
+  objectNonogram.isPauseByClicking = true;
+  // objectNonogram.removeButtonsEvent();
 });
 
-const optionsSaveButtonElement = new InitialElement(optionsGroupElement, "button", "options--button navigation--main-item").returnChild();
+const optionsSaveButtonElement = new InitialElement(optionsGroupElement, "button", "options--button navigation--main-item option--button-save").returnChild();
 optionsSaveButtonElement.textContent = 'SAVE';
 optionsSaveButtonElement.setAttribute('title','Press to save your progress');
 optionsSaveButtonElement.addEventListener('click',  () => {
+  if (objectNonogram.soundStatus) new Audio('./assets/mp3/off.mp3').play();
+  objectNonogram.pauseTimer();
   let curentResult = objectNonogram.returnResult();
   curentResult.timer = timerElement.textContent;
   // console.log(curentResult)
@@ -162,6 +172,8 @@ optionsContinueButtonElement.textContent = 'CONTINUE';
 optionsContinueButtonElement.setAttribute('title','Continue last game');
 optionsContinueButtonElement.addEventListener('click',  () => {
   if (localStorage.getItem('lastgame')) {
+    if (objectNonogram.soundStatus) new Audio('./assets/mp3/off.mp3').play();
+    objectNonogram.isPauseByClicking = false;
     let curentResult = objectNonogram.returnResult();
     let savedResult = JSON.parse(localStorage.getItem('lastgame'));
     if (timerElement.classList.contains('enable')){
@@ -205,6 +217,7 @@ optionsThemeButtonElement.setAttribute('title', 'Light theme');
 optionsThemeButtonElement.setAttribute('src', './assets/light.svg');
 optionsThemeButtonElement.addEventListener('click',  () => {
   if (optionsThemeButtonElement.dataset.value === 'light') {
+    if (objectNonogram.soundStatus) new Audio('./assets/mp3/off.mp3').play();
     optionsThemeButtonElement.dataset.value = 'night';
     optionsThemeButtonElement.setAttribute('src', './assets/night.svg');
     optionsThemeButtonElement.setAttribute('title', 'Night theme');
@@ -213,8 +226,10 @@ optionsThemeButtonElement.addEventListener('click',  () => {
     // document.documentElement.style.setProperty('--font-color-dark', 'rgba(167.19, 203.45, 167.19, 0.4)');
     // document.documentElement.style.setProperty('--font-color-light', 'rgba(113, 157, 113, 0.1)');
     document.documentElement.style.setProperty('--colored-cell', 'rgba(239, 242, 239, 1)');
+    // document.documentElement.style.setProperty('--colored-cell', 'rgba(27, 44, 27, 1)');
 
   } else {
+    if (objectNonogram.soundStatus) new Audio('./assets/mp3/on.mp3').play();
     optionsThemeButtonElement.dataset.value = 'light';
     optionsThemeButtonElement.setAttribute('title', 'Light theme');
     optionsThemeButtonElement.setAttribute('src', './assets/light.svg');
