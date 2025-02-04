@@ -24,7 +24,7 @@ for (let i = 0; i < namesSmallNonograms.length; i+= 1) {
   navigationSmallItem.textContent = namesSmallNonograms[i];
   navigationSmallItem.addEventListener('click',  () => {
     objectNonogram = new SetNonogramm('small', i);
-    objectNonogram.returnResult();
+    // objectNonogram.returnResult();
   });
 }
 
@@ -47,7 +47,7 @@ for (let i = 0; i < namesMediumNonograms.length; i+= 1) {
   navigationMediumElement.textContent = namesMediumNonograms[i];
   navigationMediumElement.addEventListener('click',  () => {
     objectNonogram = new SetNonogramm('medium', i)
-    objectNonogram.returnResult()
+    // objectNonogram.returnResult()
   });
 }
 
@@ -69,7 +69,7 @@ for (let i = 0; i < namesLargeNonograms.length; i+= 1) {
   navigationLargeItem.textContent = namesLargeNonograms[i];
   navigationLargeItem.addEventListener('click',  () => {
     objectNonogram = new SetNonogramm('large', i)
-    objectNonogram.returnResult();
+    // objectNonogram.returnResult();
   });
 }
 navigationItemLargeElement.addEventListener('click', () => {
@@ -103,7 +103,7 @@ navigationItemRandomElement.addEventListener('click',  () => {
       objectNonogram = new SetNonogramm('medium', randomNumber - countSmallNonograms - 1);
       else objectNonogram = new SetNonogramm('large', randomNumber - countSmallNonograms - countMediumNonograms - 1)
   }
-  objectNonogram.returnResult();
+  // objectNonogram.returnResult();
 });
 
 // NONOGRAM ----------------------------------------------------------------------------------------------------
@@ -133,6 +133,35 @@ optionsSolutionButtonElement.setAttribute('title','Press to show the SOLUTION');
 optionsSolutionButtonElement.addEventListener('click',  () => {
   objectNonogram.showSolution();
   // optionsSolutionButtonElement.disable = true;
+});
+
+const optionsSaveButtonElement = new InitialElement(optionsGroupElement, "button", "options--button navigation--main-item").returnChild();
+optionsSaveButtonElement.textContent = 'SAVE';
+optionsSaveButtonElement.setAttribute('title','Press to save your progress');
+optionsSaveButtonElement.addEventListener('click',  () => {
+  let curentResult = objectNonogram.returnResult();
+  curentResult.timer = timerElement.textContent;
+  // console.log(curentResult)
+  localStorage.setItem('lastgame', JSON.stringify(curentResult)); 
+});
+
+const optionsContinueButtonElement = new InitialElement(optionsGroupElement, "button", "options--button navigation--main-item").returnChild();
+optionsContinueButtonElement.textContent = 'CONTINUE';
+optionsContinueButtonElement.setAttribute('title','Continue last game');
+optionsContinueButtonElement.addEventListener('click',  () => {
+  if (localStorage.getItem('lastgame')) {
+    let curentResult = objectNonogram.returnResult();
+    let savedResult = JSON.parse(localStorage.getItem('lastgame'));
+    if(curentResult.level !== savedResult.level || curentResult.nonogrammName !== savedResult.nonogrammName) 
+      objectNonogram = new SetNonogramm(savedResult.level,savedResult.numberNonogramm);
+
+    timerElement.textContent = savedResult.timer;
+    objectNonogram.showSavigData(savedResult.input);
+  }
+  else {
+    modalOverlayElement.classList.add('active');
+    modalSpanElement.textContent= 'Enable to show last save data... Sorry!';
+  }
 });
 
 const optionsSoundButtonElement = new InitialElement(optionsGroupElement, "input", "options--button navigation--main-item options--button-sound").returnChild();
@@ -193,5 +222,5 @@ modalButtonElement.addEventListener('click', () => {
   modalOverlayElement.classList.remove('active');
 })
 objectNonogram = new SetNonogramm();
-objectNonogram.returnResult();
+// objectNonogram.returnResult();
 // console.log(new SetNonogramm('small', 0).returnResult());

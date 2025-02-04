@@ -12,8 +12,8 @@ class SetNonogramm {
     this.level = level;
     this.numberNonogramm = +numberNonogramm;
     this.nonogrammName = nonograms_data[this.level][this.numberNonogramm];
-    this.nanoramData = nonograms_data[this.nonogrammName];
-    this.inputData = this.nanoramData.map(arr => arr.map(item => 0))
+    this.nonogramData = nonograms_data[this.nonogrammName];
+    this.inputData = this.nonogramData.map(arr => arr.map(item => 0))
     this.rows = this.generateRows();
     this.colums = this.generateCollums();
     this.fillCollums();
@@ -28,18 +28,18 @@ class SetNonogramm {
     this.soundOn = new Audio('./assets/mp3/on.mp3');
     this.soundOff = new Audio('./assets/mp3/off.mp3');
     this.soundReset = new Audio('./assets/mp3/reset.mp3');
-    // console.log(this.nanoramData, this.rows,this.colums,this.inputData)
+    // console.log(this.nonogramData, this.rows,this.colums,this.inputData)
   }
   generateRows() {
-    const rows = new Array(this.nanoramData.length).fill(new Array());
+    const rows = new Array(this.nonogramData.length).fill(new Array());
     let count;
-    for(let i = 0; i < this.nanoramData.length; i += 1) {
+    for(let i = 0; i < this.nonogramData.length; i += 1) {
       rows[i] = new Array();
       count = 0;
-      for(let j = 0; j < this.nanoramData[i].length; j += 1) {
-        if(this.nanoramData[i][j] === 1) count += 1;
-        if(this.nanoramData[i][j] === 0 && count !== 0) {
-          // console.log(this.nanoramData[i][j], count !== 0, this.nanoramData[i][j] === 0 && count !== 0, i, j), 
+      for(let j = 0; j < this.nonogramData[i].length; j += 1) {
+        if(this.nonogramData[i][j] === 1) count += 1;
+        if(this.nonogramData[i][j] === 0 && count !== 0) {
+          // console.log(this.nonogramData[i][j], count !== 0, this.nonogramData[i][j] === 0 && count !== 0, i, j), 
           rows[i].push(count);
           count = 0;
         }
@@ -50,14 +50,14 @@ class SetNonogramm {
     return rows;
   }
   generateCollums() {
-    const colums = new Array(this.nanoramData[0].length);
+    const colums = new Array(this.nonogramData[0].length);
     let count = 0;
-    for(let j = 0; j < this.nanoramData[0].length; j += 1) {
+    for(let j = 0; j < this.nonogramData[0].length; j += 1) {
       colums[j] = new Array();
       count = 0;
-      for(let i = 0; i< this.nanoramData.length; i += 1) {
-        if(this.nanoramData[i][j] === 1) count += 1;
-        if(this.nanoramData[i][j] === 0 && count !== 0) {
+      for(let i = 0; i< this.nonogramData.length; i += 1) {
+        if(this.nonogramData[i][j] === 1) count += 1;
+        if(this.nonogramData[i][j] === 0 && count !== 0) {
           colums[j].push(count);
           count = 0;
         }
@@ -68,9 +68,14 @@ class SetNonogramm {
     return colums;
   }
   returnResult() {
-    return {"data": this.nanoramData,
-      "rows":this.rows,
-      "collums":this.colums,
+    return {
+      "levet" : this.level,
+      "nonogrammName" : this.nonogrammName,
+      "numberNonogramm" : this.numberNonogramm,
+      "data": this.nonogramData,
+      // "rows":this.rows,
+      // "collums":this.colums,
+      "input": this.inputData,
     };
   }
   fillCollums(){
@@ -98,13 +103,13 @@ class SetNonogramm {
     }
   }
   fillBody() {
-    // console.log(this.nanoramData);
+    // console.log(this.nonogramData);
     const dataContainerElement = document.querySelector('.nanogram--body-container');
     dataContainerElement.innerHTML = '';
-    for(let i = 0; i < this.nanoramData.length; i += 1) {
+    for(let i = 0; i < this.nonogramData.length; i += 1) {
       // const nonogramDataContainerElement = new InitialElement(dataContainerElement, "div", "nanogram--row-data").returnChild();
       const nonogramDataRowElement = new InitialElement(dataContainerElement, "div", "nanogram--row").returnChild();
-      for(let j = 0; j < this.nanoramData[i].length; j += 1) {
+      for(let j = 0; j < this.nonogramData[i].length; j += 1) {
         const nonogramDataButtonElement = new InitialElement(nonogramDataRowElement, "button", "nanogram--column nanogram--data-button").returnChild();
         nonogramDataButtonElement.setAttribute('data-row', i);
         nonogramDataButtonElement.setAttribute('data-column', j);
@@ -151,12 +156,13 @@ class SetNonogramm {
     // console.log(row, coll)
   }
   checkResult() {
-    // console.log(this.nanoramData, this.inputData)
-    for(let i = 0; i < this.nanoramData.length; i += 1) {
-      if (this.nanoramData[i].join('') !== this.inputData[i].join('').replaceAll('-1', '0')) return;
+    // console.log(this.nonogramData, this.inputData)
+    for(let i = 0; i < this.nonogramData.length; i += 1) {
+      if (this.nonogramData[i].join('') !== this.inputData[i].join('').replaceAll('-1', '0')) return;
     }
     if (this.soundStatus) this.soundFinal.play();
     document.querySelector(".modal-overlay").classList.add('active');
+    // document.querySelector("modal--span timer").textContent = 'Great! You have solved the nonogram!';
     this.resetNonogram();
   }
   resetNonogram(){
@@ -172,25 +178,44 @@ class SetNonogramm {
       // buttonElement.style.backgroundColor = 'var(--primary-color)';
     }))
   };
-  showSolution(){
+  showSolution(showData){
     // todo: неактивность кноспи сохранения
     this.resetNonogram();
     this.soundSolution.volume = 0.1;
     if (this.soundStatus) this.soundSolution.play();
 
-    // console.log(this.nanoramData);
-    this.nanoramData.forEach((itemRow, indexRow)=> {
+    // console.log(this.nonogramData);
+    this.nonogramData.forEach((itemRow, indexRow)=> {
       const rowButtonsNonogram = document.querySelectorAll(`[data-row="${indexRow}"]`);
       itemRow.forEach((itemRowCol, indexColumn) => {
         // console.log('знач:', itemRowCol, 'стр:', indexRow, 'столб:', indexColumn)
         if (itemRowCol === 1) 
           rowButtonsNonogram.forEach(button => {
-            // if (button.dataset.column == indexColumn) button.style.backgroundColor = 'var(--colored-cell)';
             if (button.dataset.column == indexColumn) button.classList.add('button--colored');
           });
       });
     });
   };
+  showSavigData(savingData) {
+    this.inputData = savingData;
+    // console.log(this.inputData, savingData);
+    this.soundSolution.volume = 0.1;
+    if (this.soundStatus) this.soundSolution.play();
+
+    savingData.forEach((itemRow, indexRow)=> {
+      const rowButtonsNonogram = document.querySelectorAll(`[data-row="${indexRow}"]`);
+      rowButtonsNonogram.forEach(button => {
+        button.textContent = '';
+        // console.log(itemRow[button.dataset.column], typeof itemRow[button.dataset.column])
+        if(itemRow[button.dataset.column] === 1){
+          if(!button.classList.contains('button--colored')) button.classList.add('button--colored');
+        } else { 
+          if(button.classList.contains('button--colored')) button.classList.remove('button--colored');
+          if(itemRow[button.dataset.column] === -1) button.textContent = '×';
+        }
+      });
+    });
+  }
   switchSoundEffects(set){
     switch(set) {
       case 'on':
