@@ -28,6 +28,7 @@ class SetNonogramm {
     this.timerElement = document.querySelector('.nonogramTimer');
     this.saveButtonElement = document.querySelector('.option--button-save');
     this.timer;
+    document.querySelector('.nonogramName').textContent = this.nonogrammName;
     // console.log(this.nonogramData, this.rows,this.colums,this.inputData)
     this.isPauseByClicking = false;
   }

@@ -121,8 +121,13 @@ navigationItemRandomElement.addEventListener('click',  () => {
 // NONOGRAM ----------------------------------------------------------------------------------------------------
 const nanogramElement = new InitialElement(bodyElement, "main", "nanogram wrapper").returnChild();
 //todo: timer---------------------------------------------------------------------------------------------------
-const timerBlockElement = new InitialElement(nanogramElement, "div", "timer-container wrapper").returnChild();
-const timerElement = new InitialElement(timerBlockElement, "span", "timer nonogramTimer").returnChild();
+const informationBlockElement = new InitialElement(nanogramElement, "div", "information wrapper").returnChild();
+const nonogramNameLabelElement = new InitialElement(informationBlockElement, "span", "timer nonogram-name-label").returnChild();
+nonogramNameLabelElement.textContent = 'Nonogram`s name: ';
+const nonogramNameElement = new InitialElement(informationBlockElement, "span", "timer nonogramName").returnChild();
+const timerLabelElement = new InitialElement(informationBlockElement, "span", "timer timer-label").returnChild();
+timerLabelElement.textContent = "Timer: "
+const timerElement = new InitialElement(informationBlockElement, "span", "timer nonogramTimer").returnChild();
 timerElement.textContent = '00:00';
 
 //body nonogram ------------------------------------------------------------------------------------------------
@@ -222,10 +227,12 @@ optionsThemeButtonElement.addEventListener('click',  () => {
     optionsThemeButtonElement.setAttribute('src', './assets/night.svg');
     optionsThemeButtonElement.setAttribute('title', 'Night theme');
     document.documentElement.style.setProperty('--primary-color', 'rgba(27, 44, 27, 1)');
-    document.documentElement.style.setProperty('--text-color', 'rgba(175.92, 214.08, 175.92, 1)');
+    document.documentElement.style.setProperty('--text-color', 'rgba(210, 226, 210, 1)');
+    // document.documentElement.style.setProperty('--text-color', 'rgba(175.92, 214.08, 175.92, 1)');
     // document.documentElement.style.setProperty('--font-color-dark', 'rgba(167.19, 203.45, 167.19, 0.4)');
     // document.documentElement.style.setProperty('--font-color-light', 'rgba(113, 157, 113, 0.1)');
     document.documentElement.style.setProperty('--colored-cell', 'rgba(239, 242, 239, 1)');
+    document.documentElement.style.setProperty('--bg-submenu', 'rgba(111, 140, 111, 1)');
     // document.documentElement.style.setProperty('--colored-cell', 'rgba(27, 44, 27, 1)');
 
   } else {
@@ -238,6 +245,7 @@ optionsThemeButtonElement.addEventListener('click',  () => {
     document.documentElement.style.setProperty('--font-color-dark', 'rgba(167.19, 203.45, 167.19, 0.4)');
     document.documentElement.style.setProperty('--font-color-light', 'rgba(113, 157, 113, 0.1)');
     document.documentElement.style.setProperty('--colored-cell', 'black');
+    document.documentElement.style.setProperty('--bg-submenu', 'rgba(210, 226, 210, 1)');
   }
 });
 
