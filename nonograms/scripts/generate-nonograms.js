@@ -27,6 +27,7 @@ class SetNonogramm {
     this.timerElement.textContent = "00:00";
     this.saveButtonElement = document.querySelector('.option--button-save');
     this.resetButtonElement = document.querySelector('.options--button-reset');
+    document.querySelector('.option--button-solution').disabled = false;
     this.timer;
     document.querySelector('.nonogramName').textContent = this.nonogrammName;
     this.resetButtonElement.disabled = true;

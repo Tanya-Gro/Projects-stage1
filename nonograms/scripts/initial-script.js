@@ -150,7 +150,7 @@ optionsResetButtonElement.addEventListener('click', () => {
   optionsSaveButtonElement.disabled = true;
 });
 
-const optionsSolutionButtonElement = new InitialElement(optionsGroupElement, "button", "options--button navigation--main-item").returnChild();
+const optionsSolutionButtonElement = new InitialElement(optionsGroupElement, "button", "options--button navigation--main-item option--button-solution").returnChild();
 optionsSolutionButtonElement.textContent = 'SOLUTION';
 optionsSolutionButtonElement.setAttribute('title','Press to show the SOLUTION');
 optionsSolutionButtonElement.addEventListener('click',  () => {
