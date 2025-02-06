@@ -26,7 +26,7 @@ for (let i = 0; i < namesSmallNonograms.length; i+= 1) {
     if (timerElement.classList.contains('enable')){
       objectNonogram.resetTimer();
     }
-    objectNonogram = new SetNonogramm('small', i);
+    objectNonogram = new SetNonogramm('small', i, optionsSoundButtonElement.dataset.value === 'unmute');
   });
 }
 
@@ -51,7 +51,7 @@ for (let i = 0; i < namesMediumNonograms.length; i+= 1) {
     if (timerElement.classList.contains('enable')){
       objectNonogram.resetTimer();
     }
-    objectNonogram = new SetNonogramm('medium', i)
+    objectNonogram = new SetNonogramm('medium', i, optionsSoundButtonElement.dataset.value === 'unmute')
   });
 }
 
@@ -76,7 +76,7 @@ for (let i = 0; i < namesLargeNonograms.length; i+= 1) {
     if (timerElement.classList.contains('enable')){
       objectNonogram.resetTimer();
     }
-    objectNonogram = new SetNonogramm('large', i)
+    objectNonogram = new SetNonogramm('large', i, optionsSoundButtonElement.dataset.value === 'unmute')
   });
 }
 navigationItemLargeElement.addEventListener('click', () => {
@@ -109,11 +109,11 @@ navigationItemRandomElement.addEventListener('click',  () => {
   const countLargeNonograms = namesLargeNonograms.length;
   const randomNumber = Math.floor(Math.random()*(countSmallNonograms + countMediumNonograms + countLargeNonograms))+1;
   // console.log(randomNumber)
-  if (randomNumber <= countSmallNonograms) objectNonogram = new SetNonogramm('small', randomNumber - 1);
+  if (randomNumber <= countSmallNonograms) objectNonogram = new SetNonogramm('small', randomNumber - 1, optionsSoundButtonElement.dataset.value === 'unmute');
   else {
     if(randomNumber <= (countSmallNonograms + countMediumNonograms))
-      objectNonogram = new SetNonogramm('medium', randomNumber - countSmallNonograms - 1);
-      else objectNonogram = new SetNonogramm('large', randomNumber - countSmallNonograms - countMediumNonograms - 1)
+      objectNonogram = new SetNonogramm('medium', randomNumber - countSmallNonograms - 1, optionsSoundButtonElement.dataset.value === 'unmute');
+      else objectNonogram = new SetNonogramm('large', randomNumber - countSmallNonograms - countMediumNonograms - 1, optionsSoundButtonElement.dataset.value === 'unmute')
   }
   // objectNonogram.returnResult();
 });
@@ -135,18 +135,19 @@ const nonogramContainerElement = new InitialElement(nanogramElement, "div", "nan
 const nonogramCollumsElement = new InitialElement(nonogramContainerElement, "div", "nanogram--colums-container").returnChild();
 const nonogramRowsElement = new InitialElement(nonogramContainerElement, "div", "nanogram--rows-container").returnChild();
 const nonogramBodyElement = new InitialElement(nonogramContainerElement, "div", "nanogram--body-container").returnChild();
-// const wrapperElement = new InitialElement(bodyElement, "div", "wrapper light");
 
 // options button group ----------------------------------------------------------------------------------------
 const optionsGroupElement = new InitialElement(nanogramElement, "div", "options-group").returnChild();
-const optionsResetButtonElement = new InitialElement(optionsGroupElement, "button", "options--button navigation--main-item").returnChild();
+const optionsResetButtonElement = new InitialElement(optionsGroupElement, "button", "options--button navigation--main-item options--button-reset").returnChild();
 optionsResetButtonElement.setAttribute('title','Press to restart');
 optionsResetButtonElement.textContent = 'RESET';
 optionsResetButtonElement.addEventListener('click', () => {
   objectNonogram.isPauseByClicking = false;
+  optionsResetButtonElement.disabled = true;
   optionsSolutionButtonElement.disabled = false;
   if (objectNonogram.soundStatus) new Audio('./assets/mp3/reset.mp3').play();
   objectNonogram.resetNonogram();
+  optionsSaveButtonElement.disabled = true;
 });
 
 const optionsSolutionButtonElement = new InitialElement(optionsGroupElement, "button", "options--button navigation--main-item").returnChild();
@@ -155,9 +156,9 @@ optionsSolutionButtonElement.setAttribute('title','Press to show the SOLUTION');
 optionsSolutionButtonElement.addEventListener('click',  () => {
   optionsSaveButtonElement.disabled = true;
   optionsSolutionButtonElement.disabled = true;
+  optionsResetButtonElement.disabled = false;
   objectNonogram.showSolution();
   objectNonogram.isPauseByClicking = true;
-  // objectNonogram.removeButtonsEvent();
 });
 
 const optionsSaveButtonElement = new InitialElement(optionsGroupElement, "button", "options--button navigation--main-item option--button-save").returnChild();
@@ -185,8 +186,8 @@ optionsContinueButtonElement.addEventListener('click',  () => {
       objectNonogram.resetTimer();
     }
     if(curentResult.level !== savedResult.level || curentResult.nonogrammName !== savedResult.nonogrammName) 
-      objectNonogram = new SetNonogramm(savedResult.level,savedResult.numberNonogramm);
-
+      objectNonogram = new SetNonogramm(savedResult.level, savedResult.numberNonogramm, optionsSoundButtonElement.dataset.value === 'unmute');
+    
     timerElement.textContent = savedResult.timer;
     objectNonogram.showSavigData(savedResult.input);
   }
@@ -196,7 +197,53 @@ optionsContinueButtonElement.addEventListener('click',  () => {
   }
 });
 
-const optionsSoundButtonElement = new InitialElement(optionsGroupElement, "input", "options--button navigation--main-item options--button-sound").returnChild();
+const optionsScoreButtonElement = new InitialElement(optionsGroupElement, "button", "options--button navigation--main-item").returnChild();
+optionsScoreButtonElement.textContent = 'SCORE';
+optionsScoreButtonElement.setAttribute('title','Click to see the score');
+optionsScoreButtonElement.addEventListener('click',  () => {
+  if (localStorage.getItem('score')) {
+    if (objectNonogram.soundStatus) new Audio('./assets/mp3/off.mp3').play();
+    // приостанавливаем
+    if (timerElement.classList.contains('enable')){
+      objectNonogram.pauseTimer();
+    }
+    
+    // модалочка
+    document.querySelector(".modal-overlay").classList.add('active');
+    modalSpanElement.textContent = "HIGH SCORE";
+    let scoreResult = JSON.parse(localStorage.getItem('score')).sort((a, b) =>a[2]-b[2]);
+    // console.log(scoreResult);
+    //проверяем есть ли нужное кол-во строк в modalScoreContainerElement
+    const listItemsScoreElemtnts = document.querySelectorAll('.modal--score-row');
+    modalScoreContainerElement.classList.remove('disable');
+      
+    // console.log(scoreResult, scoreResult.length, listItemsScoreElemtnts, listItemsScoreElemtnts.length);
+    if (listItemsScoreElemtnts.length < scoreResult.length){
+      for (let i = 0; i < scoreResult.length - listItemsScoreElemtnts.length; i += 1) {
+        const modalScoreItemElement = new InitialElement(modalScoreContainerElement, "div", "modal--score-row").returnChild();
+        const modalScoreItemNPPElement = new InitialElement(modalScoreItemElement, "span", "modal--score-item-npp modal--score-item").returnChild();
+        modalScoreItemNPPElement.textContent = listItemsScoreElemtnts.length + 1 + i;
+        new InitialElement(modalScoreItemElement, "span", "modal--score-item-nameNono modal--score-item");
+        new InitialElement(modalScoreItemElement, "span", "modal--score-item-level modal--score-item");
+        new InitialElement(modalScoreItemElement, "span", "modal--score-item-time modal--score-item");
+      }
+    }
+    // обновляем данные
+    const nameNonoElements = document.querySelectorAll('.modal--score-item-nameNono');
+    nameNonoElements.forEach((nameNono, index) => nameNono.textContent = scoreResult[index][0]);
+    const levelElements = document.querySelectorAll('.modal--score-item-level');
+    levelElements.forEach((levelNono, index) => levelNono.textContent = scoreResult[index][1]);
+    const nameTimesElements = document.querySelectorAll('.modal--score-item-time');
+    nameTimesElements.forEach((timeNono, index) => timeNono.textContent = `${Math.floor(scoreResult[index][2]/60).toString().padStart(2,'0')}:${(scoreResult[index][2] % 60).toString().padStart(2,'0')}`);
+  }
+  else {
+    modalOverlayElement.classList.add('active');
+    modalSpanElement.textContent = 'You have to win at least once! Do it and come back.';
+  }
+});
+
+const optionsGroupEffectsElement = new InitialElement(optionsGroupElement, "div", "options-group-effects").returnChild();
+const optionsSoundButtonElement = new InitialElement(optionsGroupEffectsElement, "input", "options--button navigation--main-item options--button-sound").returnChild();
 optionsSoundButtonElement.setAttribute('type', 'image');
 optionsSoundButtonElement.setAttribute('data-value', 'unmute');
 optionsSoundButtonElement.setAttribute('src', './assets/unmute.svg');
@@ -215,7 +262,7 @@ optionsSoundButtonElement.addEventListener('click',  () => {
   }
 });
 
-const optionsThemeButtonElement = new InitialElement(optionsGroupElement, "input", "options--button navigation--main-item options--button-sound").returnChild();
+const optionsThemeButtonElement = new InitialElement(optionsGroupEffectsElement, "input", "options--button navigation--main-item options--button-sound").returnChild();
 optionsThemeButtonElement.setAttribute('type', 'image');
 optionsThemeButtonElement.setAttribute('data-value', 'light');
 optionsThemeButtonElement.setAttribute('title', 'Light theme');
@@ -228,13 +275,8 @@ optionsThemeButtonElement.addEventListener('click',  () => {
     optionsThemeButtonElement.setAttribute('title', 'Night theme');
     document.documentElement.style.setProperty('--primary-color', 'rgba(27, 44, 27, 1)');
     document.documentElement.style.setProperty('--text-color', 'rgba(210, 226, 210, 1)');
-    // document.documentElement.style.setProperty('--text-color', 'rgba(175.92, 214.08, 175.92, 1)');
-    // document.documentElement.style.setProperty('--font-color-dark', 'rgba(167.19, 203.45, 167.19, 0.4)');
-    // document.documentElement.style.setProperty('--font-color-light', 'rgba(113, 157, 113, 0.1)');
     document.documentElement.style.setProperty('--colored-cell', 'rgba(239, 242, 239, 1)');
     document.documentElement.style.setProperty('--bg-submenu', 'rgba(111, 140, 111, 1)');
-    // document.documentElement.style.setProperty('--colored-cell', 'rgba(27, 44, 27, 1)');
-
   } else {
     if (objectNonogram.soundStatus) new Audio('./assets/mp3/on.mp3').play();
     optionsThemeButtonElement.dataset.value = 'light';
@@ -254,11 +296,16 @@ const modalOverlayElement = new InitialElement(bodyElement, "div", "modal-overla
 const modalElement = new InitialElement(modalOverlayElement, "div", "modal").returnChild();
 const modalSpanElement = new InitialElement(modalElement, "span", "modal--span timer").returnChild();
 modalSpanElement.textContent= 'Great! You have solved the nonogram!';
+const modalScoreContainerElement = new InitialElement(modalElement, "div", "modal--score-container disable").returnChild();
 const modalButtonElement = new InitialElement(modalElement, "button", "modal--button navigation--main-item").returnChild();
 modalButtonElement.textContent = 'Ok';
 modalButtonElement.addEventListener('click', () => {
+  if (!modalScoreContainerElement.classList.contains('disable')) {
+    modalScoreContainerElement.classList.add('disable');
+    if (timerElement.classList.contains('enable')) {
+      objectNonogram.startTimer();
+    }
+  } else optionsResetButtonElement.disabled = true;
   modalOverlayElement.classList.remove('active');
 })
 objectNonogram = new SetNonogramm();
-// objectNonogram.returnResult();
-// console.log(new SetNonogramm('small', 0).returnResult());

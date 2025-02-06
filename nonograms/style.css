@@ -5,6 +5,7 @@
   --font-color-light: rgba(113, 157, 113, 0.1); 
   --colored-cell: black; 
   --bg-submenu: rgba(210, 226, 210, 1);
+  --cell-width: 25px;
 }
 * {
 margin: 0;
@@ -42,27 +43,26 @@ header {
 }
 
 .navigation--main-item {
-  margin: 10px 30px;
-  padding: 10px 30px;
+  margin: 0px 12px;
+  padding: 5px 12px;
   border-radius: 5px;
   border: 2px solid var(--text-color);
   background-color: var(--font-color-dark);
   color: var(--text-color);
   cursor: pointer;
-  min-width: 170px;
+  min-width: 145px;
   text-align: center;
+  user-select: none;
 }
 .submenu {
   display: none;
   list-style-type: none;
   list-style-type: none;
   position: absolute;
-  /* background-color: rgba(209, 209, 209, 0.9); */
-  /* background-color: var(--font-color-dark); */
   background-color: var(--bg-submenu);
   border-radius: 5px;
   font-size: 0.9rem;
-  min-width: 140px;
+  min-width: 110px;
   cursor: auto;
 }
 
@@ -71,7 +71,7 @@ header {
 }
 .smallItem, .mediumItem, .largeItem {
   padding: 5px 10px;
-  margin: 10px 17px;
+  margin: 10px 10px;
   text-align: center;
   cursor: pointer;
   background-color: var(--font-color-dark);
@@ -79,10 +79,34 @@ header {
   border: 1px solid var(--text-color);
   color: var(--text-color);
 }
+.nanogram {
+  display: grid;
+  grid-template-columns: 1fr 110px;
+  justify-self: center;
+  width: 700px;
+}
 .information {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+/* @media(max-width: 700px){
+  
+} */
+.nanogram > .information::after {
+  content: '';
+  display: block;
+}
+.nanogram {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.information {
+  flex: 0 0 100%; /* Занимает всю ширину */
+}
+.information::after {
+  flex: 0 0 50px; 
 }
 .timer-label::before{
   content: "";
@@ -92,6 +116,7 @@ header {
   user-select: none;
   padding: 20px 10px;
   display: inline-block;
+  font-size: 0.9rem;
 }
 .nonogramName{
   min-width: 100px;
@@ -103,16 +128,18 @@ header {
   padding: 7px;
   border-radius: 10px;
 }
-.nanogram {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.nanogram--wrapper::after {
+  content: "";
+  display: block;
 }
 .nanogram--wrapper {
   display: grid;
   grid-template-columns: max-content max-content;
   border: 3px solid gray;
-  margin: 0 auto;
+  /* margin-left: auto;
+  margin-top: auto;
+  margin-bottom: auto; */
+  margin: auto;
 }
 .nanogram--wrapper::before {
   content: '';
@@ -142,10 +169,11 @@ header {
 }
 .nanogram--header-column, .nanogram--header-row {
   display: inline-block;
-  width: 33px;
-  height: 33px;
+  width: var(--cell-width);
+  height: var(--cell-width);
   text-align: center;
   align-content: center;
+  font-size: 0.9rem;
 }
 .nanogram--rows-container {
   display: flex;
@@ -166,19 +194,16 @@ border-bottom: 3px solid gray;
   justify-content: end;
   width: 100%;
 }
-.nanogram--data-button:not(:last-child) {
-  border-right: 1px solid gray;
-}
 .nanogram--data-button {
-  /* width: 34px; */
-  width: 34px;
-  height: 33px;
+  min-width: var(--cell-width);
+  height: var(--cell-width);
   display: inline-block;
   border: 0px;
   font-size: 2rem;
-  line-height: 2rem;
+  line-height: 1rem;
   background-color: var(--primary-color);
   color: var(--text-color);
+  box-sizing: content-box;
 }
 .nanogram--data-button.button--colored {
   background-color: var(--colored-cell);
@@ -186,17 +211,17 @@ border-bottom: 3px solid gray;
 .nanogram--body-container .nanogram--row{
   justify-content: space-around;
 }
-
 .options-group{
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 10px;
+  flex-direction: column;
+  justify-content:start;
+  margin: 5px;
+  margin-top: 20px;
 }
 .options--button{
-  margin: 10px;
-  padding: 10px;
-  min-width: 110px;
+  margin-bottom: 10px;
+  padding: 7px;
+  min-width: 100px;
 }
 .options--button:disabled{
 border-color: var(--font-color-dark);
@@ -236,7 +261,7 @@ cursor: auto;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 50px 30px;
+  padding: 30px;
   border-radius: 10px;
   border: 2px solid var(--font-color-light);
 
@@ -245,4 +270,37 @@ cursor: auto;
 .modal-overlay.active{
   display: flex;
   left: 0;
+}
+.modal--span {
+  padding: 20px;
+}
+.disable {
+  display:none
+}
+.modal--score-container {
+  margin-bottom: 20px;
+}
+.modal--score-row {
+  padding: 7px;
+  background-color: var(--bg-submenu);
+  display: flex;
+  flex-direction: row;
+}
+.modal--score-row:nth-child(odd){
+  background-color: var(--font-color-dark);
+  /* border-radius: 10px; */
+}
+.modal--score-item {
+  margin: 3px 15px;
+  padding: 2px 15px;
+  background-color: var(--font-color-dark);
+  border-radius: 10px;
+  display: block;
+  font-size: 0.8rem;
+}
+.modal--score-row:nth-child(odd) .modal--score-item {
+  background-color: var(--bg-submenu);
+}
+.modal--score-item-nameNono{
+  min-width: 110px;
 }

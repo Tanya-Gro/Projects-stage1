@@ -1,14 +1,13 @@
 import nonograms_data from './data.json' with { type: 'json' }
 import {InitialElement} from "./initial-class.js";
 
-// console.log(nonograms_data);
+
 const namesSmallNonograms = nonograms_data.small;
 const namesMediumNonograms = nonograms_data.medium;
 const namesLargeNonograms = nonograms_data.large;
 
-// console.log(namesSmallNonograms, namesMediumNonograms, namesLargeNonograms);
 class SetNonogramm {
-  constructor (level = 'small', numberNonogramm = 0) {
+  constructor (level = 'small', numberNonogramm = 0, soundStatus = true) {
     this.level = level;
     this.numberNonogramm = +numberNonogramm;
     this.nonogrammName = nonograms_data[this.level][this.numberNonogramm];
@@ -19,17 +18,19 @@ class SetNonogramm {
     this.fillCollums();
     this.fillRows();
     this.fillBody();
-    this.soundStatus = true;
+    this.soundStatus = soundStatus;
     this.soundSolution = new Audio('./assets/mp3/solution.mp3');
     this.soundFinal = new Audio('./assets/mp3/final.mp3');
     this.soundOn = new Audio('./assets/mp3/on.mp3');
     this.soundOff = new Audio('./assets/mp3/off.mp3');
-    // this.soundReset = new Audio('./assets/mp3/reset.mp3');
     this.timerElement = document.querySelector('.nonogramTimer');
+    this.timerElement.textContent = "00:00";
     this.saveButtonElement = document.querySelector('.option--button-save');
+    this.resetButtonElement = document.querySelector('.options--button-reset');
     this.timer;
     document.querySelector('.nonogramName').textContent = this.nonogrammName;
-    // console.log(this.nonogramData, this.rows,this.colums,this.inputData)
+    this.resetButtonElement.disabled = true;
+    this.saveButtonElement.disabled = true;
     this.isPauseByClicking = false;
   }
   generateRows() {
@@ -133,7 +134,6 @@ class SetNonogramm {
   }
   pauseTimer(){
     if (this.timerElement.classList.contains('enable')){
-      this.saveButtonElement.disabled = true;
       clearInterval(this.timer);
       this.timerElement.classList.remove('enable');
     }
@@ -143,29 +143,34 @@ class SetNonogramm {
       this.saveButtonElement.disabled = true;
       clearInterval(this.timer);
       this.timerElement.classList.remove('enable');
-      this.timerElement.textContent = '00:00';
     }
+    this.timerElement.textContent = '00:00';
   }
   updateTimet(sec) {
     this.timerElement.textContent = `${Math.floor(sec / 60).toString().padStart(2,'0')}:${(sec % 60).toString().padStart(2,'0')}`
   }
+  getTimeInSeconds(timeInString) {
+    const time = timeInString.split(':').map((item)=> item = Number(item));
+    return time[0] * 60 + time[1];
+  }
+  startTimer() {
+    let sec = this.getTimeInSeconds(this.timerElement.textContent);
+    if (!this.timerElement.classList.contains('enable')) this.timerElement.classList.add('enable');
+    this.timer = setInterval(() => {
+      sec += 1;
+      this.updateTimet(sec);
+    },1000);
+  }
   byClickCell(e, mouseButton){
-    // console.log(e, mouseButton)
     // проверка: заблокирован ввод?
     if (this.isPauseByClicking) return;
 
     const buttonElement = e.target;
 
-    // start timer
     if (!this.timerElement.classList.contains('enable')){
       this.saveButtonElement.disabled = false;
-      const time = this.timerElement.textContent.split(':').map((item)=> item = Number(item));
-      let sec = time[0] * 60 + time[1];
-      this.timerElement.classList.add('enable');
-      this.timer = setInterval(() => {
-        sec += 1;
-        this.updateTimet(sec);
-      },1000);
+      this.resetButtonElement.disabled = false;
+      this.startTimer();
     }
     const row = +buttonElement.getAttribute('data-row');
     const coll = +buttonElement.getAttribute('data-column');
@@ -197,13 +202,22 @@ class SetNonogramm {
         break;
     }
     this.checkResult()
-    // console.log(row, coll)
   }
   checkResult() {
     // console.log(this.nonogramData, this.inputData)
     for(let i = 0; i < this.nonogramData.length; i += 1) {
       if (this.nonogramData[i].join('') !== this.inputData[i].join('').replaceAll('-1', '0')) return;
     }
+    //сохраняем результат в localStorage
+    let scoreResult = [];
+    if (localStorage.getItem('score')) scoreResult = JSON.parse(localStorage.getItem('score'));
+
+    // console.log(scoreResult, [this.nonogrammName, this.level, getTimeInSeconds(this.timerElement.textContent)]);
+    scoreResult.push([this.nonogrammName, this.level, this.getTimeInSeconds(this.timerElement.textContent).toString()]);
+    if(scoreResult.length > 5) scoreResult.shift();
+    // console.log(scoreResult);
+    localStorage.setItem('score', JSON.stringify(scoreResult));
+    // модалка
     if (this.soundStatus) this.soundFinal.play();
     document.querySelector(".modal-overlay").classList.add('active');
     const time = this.timerElement.textContent.split(':');
