@@ -169,7 +169,7 @@ optionsSaveButtonElement.addEventListener('click',  () => {
   objectNonogram.pauseTimer();
   let curentResult = objectNonogram.returnResult();
   curentResult.timer = timerElement.textContent;
-  // console.log(curentResult)
+
   localStorage.setItem('lastgame', JSON.stringify(curentResult)); 
 });
 
@@ -180,11 +180,13 @@ optionsContinueButtonElement.addEventListener('click',  () => {
   if (localStorage.getItem('lastgame')) {
     if (objectNonogram.soundStatus) new Audio('./assets/mp3/off.mp3').play();
     objectNonogram.isPauseByClicking = false;
-    let curentResult = objectNonogram.returnResult();
-    let savedResult = JSON.parse(localStorage.getItem('lastgame'));
     if (timerElement.classList.contains('enable')){
       objectNonogram.resetTimer();
     }
+    let curentResult = objectNonogram.returnResult();
+    let savedResult = JSON.parse(localStorage.getItem('lastgame'));
+    // console.log(curentResult, savedResult)
+    // console.log(curentResult.level !== savedResult.level, curentResult.nonogrammName !== savedResult.nonogrammName)
     if(curentResult.level !== savedResult.level || curentResult.nonogrammName !== savedResult.nonogrammName) 
       objectNonogram = new SetNonogramm(savedResult.level, savedResult.numberNonogramm, optionsSoundButtonElement.dataset.value === 'unmute');
     

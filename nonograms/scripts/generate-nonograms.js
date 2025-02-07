@@ -73,7 +73,7 @@ class SetNonogramm {
   }
   returnResult() {
     return {
-      "levet" : this.level,
+      "level" : this.level,
       "nonogrammName" : this.nonogrammName,
       "numberNonogramm" : this.numberNonogramm,
       "data": this.nonogramData,
