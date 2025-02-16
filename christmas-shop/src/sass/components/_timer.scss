@@ -1,5 +1,8 @@
+@use "../abstract/constants";
+@use "../abstract/mixins";
+
 .timer {
-  background-color: $color-background;
+  background-color: constants.$color-background;
   background-image: url("./src/accets/png/bg-forest.png"), url("./src/accets/png/bg-snow.png");
   background-position: top, top;
   background-repeat: no-repeat;
@@ -18,18 +21,18 @@
   h6 {
     padding: 7px 0;
 
-    @include media-mediumScreen {
+    @include mixins.media-mediumScreen {
       padding: 6px 0;
     }
   }
 
-  @include media-mediumScreen {
+  @include mixins.media-mediumScreen {
     background-size: 1435px, 1600px;
     padding: 180px 0;
     background-position: bottom, bottom;
   }
 
-  @include media-smallScreen {
+  @include mixins.media-smallScreen {
     background-size: 1510px, 1700px;
     padding: 182px 0 179px;
   }
@@ -40,21 +43,21 @@
   text-align: center;
   padding: 8px 0 17px;
 
-  @include media-mediumScreen {
+  @include mixins.media-mediumScreen {
     padding: 8px 0 20px;
   }
 }
 
 .timer__content {
   background-color: rgba(255, 255, 255, 0.4);
-  color: $color-staticWhite;
+  color: constants.$color-staticWhite;
   border-radius: 20px;
   display: flex;
   flex-direction: row;
   width: 344px;
   padding: 10px 13px 13px;
 
-  @include media-mediumScreen {
+  @include mixins.media-mediumScreen {
     padding: 11px 13px 11px;
   }
 }
@@ -62,7 +65,7 @@
 .timer__line {
   margin-top: 16px;
   // background-color: $color-staticWhite;
-  border: 1px solid $color-staticWhite;
+  border: 1px solid constants.$color-staticWhite;
   width: 2px;
   height: 23px;
   opacity: 0.8;

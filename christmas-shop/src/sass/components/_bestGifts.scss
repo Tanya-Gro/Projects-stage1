@@ -1,5 +1,8 @@
+@use "../abstract/constants";
+@use "../abstract/mixins";
+
 .bestGifts {
-  background-color: $color-background;
+  background-color: constants.$color-background;
   background-image: url("./src/accets/png/bg-snow.png");
   background-position: center;
   background-size: 100%;
@@ -9,16 +12,16 @@
     text-align: center;
     padding: 10px 0;
 
-    @include media-preMediumScreen {
+    @include mixins.media-preMediumScreen {
       padding: 12px 0px;
     }
   }
 
-  @include media-preMediumScreen {
+  @include mixins.media-preMediumScreen {
     padding: 50px 8px;
   }
 
-  @include media-smallScreen {
+  @include mixins.media-smallScreen {
     padding: 47px 8px;
   }
 }
@@ -33,21 +36,21 @@
 }
 
 .gift__content {
-  background-color: $color-contentBackground;
+  background-color: constants.$color-contentBackground;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
 }
 
-@include media-hover {
+@include mixins.media-hover {
   .gift__content:hover .gift__description>h4 {
-    color: $color-background;
+    color: constants.$color-background;
   }
 }
 
 .gift__description {
-  background-color: $color-staticWhite;
+  background-color: constants.$color-staticWhite;
   padding: 20px 20px;
   border-radius: 20px;
   flex-grow: 1;

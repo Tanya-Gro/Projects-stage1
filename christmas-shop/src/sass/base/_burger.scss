@@ -1,3 +1,6 @@
+@use "../abstract/constants";
+@use "../abstract/mixins";
+
 %burger__span {
   position: absolute;
   background-color: #181C29;
@@ -16,7 +19,7 @@
   z-index: 5;
   transition: left .5s ease 0s;
 
-  @include media-mediumScreen {
+  @include mixins.media-mediumScreen {
     display: block;
     // margin-bottom: 10px;
   }
@@ -41,7 +44,7 @@
   right: 0;
 
   transform: translate(0px, 0px);
-  background-color: $color-staticWhite;
+  background-color: constants.$color-staticWhite;
   // transition: transform .5s;
 }
 

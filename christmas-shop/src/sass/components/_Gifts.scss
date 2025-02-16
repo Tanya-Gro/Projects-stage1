@@ -1,8 +1,12 @@
+@use "../abstract/constants";
+@use "../abstract/mixins";
+@use "../abstract/placeholders";
+
 // ---------------------------------
 // page GIFTS
 // ---------------------------------
 .Gifts_gifts {
-  background-color: $color-background;
+  background-color: constants.$color-background;
   background-image: url("./src/accets/svg/bg-garland.svg");
   background-repeat: no-repeat;
   background-position: top center;
@@ -13,16 +17,16 @@
   h2 {
     max-width: 430px;
     text-align: center;
-    color: $color-staticWhite;
+    color: constants.$color-staticWhite;
     margin: 0 auto;
     font-weight: 600;
   }
 
-  @include media-preMediumScreen {
+  @include mixins.media-preMediumScreen {
     padding: 60px 68px;
   }
 
-  @include media-mediumScreen {
+  @include mixins.media-mediumScreen {
     padding: 60px 13px;
   }
 }
@@ -37,7 +41,7 @@
 .tab-enable {
   background-color: rgba(255, 255, 255, 0.2);
 
-  @include media-hover {
+  @include mixins.media-hover {
     &:hover {
       user-select: none;
       cursor: default;
@@ -50,20 +54,20 @@
   margin: 0 4px;
   padding: 12px 20px;
   border-radius: 12px;
-  color: $color-staticWhite;
+  color: constants.$color-staticWhite;
 
   &-disable {
     @extend %transition;
   }
 
-  @include media-hover {
+  @include mixins.media-hover {
     &-disable:hover {
       background: rgba(255, 255, 255, 0.2);
       cursor: pointer;
     }
   }
 
-  @include media-preSmallScreen {
+  @include mixins.media-preSmallScreen {
     padding: 12px 8px;
     margin: 0 0px;
   }

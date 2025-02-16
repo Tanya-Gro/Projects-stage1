@@ -1,6 +1,9 @@
+@use "../abstract/constants";
+@use "../abstract/mixins";
+
 .slider {
   padding: 60px 0;
-  background-color: $color-background;
+  background-color: constants.$color-background;
   background-image: url("./src/accets/png/bg-snow.png");
   background-position: center;
   background-size: 100%;
@@ -16,12 +19,12 @@
     justify-content: right;
     padding: 10px 70px;
 
-    @include media-mediumScreen {
+    @include mixins.media-mediumScreen {
       padding: 10px 0px;
     }
   }
 
-  @include media-smallScreen {
+  @include mixins.media-smallScreen {
     padding: 62px 0;
     background-size: 1190px;
   }
@@ -35,7 +38,7 @@
   align-items: center;
   transition: left .4s ease-in-out;
 
-  @include media-preMediumScreen {
+  @include mixins.media-preMediumScreen {
     left: -11px;
   }
 }
@@ -47,7 +50,7 @@
   line-height: 9.752rem;
   text-align: center;
   text-transform: uppercase;
-  color: $color-staticWhite;
+  color: constants.$color-staticWhite;
   padding: 0 20px;
 }
 

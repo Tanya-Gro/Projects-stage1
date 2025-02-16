@@ -1,4 +1,4 @@
-.footer-icon, .contacts__content h3, .contacts__content h4, .tab-disable, .navigation_active, .button__arrow_active, .button__top, .button__black, .h6_dark {
+.contacts__content h4, .contacts__content h3, .footer-icon, .tab-disable, .navigation_active, .button__black, .button__top, .button__arrow_active, .h6_dark {
   transition: all 0.3s ease-out;
 }
 

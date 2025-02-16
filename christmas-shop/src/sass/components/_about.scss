@@ -1,11 +1,14 @@
+@use "../abstract/constants";
+@use "../abstract/mixins";
+
 .about {
   padding: 60px 82px;
-  background-color: $color-background;
+  background-color: constants.$color-background;
   background-image: url("./src/accets/png/bg-snow.png");
   background-position: center;
   background-size: 100%;
 
-  @include media-preMediumScreen {
+  @include mixins.media-preMediumScreen {
     padding: 60px 8px;
   }
 
@@ -14,14 +17,14 @@
 .about__container {
   display: flex;
   flex-direction: row;
-  background-color: $color-staticWhite;
+  background-color: constants.$color-staticWhite;
   border-radius: 20px;
 
   div {
     width: 50%;
   }
 
-  @include media-preSmallScreen {
+  @include mixins.media-preSmallScreen {
     flex-direction: column;
     align-items: center;
 
@@ -46,11 +49,11 @@
     padding: 20px 0;
     max-width: 360px;
 
-    @include media-mediumScreen {
+    @include mixins.media-mediumScreen {
       max-width: 300px;
     }
 
-    @include media-smallScreen {
+    @include mixins.media-smallScreen {
       max-width: 350px;
     }
   }
@@ -58,16 +61,16 @@
   p {
     max-width: 410px;
 
-    @include media-mediumScreen {
+    @include mixins.media-mediumScreen {
       max-width: 270px;
     }
 
-    @include media-smallScreen {
+    @include mixins.media-smallScreen {
       max-width: 325px;
     }
   }
 
-  @include media-preSmallScreen {
+  @include mixins.media-preSmallScreen {
     padding: 60px 20px;
   }
 }

@@ -1,3 +1,7 @@
+@use "../abstract/constants";
+@use "../abstract/mixins";
+@use "../abstract/placeholders";
+
 .button {
   padding: 20px 32px;
   border-radius: 20px;
@@ -5,7 +9,7 @@
 
   font-family: "Montserrat", verdana, sans-serif;
   text-transform: uppercase;
-  color: $color-dark;
+  color: constants.$color-dark;
   font-size: 1.2rem;
   font-weight: 600;
   line-height: 1.56rem;
@@ -14,34 +18,34 @@
 }
 
 .button__black {
-  background-color: $color-dark;
-  color: $color-staticWhite;
+  background-color: constants.$color-dark;
+  color: constants.$color-staticWhite;
   border: 0;
   @extend %transition;
 
-  @include media-hover {
+  @include mixins.media-hover {
     &:hover {
-      background-color: $color-staticWhite;
-      color: $color-dark;
+      background-color: constants.$color-staticWhite;
+      color: constants.$color-dark;
     }
   }
 }
 
 .button__arrow {
-  color: $color-staticWhite40;
-  border: 1px solid $color-staticWhite40;
+  color: constants.$color-staticWhite40;
+  border: 1px solid constants.$color-staticWhite40;
   border-radius: 20px;
   padding: 20px 21px;
   font-weight: 2.4rem;
   margin: 0 10px;
-  background-color: $color-background;
+  background-color: constants.$color-background;
 }
 
 .button__top {
   display: none;
-  background-color: $color-staticWhite;
+  background-color: constants.$color-staticWhite;
   border-radius: 100px;
-  border: 1px solid $color-background;
+  border: 1px solid constants.$color-background;
   box-shadow: 0 0 0.5;
   padding: 15px 15px;
   cursor: pointer;
@@ -53,7 +57,7 @@
   // transform: 0.4s;
   // animation: moveButtonUp 2s infinite linear;
 
-  @include media-mediumScreen {
+  @include mixins.media-mediumScreen {
     display: block;
   }
 
@@ -101,8 +105,8 @@
 
 
 .button__arrow_active {
-  color: $color-staticWhite;
-  border: 1px solid $color-staticWhite;
+  color: constants.$color-staticWhite;
+  border: 1px solid constants.$color-staticWhite;
   cursor: pointer;
   @extend %transition;
 
@@ -110,9 +114,9 @@
     opacity: 1;
   }
 
-  @include media-hover {
+  @include mixins.media-hover {
     &:hover {
-      background-color: $color-staticWhite;
+      background-color: constants.$color-staticWhite;
 
       span {
         background-image: url("./src/accets/svg/Vector\ \(1\).svg");

@@ -1,4 +1,6 @@
-@mixin font ($size, $height: $size, $weigh: 600, $color: $color-staticWhite, $transform: uppercase, $align: center) {
+@use "constants";
+
+@mixin font ($size, $height: $size, $weigh: 600, $color: constants.$color-staticWhite, $transform: uppercase, $align: center) {
   font-size: $size;
   line-height: $height;
   font-weight: $weigh;
@@ -15,25 +17,25 @@
 // }
 
 @mixin media-preMediumScreen {
-  @media (max-width: $pretablet-width) {
+  @media (max-width: constants.$pretablet-width) {
     @content;
   }
 }
 
 @mixin media-mediumScreen {
-  @media (max-width: $tablet-width) {
+  @media (max-width: constants.$tablet-width) {
     @content;
   }
 }
 
 @mixin media-preSmallScreen {
-  @media (max-width: $premobile-width) {
+  @media (max-width: constants.$premobile-width) {
     @content;
   }
 }
 
 @mixin media-smallScreen {
-  @media (max-width: $mobile-width) {
+  @media (max-width: constants.$mobile-width) {
     @content;
   }
 }

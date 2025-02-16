@@ -1,16 +1,20 @@
+@use "../abstract/constants";
+@use "../abstract/mixins";
+@use "../abstract/placeholders";
+
 .footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 62px 82px;
 
-  @include media-hover {
+  @include mixins.media-hover {
     & .h6:hover {
-      color: $color-background;
+      color: constants.$color-background;
     }
   }
 
-  @include media-preMediumScreen {
+  @include mixins.media-preMediumScreen {
     padding: 60px 8px;
   }
 
@@ -24,7 +28,7 @@
   flex-direction: row;
   gap: 10px;
 
-  @include media-preMediumScreen {
+  @include mixins.media-preMediumScreen {
     flex-direction: column;
     align-items: center;
     gap: 12px;
@@ -32,7 +36,7 @@
 }
 
 .contacts__content {
-  background-color: $color-contentBackground;
+  background-color: constants.$color-contentBackground;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -49,17 +53,17 @@
     @extend %transition;
   }
 
-  @include media-preMediumScreen {
+  @include mixins.media-preMediumScreen {
     width: 100%;
   }
 
-  @include media-hover {
+  @include mixins.media-hover {
     &:hover {
       cursor: pointer;
 
       h3,
       h4 {
-        color: $color-background;
+        color: constants.$color-background;
       }
     }
   }
@@ -86,7 +90,7 @@
   cursor: pointer;
   margin: 3px 6px;
 
-  @include media-hover {
+  @include mixins.media-hover {
     &:hover {
       filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
     }

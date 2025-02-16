@@ -1,3 +1,6 @@
+@use "../abstract/constants";
+@use "../abstract/mixins";
+
 %modal__span {
   position: absolute;
   content: "";
@@ -7,7 +10,7 @@
 }
 
 .overlay {
-  background-color: $color-overlay;
+  background-color: constants.$color-overlay;
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -21,12 +24,12 @@
 }
 
 .modal {
-  background-color: $color-contentBackground;
+  background-color: constants.$color-contentBackground;
   border-radius: 20px;
   max-width: 400px;
   position: relative;
 
-  @include media-preSmallScreen {
+  @include mixins.media-preSmallScreen {
     max-width: 364px;
   }
 }
@@ -39,7 +42,7 @@
   background-position: center;
   background-size: 100%;
 
-  @include media-preSmallScreen {
+  @include mixins.media-preSmallScreen {
     width: 364px;
   }
 }
@@ -66,7 +69,7 @@
   top: 12px;
   cursor: pointer;
 
-  @include media-preSmallScreen {
+  @include mixins.media-preSmallScreen {
     left: 309px;
   }
 }
@@ -95,7 +98,7 @@
 }
 
 .modal__content {
-  background-color: $color-staticWhite;
+  background-color: constants.$color-staticWhite;
   padding: 20px 20px;
   border-radius: 20px;
 }
@@ -124,7 +127,7 @@
 .modal-description-label {
   width: 50%;
 
-  @include media-preSmallScreen {
+  @include mixins.media-preSmallScreen {
     width: 44%;
   }
 }
