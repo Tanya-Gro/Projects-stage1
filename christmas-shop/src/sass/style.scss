@@ -1,0 +1,20 @@
+@use "abstract/constants";
+@use "abstract/placeholders";
+@use "abstract/mixins";
+
+@use "base/base";
+@use "base/buttons";
+@use "base/burger";
+@use "base/modal";
+
+@use "layouts/wrapper";
+@use "layouts/header";
+
+@use "components/hero";
+@use "components/about";
+@use "components/slider";
+@use "components/bestGifts";
+@use "components/Gifts";
+@use "components/timer";
+
+@use "layouts/footer";

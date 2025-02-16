@@ -1,0 +1,47 @@
+@use "constants";
+
+@mixin font ($size, $height: $size, $weigh: 600, $color: constants.$color-staticWhite, $transform: uppercase, $align: center) {
+  font-size: $size;
+  line-height: $height;
+  font-weight: $weigh;
+  text-transform: $transform;
+  text-align: $align;
+  color: $color;
+}
+
+// не уверена в необх @mixin media-fullScreen
+// @mixin media-fullScreen {
+//   @media (max-width: $content-width) {
+//     @content;
+//   }
+// }
+
+@mixin media-preMediumScreen {
+  @media (max-width: constants.$pretablet-width) {
+    @content;
+  }
+}
+
+@mixin media-mediumScreen {
+  @media (max-width: constants.$tablet-width) {
+    @content;
+  }
+}
+
+@mixin media-preSmallScreen {
+  @media (max-width: constants.$premobile-width) {
+    @content;
+  }
+}
+
+@mixin media-smallScreen {
+  @media (max-width: constants.$mobile-width) {
+    @content;
+  }
+}
+
+@mixin media-hover {
+  @media (any-pointer: fine) {
+    @content;
+  }
+}
