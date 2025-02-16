@@ -1,0 +1,80 @@
+@use "../abstract/constants";
+@use "../abstract/mixins";
+@use "../abstract/placeholders";
+
+header {
+  padding: 12px 78px 12px 102px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include mixins.media-preMediumScreen {
+    padding: 12px 8px 11px 28px;
+  }
+}
+
+.logo {
+  display: flex;
+  padding: 8px 2px;
+  text-decoration: none;
+}
+
+.ico__logo {
+  background-image: url("./src/accets/ico-logo.svg");
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+
+.navigation {
+  display: flex;
+  list-style-type: none;
+}
+
+.header__navigation {
+  @include mixins.media-mediumScreen {
+    // display: none;
+    position: fixed;
+    right: 0;
+    background-color: constants.$color-staticWhite;
+    transform: translate(100%, 0px);
+    transition: transform .5s;
+  }
+}
+
+.navigation__item {
+  padding: 2px 4px;
+}
+
+.navigation__link {
+  text-decoration: none;
+  color: constants.$color-dark;
+  font-size: 1.2rem;
+  line-height: 1.56rem;
+  letter-spacing: 0.05em;
+  padding: 12px 20px;
+  border-radius: 12px;
+}
+
+.navigation__link-disable {
+  background: constants.$color-primary;
+  color: constants.$color-background;
+
+  @include mixins.media-hover {
+    &:hover {
+      cursor: default;
+    }
+  }
+}
+
+.navigation_active {
+  @extend %transition;
+
+  @include mixins.media-hover {
+    &:hover .navigation__link {
+      background: constants.$color-primary;
+      color: constants.$color-background;
+    }
+  }
+}

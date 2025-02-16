@@ -1,0 +1,129 @@
+@use "../abstract/constants";
+@use "../abstract/mixins";
+@use "../abstract/placeholders";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Montserrat", verdana, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: left;
+  color: constants.$color-dark;
+  // @include font ($size:, $height:, $weigh: 600, $color: $color-staticWhite, $transform: uppercase, $align: center)
+}
+
+body.nonescroll {
+  overflow: hidden;
+}
+
+h1 {
+  padding: 4px 7px;
+  font-size: 1.2rem;
+  line-height: 1.56rem;
+  letter-spacing: 0.05em;
+  color: constants.$color-dark;
+
+  // @include font ($size:, $height:, $weigh: 600, $color: $color-staticWhite, $transform: uppercase, $align: center)
+}
+
+h2 {
+  font-size: 3.2rem;
+  line-height: 4.8rem;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+
+  // @include font ($size:, $height:, $weigh: 600, $color: $color-staticWhite, $transform: uppercase, $align: center)
+}
+
+h3 {
+  font-size: 2.4rem;
+  line-height: 3.648rem;
+  letter-spacing: 0.16em;
+  color: constants.$color-staticWhite;
+  font-weight: 600;
+
+  // @include font ($size:, $height:, $weigh: 600, $color: $color-staticWhite, $transform: uppercase, $align: center)
+}
+
+h4 {
+  font-size: 1.6rem;
+  line-height: 2.432rem;
+  letter-spacing: 0.08em;
+
+  // @include font ($size:, $height:, $weigh: 600, $color: $color-staticWhite, $transform: uppercase, $align: center)
+
+}
+
+.h4_dark,
+.h3_dark {
+  color: constants.$color-dark;
+}
+
+
+h5,
+.h5 {
+  font-size: 1.2rem;
+  line-height: 1.56rem;
+  letter-spacing: 0.05em;
+  // @include font ($size:, $height:, $weigh: 600, $color: $color-staticWhite, $transform: uppercase, $align: center)
+}
+
+.h5 {
+  &--green {
+    color: constants.$color-green;
+  }
+
+  &--blue {
+    color: constants.$color-purple;
+  }
+
+  &--pink {
+    color: constants.$color-pink;
+  }
+}
+
+h6 {
+  font-family: Allura;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  display: block;
+
+  @include mixins.font ($size: 2.4rem, $weigh: 400, $transform: none);
+}
+
+.h6 {
+  font-family: Allura;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  display: block;
+  @include mixins.font ($size: 2.4rem, $weigh: 400, $transform: none);
+
+  &_dark {
+    color: constants.$color-dark;
+    @extend %transition;
+    margin: 0 auto;
+  }
+
+  &_primary {
+    color: constants.$color-background;
+  }
+}
+
+p {
+  font-weight: 400;
+  text-transform: none;
+  line-height: 2.368rem;
+
+  // @include font ($height:2.368rem, $weigh: 400, $transform: none)
+}
